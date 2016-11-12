@@ -1,10 +1,10 @@
 all:
 	@echo "Compilando..."
-	@g++ cenariomain.cpp soil/*.c -o cenariomain.bin -Wall -lglut -lGL -lGLU
+	@g++ Main.cpp Tela.cpp soil/*.c -o Main.bin -w -Wall -lglut -lGL -lGLU
 
 executa: all
 	@echo "Executando..."
-	@./cenariomain.bin
+	@./Main.bin
 
 limpa:
 	@echo "Limpando arquivos..."
