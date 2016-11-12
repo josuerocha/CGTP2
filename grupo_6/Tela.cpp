@@ -82,6 +82,7 @@ void Tela::mouseClick(int button, int state, int x, int y) {
 	}
 }
 
+
 void Tela::AlteraTamanhoJanela(GLsizei w, GLsizei h)
 {	if (h == 0) h = 1;
 	glViewport(0, 0, w, h);
