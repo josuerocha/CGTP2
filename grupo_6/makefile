@@ -2,10 +2,10 @@ all:
 	@echo "Compilando..."
 	@g++ Main.cpp Tela.cpp soil/*.c -o Main.bin -w -Wall -lglut -lGL -lGLU
 
-executa: all
+execute: all
 	@echo "Executando..."
 	@./Main.bin
 
-limpa:
+clean:
 	@echo "Limpando arquivos..."
 	@rm *.o *~ *.bin -f

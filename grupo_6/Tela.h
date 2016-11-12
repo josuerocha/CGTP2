@@ -12,6 +12,7 @@
 #define LEFT 'a'
 #define RIGHT 'd'
 #define FULLSCREEN 'f'
+#define EXIT_ENVIRONMENT '27'
 
 class Tela
 {

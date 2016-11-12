@@ -10,6 +10,7 @@ using namespace std;
 //Custom includes
 #include "Tela.h"
 
+//Criação do objeto tela
 Tela tela = Tela();
 
 //Assinaturas dos métodos
@@ -24,8 +25,8 @@ void Timer(int value);
 void DisplayScene();
 void Initialize();
 
-
 int main(int argc, char **argv){
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
@@ -33,6 +34,7 @@ int main(int argc, char **argv){
 	glutCreateWindow("Morgan Falls Lake");
 
 	Initialize();
+
 	glutTimerFunc(1000 / 45, Timer, 0);
 	
 	//Funções de captura de eventos do teclado
@@ -92,6 +94,7 @@ void Reshape(GLsizei w, GLsizei h)
 void Timer(int value) {
 	tela.ControleTela();
 	glutPostRedisplay();
+
 	glutTimerFunc(25, Timer, value);      /* 30 frames per second */
 }
 

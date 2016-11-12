@@ -7,7 +7,9 @@ Tela::Tela()
 	//animacaoInicial = AnimacaoInicial();
 
 	//menu = new MainMenu();
+	//Inicia cenário com tela inteira
 	fullScreen = true;
+	
 }
 
 Tela::~Tela(){
@@ -35,8 +37,20 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
         break;
 
         case FULLSCREEN:
+			if(fullScreen){
+       	 		glutFullScreen();
+    		}
+			else{
+				glutReshapeWindow(800, 600);
+				glutPositionWindow(270, 80);
+			}
             fullScreen = !fullScreen;
         break;
+
+		//esc para sair do jogo
+		case 27:
+			exit(0);
+		break;
 	}
 	cout << "POSICAO X: " << x << "POSICAO Y: " << y << endl;
 }
@@ -135,13 +149,11 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 		gluOrtho2D(0.0f, 800.0f*w / h, 0.0f, 600.0f);
 		janela.width = 800 * w / h;
 	}
-	cout << "TAMANHO TELA " << w << "  " << h;
+	//cout << "TAMANHO TELA " << w << "  " << h << endl;
 }
 
 void Tela::ControleTela(){
-    if(fullScreen){
-        glutFullScreen();
-    }
+
 }
 
 void Tela::Display() {
