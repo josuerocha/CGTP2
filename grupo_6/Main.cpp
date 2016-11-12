@@ -30,7 +30,7 @@ int main(int argc, char **argv){
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
 	glutInitWindowSize(800,600);
-	glutCreateWindow("NOME");
+	glutCreateWindow("Morgan Falls Lake");
 
 	Initialize();
 	glutTimerFunc(1000 / 45, Timer, 0);
@@ -46,7 +46,6 @@ int main(int argc, char **argv){
 
 	glutDisplayFunc(DisplayScene);
 	glutIdleFunc(DisplayScene);
-	glutFullScreen();
 	glutReshapeFunc(Reshape);
 
 	glutMainLoop();
@@ -91,6 +90,7 @@ void Reshape(GLsizei w, GLsizei h)
 }
 
 void Timer(int value) {
+	tela.ControleTela();
 	glutPostRedisplay();
 	glutTimerFunc(25, Timer, value);      /* 30 frames per second */
 }

@@ -11,6 +11,7 @@
 #define BACKWARD 's'
 #define LEFT 'a'
 #define RIGHT 'd'
+#define FULLSCREEN 'f'
 
 class Tela
 {
@@ -41,6 +42,7 @@ public:
 	void MouseMotion(int x, int y);
 	void KeyboardUp(unsigned char key, int x, int y);
 	void MouseClick(int button, int state, int x, int y);
+    void ControleTela();
 };
 
 #endif

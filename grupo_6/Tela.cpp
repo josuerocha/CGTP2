@@ -7,7 +7,7 @@ Tela::Tela()
 	//animacaoInicial = AnimacaoInicial();
 
 	//menu = new MainMenu();
-	fullScreen = false;
+	fullScreen = true;
 }
 
 Tela::~Tela(){
@@ -32,6 +32,10 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 
         case LEFT:
             keyBuffer[3] = true;
+        break;
+
+        case FULLSCREEN:
+            fullScreen = !fullScreen;
         break;
 	}
 	cout << "POSICAO X: " << x << "POSICAO Y: " << y << endl;
@@ -134,10 +138,14 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 	cout << "TAMANHO TELA " << w << "  " << h;
 }
 
-
+void Tela::ControleTela(){
+    if(fullScreen){
+        glutFullScreen();
+    }
+}
 
 void Tela::Display() {
-    cout<<"Displaying \n";
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glutSwapBuffers();
 }
