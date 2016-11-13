@@ -38,7 +38,11 @@ typedef struct Coord2d {
 
 typedef struct Coord3d {
 	float x, y, z;
-	Coord3d() {};
+	Coord3d() {
+		this->x = 0;
+		this->y = 0;
+        this->z = 0;
+	};
 	Coord3d(float x, float y, float z) {
 		this->x = x;
 		this->y = y;

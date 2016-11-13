@@ -9,7 +9,12 @@ Tela::Tela()
 	//menu = new MainMenu();
 	//Inicia cenário com tela inteira
 	fullScreen = true;
-	
+
+	camera.z = 5;
+
+	xRotated = yRotated = zRotated = 30.0;
+    xRotated=43;
+    yRotated=50; 
 }
 
 Tela::~Tela(){
@@ -48,7 +53,7 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
         break;
 
 		//esc para sair do jogo
-		case 27:
+		case EXIT_ENVIRONMENT:
 			exit(0);
 		break;
 	}
@@ -139,6 +144,9 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+    gluPerspective(39.0,(GLdouble)w/(GLdouble)h,0.6,21.0);
+    glMatrixMode(GL_MODELVIEW);
+    glViewport(0,0,w,h);  //Use the whole window for rendering
 
 	// Estabelece a janela de sele��o (left, right, bottom, top)
 	if (w <= h){
@@ -149,15 +157,62 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 		gluOrtho2D(0.0f, 800.0f*w / h, 0.0f, 600.0f);
 		janela.width = 800 * w / h;
 	}
+
+	gluLookAt(camera.x, camera.y, camera.z, lookAt.x,lookAt.y, lookAt.z, 0.0f, 1.0f, 0.0f);
 	//cout << "TAMANHO TELA " << w << "  " << h << endl;
+	cout<<"CAMERA Y "<<camera.y<<"LOOKAT Y "<<lookAt.y<<endl;
+}
+
+void Tela::DrawSphere(){
+
+	glPushMatrix();
+    glTranslatef(0.0,0.0,-5.0);
+
+    glColor3f(1, 1, 1); 
+
+    glRotatef(xRotated,1.0,0.0,0.0);
+
+    glRotatef(yRotated,0.0,1.0,0.0);
+
+    glRotatef(zRotated,0.0,0.0,1.0);
+
+    glScalef(1.0,1.0,1.0);
+
+    glutSolidSphere(radius,20,20);
+
+	glPopMatrix();
 }
 
 void Tela::ControleTela(){
-
+	if(keyBuffer[0]){
+		cout<<"Movendo para frente"<<endl;
+		camera.z += 1;
+		lookAt.z += 1;
+		keyBuffer[0] = false;
+		cout<<"CAMERA Z "<<camera.z<<"LOOKAT Z "<<lookAt.z<<endl;
+	}
+	if(keyBuffer[1]){
+		cout<<"Movendo para trás"<<endl;
+		camera.z -= 1;
+		lookAt.z -= 1;
+		keyBuffer[1] = false;
+		cout<<"CAMERA Z "<<camera.z<<"LOOKAT Z "<<lookAt.z<<endl;
+	}
+	glMatrixMode(GL_PROJECTION); 
+	glLoadIdentity(); 
+	gluPerspective(50.0, 1.0, 3.0, 7.0); 
+	glMatrixMode(GL_MODELVIEW); 
+	glLoadIdentity();
+	gluLookAt(camera.x, camera.y, camera.z, lookAt.x , lookAt.y, lookAt.z , 0.0f, 1.0f, 0.0f);
 }
 
 void Tela::Display() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_MODELVIEW);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+
+	DrawSphere();
+
 
     glutSwapBuffers();
 }
