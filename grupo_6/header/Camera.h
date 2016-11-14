@@ -39,6 +39,9 @@ class Camera{
     void RotateRight();
     void RotateLeft();
 
+    void MoveUp();
+    void MoveDown();
+
     void Update();
 };
 #endif

@@ -1,6 +1,6 @@
 all:
 	@echo "Compilando..."
-	@g++ Main.cpp Tela.cpp Camera.cpp soil/*.c -o Main.bin -w -Wall -lglut -lGL -lGLU
+	@g++ source/Main.cpp source/Tela.cpp source/Camera.cpp soil/*.c -o Main.bin -w -Wall -lglut -lGL -lGLU
 
 execute: all
 	@echo "Executando..."

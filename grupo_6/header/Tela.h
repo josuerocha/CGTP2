@@ -14,6 +14,8 @@
 #define RIGHT 'd'
 #define FULLSCREEN 'f'
 #define SHIFT 'p'
+#define UP 'e'
+#define DOWN 'g'
 #define EXIT_ENVIRONMENT 27
 
 class Tela
@@ -22,7 +24,7 @@ private:
 	//variaveis de controle
 	Camera camera;
 	Coord2d mouse;
-	bool keyBuffer[6]; //Respectivamente forward, backward, left, right, click, rightclick
+	bool keyBuffer[8]; //Respectivamente forward, backward, left, right,up,down, click, rightclick
     bool fullScreen;
 	GLfloat xRotated, yRotated, zRotated;
 	GLdouble radius=1;

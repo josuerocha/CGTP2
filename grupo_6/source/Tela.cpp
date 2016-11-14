@@ -1,4 +1,4 @@
-#include "Tela.h"
+#include "../header/Tela.h"
 #include <iostream>
 using namespace std;
 
@@ -65,12 +65,15 @@ void Tela::KeyboardUp(unsigned char key, int x, int y) {
 	case FORWARD:
 		keyBuffer[0] = false;
 		break;
+
 	case BACKWARD:
 		keyBuffer[1] = false;
 		break;
+
 	case RIGHT:
 		keyBuffer[2] = false;
 		break;
+
 	case LEFT:
 		keyBuffer[3] = false;
 		break;
@@ -83,6 +86,14 @@ void Tela::KeyboardSpecialDown(int key, int x, int y){
 		case SHIFT:
 			camera.setSpeed(0.05);
 		break;
+
+		case UP:
+			keyBuffer[4] = true;
+		break;
+
+		case DOWN:
+			keyBuffer[5] = true;
+		break;
 	}
 }
 
@@ -93,6 +104,13 @@ void Tela::KeyboardSpecialUp(int key, int x, int y){
 			camera.setSpeed(0.01);
 		break;
 
+		case UP:
+			keyBuffer[4] = false;
+		break;
+
+		case DOWN:
+			keyBuffer[5] = false;
+		break;
 	}
 }
 
@@ -118,11 +136,11 @@ void Tela::MouseClick(int button, int state, int x, int y) {
         
         switch (button){
             case 0:
-                keyBuffer[4] = true;
+                keyBuffer[6] = true;
                 break;
                 
             case 2:
-                keyBuffer[5] = true;
+                keyBuffer[7] = true;
                 break;
 
         }
@@ -214,6 +232,14 @@ void Tela::ControleTela(){
 	//Rotaciona camera esquerda
 	if(keyBuffer[3]){
 		camera.RotateRight();
+	}
+	//Move camera para cima
+	if(keyBuffer[4]){
+		camera.MoveUp();
+	}
+	//Move camera para baixo
+	if(keyBuffer[5]){
+		camera.MoveDown();
 	}
 
 	camera.Update();
