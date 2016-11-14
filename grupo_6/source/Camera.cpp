@@ -4,8 +4,9 @@ using namespace std;
 
 Camera::Camera()
 {	
-    coord.z = 5;
+    coord = Coord3d(0,0,5);
     speed = 0.01;
+    angle = 0;
 }
 
 Camera::~Camera(){
@@ -36,28 +37,52 @@ Coord3d* Camera::getLookAt_ptr(){
     return &lookAt;
 }
 
-void Camera::setCoordX(float delta){
-    coord.x += delta;
+void Camera::setCoordX(float x){
+    this->coord.x += x;
 }
 
-void Camera::setCoordY(float delta){
-    coord.y += delta;
+void Camera::setCoordY(float y){
+    this->coord.y += y;
 }
 
-void Camera::setCoordZ(float delta){
-    coord.z += delta;
+void Camera::setCoordZ(float z){
+    this->coord.z += z;
 }
 
-void Camera::setLookAtX(float delta){
-    lookAt.x += delta;
+void Camera::setLookAtX(float x){
+    this->lookAt.x += x;
 }
 
-void Camera::setLookAtY(float delta){
-    lookAt.y += delta;
+void Camera::setLookAtY(float y){
+    this->lookAt.y += y;
 }
 
-void Camera::setLookAtZ(float delta){
-    lookAt.z += delta;
+void Camera::setLookAtZ(float z){
+    this->lookAt.z += z;
+}
+
+void Camera::AlterCoordX(float delta){
+    this->coord.x += delta;
+}
+
+void Camera::AlterCoordY(float delta){
+    this->coord.y += delta;
+}
+
+void Camera::AlterCoordZ(float delta){
+    this->coord.z += delta;
+}
+
+void Camera::AlterLookAtX(float delta){
+    this->lookAt.x += delta;
+}
+
+void Camera::AlterLookAtY(float delta){
+    this->lookAt.y += delta;
+}
+
+void Camera::AlterLookAtZ(float delta){
+    this->lookAt.z += delta;
 }
 
 void Camera::MoveForward(){
@@ -71,11 +96,25 @@ void Camera::MoveBack(){
 }
 
 void Camera::RotateRight(){
+    angle -= speed;
+    float deltax = sin(angle);
+	float deltaz = -cos(angle);
 
+    this->lookAt = this->coord;
+
+    AlterLookAtX(deltax);
+    AlterLookAtZ(deltaz);
 }
 
 void Camera::RotateLeft(){
+    angle += speed;
+    float deltax = sin(angle);
+	float deltaz = -cos(angle);
 
+    this->lookAt = this->coord;
+
+    AlterLookAtX(deltax);
+    AlterLookAtZ(deltaz);
 }
 
 void Camera::MoveUp(){

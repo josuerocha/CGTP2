@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <GL/glut.h>
+#include <math.h>
 
 //Custom includes
 #include "Estruturas.h"
@@ -12,6 +13,7 @@ class Camera{
     Coord3d coord;
     Coord3d lookAt;
     float speed;
+    float angle;
 
     public:
     Camera();
@@ -25,13 +27,21 @@ class Camera{
     void setLookAt(Coord3d lookAt);
     Coord3d* getLookAt_ptr();
 
-    void setCoordX(float delta);
-    void setCoordY(float delta);
-    void setCoordZ(float delta);
+    void AlterCoordX(float delta);
+    void AlterCoordY(float delta);
+    void AlterCoordZ(float delta);
 
-    void setLookAtX(float delta);
-    void setLookAtY(float delta);
-    void setLookAtZ(float delta);
+    void AlterLookAtX(float delta);
+    void AlterLookAtY(float delta);
+    void AlterLookAtZ(float delta);
+
+    void setCoordX(float x);
+    void setCoordY(float y);
+    void setCoordZ(float z);
+
+    void setLookAtX(float x);
+    void setLookAtY(float y);
+    void setLookAtZ(float z);
 
     void MoveForward();
     void MoveBack();
