@@ -10,7 +10,6 @@ Tela::Tela()
 	//Inicia cenário com tela inteira
 	fullScreen = true;
 
-	camera.z = 5;
 	speed = 0.01;
 	xRotated = yRotated = zRotated = 30.0;
     xRotated=43;
@@ -82,9 +81,8 @@ void Tela::KeyboardSpecialDown(int key, int x, int y){
 	cout << "Tecla especial pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			speed = 0.05;
+			camera.setSpeed(0.05);
 		break;
-
 	}
 }
 
@@ -92,7 +90,7 @@ void Tela::KeyboardSpecialUp(int key, int x, int y){
 	cout << "Tecla especial solta: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			speed = 0.01;
+			camera.setSpeed(0.01);
 		break;
 
 	}
@@ -137,7 +135,6 @@ void Tela::MouseClick(int button, int state, int x, int y) {
 }
 
 void Tela::MouseMotion(int x, int y) {
-	//if (keyBuffer[4]) {
 		GLint viewport[4]; //var to hold the viewport info
 		GLdouble modelview[16]; //var to hold the modelview info
 		GLdouble projection[16]; //var to hold the projection matrix info
@@ -156,7 +153,6 @@ void Tela::MouseMotion(int x, int y) {
 		gluUnProject(winX, winY, winZ, modelview, projection, viewport, &worldX, &worldY, &worldZ);
 		mouse = Coord2d(worldX, worldY);
 		cout << "Mouse moveu para (" << mouse.x << ',' << mouse.y << ')' << endl;
-	//}
 }
 
 
@@ -184,9 +180,9 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 		janela.width = 800 * w / h;
 	}
 
-	gluLookAt(camera.x, camera.y, camera.z, lookAt.x,lookAt.y, lookAt.z, 0.0f, 1.0f, 0.0f);
+	camera.Update();
 	//cout << "TAMANHO TELA " << w << "  " << h << endl;
-	cout<<"CAMERA Y "<<camera.y<<" LOOKAT Y "<<lookAt.y<<endl;
+	//cout<<"CAMERA Y "<<camera.y<<" LOOKAT Y "<<lookAt.y<<endl;
 }
 
 void Tela::DrawSphere(){
@@ -203,17 +199,24 @@ void Tela::DrawSphere(){
 }
 
 void Tela::ControleTela(){
+	//Movimento para frente
 	if(keyBuffer[0]){
-		camera.z -= speed;
-		lookAt.z -= speed;
+		camera.MoveForward();
 	}
+	//Movimento para trás;
 	if(keyBuffer[1]){
-		camera.z += speed;
-		lookAt.z += speed;
+		camera.MoveBack();
 	}
-	
-	glLoadIdentity();
-	gluLookAt(camera.x, camera.y, camera.z, lookAt.x , lookAt.y, lookAt.z , 0.0f, 1.0f, 0.0f);
+	//Rotaciona camera direita
+	if(keyBuffer[2]){
+		camera.RotateLeft();
+	}
+	//Rotaciona camera esquerda
+	if(keyBuffer[3]){
+		camera.RotateRight();
+	}
+
+	camera.Update();
 }
 
 void Tela::Display() {

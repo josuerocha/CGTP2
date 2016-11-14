@@ -6,6 +6,7 @@
 
 //Custom includes
 #include "Estruturas.h"
+#include "Camera.h"
 
 #define FORWARD 'w'
 #define BACKWARD 's'
@@ -17,11 +18,10 @@
 
 class Tela
 {
-public:
+private:
 	//variaveis de controle
+	Camera camera;
 	Coord2d mouse;
-	Coord3d camera;
-	Coord3d lookAt;
 	bool keyBuffer[6]; //Respectivamente forward, backward, left, right, click, rightclick
     bool fullScreen;
 	GLfloat xRotated, yRotated, zRotated;
@@ -29,13 +29,11 @@ public:
 	float speed; 
     //Objetos
 	//Animacoes
-
-
 	glutWindow janela;
 
+public:
 	Tela();
 	~Tela();
-
 
     //Funções de manipulação de tela
 	void Initialize();
