@@ -11,7 +11,7 @@ Tela::Tela()
 	fullScreen = true;
 
 	camera.z = 5;
-
+	speed = 0.01;
 	xRotated = yRotated = zRotated = 30.0;
     xRotated=43;
     yRotated=50; 
@@ -78,6 +78,27 @@ void Tela::KeyboardUp(unsigned char key, int x, int y) {
 	}
 }
 
+void Tela::KeyboardSpecialDown(int key, int x, int y){
+	cout << "Tecla especial pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
+	switch(key){
+		case SHIFT:
+			speed = 0.05;
+		break;
+
+	}
+}
+
+void Tela::KeyboardSpecialUp(int key, int x, int y){
+	cout << "Tecla especial solta: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
+	switch(key){
+		case SHIFT:
+			speed = 0.01;
+		break;
+
+	}
+}
+
+
 void Tela::MouseClick(int button, int state, int x, int y) {
 	if (state == GLUT_DOWN) {
 		GLint viewport[4]; //var to hold the viewport info
@@ -143,10 +164,15 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 {	if (h == 0) h = 1;
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
+
+	int rate = 1.0f * w / h;
+
+	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-    gluPerspective(39.0,(GLdouble)w/(GLdouble)h,0.6,21.0);
-    glMatrixMode(GL_MODELVIEW);
-    glViewport(0,0,w,h);  //Use the whole window for rendering
+    glViewport(0, 0, w, h);
+	gluPerspective(45.0, rate, 1.0, 1000.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
 	// Estabelece a janela de sele��o (left, right, bottom, top)
 	if (w <= h){
@@ -160,48 +186,32 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 
 	gluLookAt(camera.x, camera.y, camera.z, lookAt.x,lookAt.y, lookAt.z, 0.0f, 1.0f, 0.0f);
 	//cout << "TAMANHO TELA " << w << "  " << h << endl;
-	cout<<"CAMERA Y "<<camera.y<<"LOOKAT Y "<<lookAt.y<<endl;
+	cout<<"CAMERA Y "<<camera.y<<" LOOKAT Y "<<lookAt.y<<endl;
 }
 
 void Tela::DrawSphere(){
 
 	glPushMatrix();
     glTranslatef(0.0,0.0,-5.0);
-
     glColor3f(1, 1, 1); 
-
     glRotatef(xRotated,1.0,0.0,0.0);
-
     glRotatef(yRotated,0.0,1.0,0.0);
-
     glRotatef(zRotated,0.0,0.0,1.0);
-
     glScalef(1.0,1.0,1.0);
-
     glutSolidSphere(radius,20,20);
-
 	glPopMatrix();
 }
 
 void Tela::ControleTela(){
 	if(keyBuffer[0]){
-		cout<<"Movendo para frente"<<endl;
-		camera.z += 1;
-		lookAt.z += 1;
-		keyBuffer[0] = false;
-		cout<<"CAMERA Z "<<camera.z<<"LOOKAT Z "<<lookAt.z<<endl;
+		camera.z -= speed;
+		lookAt.z -= speed;
 	}
 	if(keyBuffer[1]){
-		cout<<"Movendo para trás"<<endl;
-		camera.z -= 1;
-		lookAt.z -= 1;
-		keyBuffer[1] = false;
-		cout<<"CAMERA Z "<<camera.z<<"LOOKAT Z "<<lookAt.z<<endl;
+		camera.z += speed;
+		lookAt.z += speed;
 	}
-	glMatrixMode(GL_PROJECTION); 
-	glLoadIdentity(); 
-	gluPerspective(50.0, 1.0, 3.0, 7.0); 
-	glMatrixMode(GL_MODELVIEW); 
+	
 	glLoadIdentity();
 	gluLookAt(camera.x, camera.y, camera.z, lookAt.x , lookAt.y, lookAt.z , 0.0f, 1.0f, 0.0f);
 }
@@ -209,7 +219,6 @@ void Tela::ControleTela(){
 void Tela::Display() {
     glMatrixMode(GL_MODELVIEW);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
 
 	DrawSphere();
 

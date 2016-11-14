@@ -12,6 +12,7 @@
 #define LEFT 'a'
 #define RIGHT 'd'
 #define FULLSCREEN 'f'
+#define SHIFT 'p'
 #define EXIT_ENVIRONMENT 27
 
 class Tela
@@ -24,7 +25,8 @@ public:
 	bool keyBuffer[6]; //Respectivamente forward, backward, left, right, click, rightclick
     bool fullScreen;
 	GLfloat xRotated, yRotated, zRotated;
-	GLdouble radius=1; 
+	GLdouble radius=1;
+	float speed; 
     //Objetos
 	//Animacoes
 
@@ -46,6 +48,8 @@ public:
 	void MouseMotion(int x, int y);
 	void KeyboardUp(unsigned char key, int x, int y);
 	void MouseClick(int button, int state, int x, int y);
+	void KeyboardSpecialDown(int key, int x, int y);
+	void KeyboardSpecialUp(int key, int x, int y);
     void ControleTela();
 };
 

@@ -4,7 +4,7 @@
 //#define M_PI 3.14159
 //------------- Estruturas de Dados -----------
 
-typedef struct {
+typedef struct glutWindow {
 	int width;
 	int height;
 	char* title;
@@ -13,19 +13,6 @@ typedef struct {
 	float z_near;
 	float z_far;
 } glutWindow;
-
-struct BoundingBox {
-	float x;
-	float y;
-	float largura;
-	float altura;
-	BoundingBox(float x, float y, float largura, float altura) {
-		this->x = x;
-		this->y = y;
-		this->largura = largura;
-		this->altura = altura;
-	}
-};
 
 typedef struct Coord2d {
 	float x, y;

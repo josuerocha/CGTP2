@@ -69,11 +69,11 @@ void KeyboardUp(unsigned char key, int x, int y) {
 
 //Mapear Teclas Especiais
 void KeyboardSpecialDown(int key, int x, int y) {
-	cout << "Tecla especial pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
+	tela.KeyboardSpecialDown(key, x, y);
 }
 
 void KeyboardSpecialUp(int key, int x, int y) {
-	cout << "Tecla especial solta: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
+	tela.KeyboardSpecialUp(key, x, y);
 }
 
 //Mapear Eventos de Mouse
@@ -93,6 +93,7 @@ void Reshape(GLsizei w, GLsizei h)
 
 void Timer(int value) {
 	tela.ControleTela();
+	
 	glutPostRedisplay();
 
 	glutTimerFunc(25, Timer, value);      /* 30 frames per second */
