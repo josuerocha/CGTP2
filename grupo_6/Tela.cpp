@@ -238,7 +238,7 @@ void Tela::DrawSphere(){
     glRotatef(zRotated,0.0,0.0,1.0);
     glScalef(1.0,1.0,1.0);
     
-	gluSphere(pSphere, 1.0, 18, 18);
+	gluSphere(pSphere, 20, 18, 18);
 	//glutSolidSphere(radius,20,20);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
