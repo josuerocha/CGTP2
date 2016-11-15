@@ -12,6 +12,7 @@ class Camera{
     private:
     Coord3d coord;
     Coord3d lookAt;
+    Coord3d normalVector;
     float speed;
     float angle;
 

@@ -5,6 +5,7 @@ using namespace std;
 Camera::Camera()
 {	
     coord = Coord3d(0,0,5);
+    normalVector = Coord3d(0,0,1);
     speed = 0.01;
     angle = 0;
 }
@@ -86,29 +87,27 @@ void Camera::AlterLookAtZ(float delta){
 }
 
 void Camera::MoveForward(){
-    Coord3d delta = Coord3d(coord.x - lookAt.x,coord.y - lookAt.y,coord.z - lookAt.z);
+   
+    AlterCoordX(-normalVector.x * speed);
+    AlterLookAtX(-normalVector.x * speed);
 
-    AlterCoordX(-delta.x * speed);
-    AlterLookAtX(-delta.x * speed);
+    AlterCoordY(-normalVector.y * speed);
+    AlterLookAtY(-normalVector.y * speed);
 
-    AlterCoordY(-delta.y * speed);
-    AlterLookAtY(-delta.y * speed);
-
-    AlterCoordZ(-delta.z * speed);
-    AlterLookAtZ(-delta.z * speed);
+    AlterCoordZ(-normalVector.z * speed);
+    AlterLookAtZ(-normalVector.z * speed);
 }
 
 void Camera::MoveBack(){
-    Coord3d delta = Coord3d(coord.x - lookAt.x,coord.y - lookAt.y,coord.z - lookAt.z);
 
-    AlterCoordX(delta.x * speed);
-    AlterLookAtX(delta.x * speed);
+    AlterCoordX(normalVector.x * speed);
+    AlterLookAtX(normalVector.x * speed);
 
-    AlterCoordY(delta.y * speed);
-    AlterLookAtY(delta.y * speed);
+    AlterCoordY(normalVector.y * speed);
+    AlterLookAtY(normalVector.y * speed);
 
-    AlterCoordZ(delta.z * speed);
-    AlterLookAtZ(delta.z * speed);
+    AlterCoordZ(normalVector.z * speed);
+    AlterLookAtZ(normalVector.z * speed);
 }
 
 void Camera::RotateRight(){
@@ -120,6 +119,8 @@ void Camera::RotateRight(){
 
     AlterLookAtX(deltax);
     AlterLookAtZ(deltaz);
+
+    normalVector = Coord3d(coord.x - lookAt.x, normalVector.y ,coord.z - lookAt.z);
 }
 
 void Camera::RotateLeft(){
@@ -131,16 +132,22 @@ void Camera::RotateLeft(){
 
     AlterLookAtX(deltax);
     AlterLookAtZ(deltaz);
+
+    normalVector = Coord3d(coord.x - lookAt.x, normalVector.y ,coord.z - lookAt.z);
 }
 
 void Camera::MoveUp(){
     coord.y += speed;
     lookAt.y += speed;
+
+    normalVector.y = coord.y - lookAt.y;
 }
 
 void Camera::MoveDown(){
     coord.y -= speed;
     lookAt.y -= speed;
+
+    normalVector.y = coord.y - lookAt.y;    
 }
 
 void Camera::Update(){
