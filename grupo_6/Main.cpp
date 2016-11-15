@@ -1,5 +1,5 @@
 #include <../GL/glut.h>
-#include "../soil/SOIL.h"
+#include "soil/SOIL.h"
 #include <math.h>
 #include <iostream>
 #include <stdlib.h>
@@ -8,7 +8,7 @@
 using namespace std;
 
 //Custom includes
-#include "../header/Tela.h"
+#include "Tela.h"
 
 //Criação do objeto tela
 Tela tela = Tela();

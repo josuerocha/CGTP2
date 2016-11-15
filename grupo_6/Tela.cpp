@@ -1,4 +1,4 @@
-#include "../header/Tela.h"
+#include "Tela.h"
 #include <iostream>
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "../header/Camera.h"
+#include "Camera.h"
 #include <iostream>
 using namespace std;
 
