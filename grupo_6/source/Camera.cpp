@@ -86,13 +86,29 @@ void Camera::AlterLookAtZ(float delta){
 }
 
 void Camera::MoveForward(){
-    coord.z -= speed;
-    lookAt.z -= speed;
+    Coord3d delta = Coord3d(coord.x - lookAt.x,coord.y - lookAt.y,coord.z - lookAt.z);
+
+    AlterCoordX(-delta.x * speed);
+    AlterLookAtX(-delta.x * speed);
+
+    AlterCoordY(-delta.y * speed);
+    AlterLookAtY(-delta.y * speed);
+
+    AlterCoordZ(-delta.z * speed);
+    AlterLookAtZ(-delta.z * speed);
 }
 
 void Camera::MoveBack(){
-    coord.z += speed;
-    lookAt.z += speed;
+    Coord3d delta = Coord3d(coord.x - lookAt.x,coord.y - lookAt.y,coord.z - lookAt.z);
+
+    AlterCoordX(delta.x * speed);
+    AlterLookAtX(delta.x * speed);
+
+    AlterCoordY(delta.y * speed);
+    AlterLookAtY(delta.y * speed);
+
+    AlterCoordZ(delta.z * speed);
+    AlterLookAtZ(delta.z * speed);
 }
 
 void Camera::RotateRight(){
