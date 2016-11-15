@@ -20,6 +20,17 @@ Tela::~Tela(){
 
 }
 
+void Tela::LoadAllTextures(){
+	
+
+}
+
+void Tela::Initialize(){
+	glClearColor( 0.0, 0.0, 0.0, 0.0 );
+	glEnable( GL_DEPTH_TEST);
+	LoadAllTextures();
+}
+
 void Tela::KeyboardDown(unsigned char key, int x, int y) {
 	cout << "Tecla regular pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 
@@ -173,6 +184,13 @@ void Tela::MouseMotion(int x, int y) {
 		cout << "Mouse moveu para (" << mouse.x << ',' << mouse.y << ')' << endl;
 }
 
+GLuint loadTexture(const char* filename){
+	GLuint tex_ID = SOIL_load_OGL_texture(filename, SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID,(SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT));
+	glEnable( GL_TEXTURE_2D );
+	glBindTexture( GL_TEXTURE_2D, tex_ID );
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	return tex_ID;
+}
 
 void Tela::Reshape(GLsizei w, GLsizei h)
 {	if (h == 0) h = 1;
@@ -206,8 +224,8 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 void Tela::DrawSphere(){
 
 	glPushMatrix();
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
     glTranslatef(0.0,0.0,-5.0);
-    glColor3f(1, 1, 1); 
     glRotatef(xRotated,1.0,0.0,0.0);
     glRotatef(yRotated,0.0,1.0,0.0);
     glRotatef(zRotated,0.0,0.0,1.0);

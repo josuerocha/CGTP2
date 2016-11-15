@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <GL/glut.h>
+#include "soil/SOIL.h"
 
 //Custom includes
 #include "Estruturas.h"
@@ -27,7 +28,7 @@ private:
 	bool keyBuffer[8]; //Respectivamente forward, backward, left, right,up,down, click, rightclick
     bool fullScreen;
 	GLfloat xRotated, yRotated, zRotated;
-	GLdouble radius=1;
+	GLdouble radius = 2;
 	float speed; 
     //Objetos
 	//Animacoes
@@ -43,6 +44,10 @@ public:
 	void Display();
 	void DrawSphere();
 
+	//Funções de textura
+	GLuint loadTexture(const char* filename);
+	void LoadAllTextures();
+
     //FUnções de captura de eventos do teclado
 	void KeyboardDown(unsigned char key, int x, int y);
 	void MouseMotion(int x, int y);
@@ -50,6 +55,8 @@ public:
 	void MouseClick(int button, int state, int x, int y);
 	void KeyboardSpecialDown(int key, int x, int y);
 	void KeyboardSpecialUp(int key, int x, int y);
+
+	//Funções de controle de ações
     void ControleTela();
 };
 

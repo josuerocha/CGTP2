@@ -56,7 +56,7 @@ int main(int argc, char **argv){
 }
 
 void Initialize(){
-	
+	tela.Initialize();
 }
 
 void KeyboardDown(unsigned char key, int x, int y) {
