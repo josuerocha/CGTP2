@@ -23,16 +23,18 @@ class Tela
 {
 private:
 	//variaveis de controle
+	GLuint ceuTextura;
 	Camera camera;
 	Coord2d mouse;
 	bool keyBuffer[8]; //Respectivamente forward, backward, left, right,up,down, click, rightclick
     bool fullScreen;
 	GLfloat xRotated, yRotated, zRotated;
-	GLdouble radius = 2;
+	GLdouble radius = 5;
 	float speed; 
     //Objetos
 	//Animacoes
 	glutWindow janela;
+	GLUquadricObj *pSphere = NULL;
 
 public:
 	Tela();
@@ -45,7 +47,7 @@ public:
 	void DrawSphere();
 
 	//Funções de textura
-	GLuint loadTexture(const char* filename);
+	GLuint LoadTexture(const char* filename);
 	void LoadAllTextures();
 
     //FUnções de captura de eventos do teclado

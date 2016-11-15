@@ -21,14 +21,17 @@ Tela::~Tela(){
 }
 
 void Tela::LoadAllTextures(){
-	
-
+	ceuTextura = LoadTexture("files/ceu.jpg");	
 }
 
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glEnable( GL_DEPTH_TEST);
 	LoadAllTextures();
+	pSphere = gluNewQuadric();
+    gluQuadricDrawStyle(pSphere, GLU_FILL);
+    gluQuadricNormals(pSphere, GLU_SMOOTH);
+    gluQuadricTexture(pSphere, GLU_TRUE);
 }
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {
@@ -184,7 +187,7 @@ void Tela::MouseMotion(int x, int y) {
 		cout << "Mouse moveu para (" << mouse.x << ',' << mouse.y << ')' << endl;
 }
 
-GLuint loadTexture(const char* filename){
+GLuint Tela::LoadTexture(const char* filename){
 	GLuint tex_ID = SOIL_load_OGL_texture(filename, SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID,(SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT));
 	glEnable( GL_TEXTURE_2D );
 	glBindTexture( GL_TEXTURE_2D, tex_ID );
@@ -224,13 +227,20 @@ void Tela::Reshape(GLsizei w, GLsizei h)
 void Tela::DrawSphere(){
 
 	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,ceuTextura);
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTranslatef(0.0,0.0,-5.0);
     glRotatef(xRotated,1.0,0.0,0.0);
     glRotatef(yRotated,0.0,1.0,0.0);
     glRotatef(zRotated,0.0,0.0,1.0);
     glScalef(1.0,1.0,1.0);
-    glutSolidSphere(radius,20,20);
+    
+	gluSphere(pSphere, 1.0, 18, 18);
+	//glutSolidSphere(radius,20,20);
+	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
 
@@ -268,7 +278,6 @@ void Tela::Display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	DrawSphere();
-
 
     glutSwapBuffers();
 }
