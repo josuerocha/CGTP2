@@ -2,7 +2,7 @@
 #define Camera_h
 
 #include <iostream>
-#include <GL/glut.h>
+#include "GL/glut.h"
 #include <math.h>
 
 //Custom includes

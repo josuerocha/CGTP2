@@ -1,8 +1,8 @@
 #ifndef Tela_h
 #define Tela_h
 
+#include "GL/glut.h"
 #include <iostream>
-#include <GL/glut.h>
 #include "soil/SOIL.h"
 
 //Custom includes

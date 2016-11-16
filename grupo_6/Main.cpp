@@ -1,10 +1,12 @@
-#include <../GL/glut.h>
+#include "GL/glut.h"
 #include "soil/SOIL.h"
 #include <math.h>
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdio.h>
+
 using namespace std;
 
 //Custom includes
