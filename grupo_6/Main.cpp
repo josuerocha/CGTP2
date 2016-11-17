@@ -1,3 +1,4 @@
+//Standard includes
 #include "GL/glut.h"
 #include "soil/SOIL.h"
 #include <math.h>

@@ -24,12 +24,24 @@
     <ClCompile Include="Tela.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EsferaMundo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FuncoesExtra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tela.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EsferaMundo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FuncoesExtra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

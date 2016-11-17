@@ -1,0 +1,18 @@
+﻿  Tela.cpp
+c:\users\josue\dropbox\cefet-mg\8º período\computação gráfica\aula prática\trabalho prático 2 - ambiente 3d\cgtp2\grupo_6\tela.cpp(88): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\josue\dropbox\cefet-mg\8º período\computação gráfica\aula prática\trabalho prático 2 - ambiente 3d\cgtp2\grupo_6\tela.cpp(105): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\josue\dropbox\cefet-mg\8º período\computação gráfica\aula prática\trabalho prático 2 - ambiente 3d\cgtp2\grupo_6\tela.cpp(149): warning C4244: 'argument': conversion from 'GLdouble' to 'float', possible loss of data
+c:\users\josue\dropbox\cefet-mg\8º período\computação gráfica\aula prática\trabalho prático 2 - ambiente 3d\cgtp2\grupo_6\tela.cpp(173): warning C4244: 'argument': conversion from 'GLdouble' to 'float', possible loss of data
+c:\users\josue\dropbox\cefet-mg\8º período\computação gráfica\aula prática\trabalho prático 2 - ambiente 3d\cgtp2\grupo_6\tela.cpp(182): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Main.cpp
+  FuncoesExtra.cpp
+  EsferaMundo.cpp
+  Camera.cpp
+c:\users\josue\dropbox\cefet-mg\8º período\computação gráfica\aula prática\trabalho prático 2 - ambiente 3d\cgtp2\grupo_6\camera.cpp(9): warning C4305: '=': truncation from 'double' to 'float'
+  Generating Code...
+SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\josue\Dropbox\CEFET-MG\8º período\Computação Gráfica\Aula prática\Trabalho prático 2 - Ambiente 3d\CGTP2\grupo_6\Debug\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\josue\Dropbox\CEFET-MG\8º período\Computação Gráfica\Aula prática\Trabalho prático 2 - Ambiente 3d\CGTP2\grupo_6\Debug\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\josue\Dropbox\CEFET-MG\8º período\Computação Gráfica\Aula prática\Trabalho prático 2 - Ambiente 3d\CGTP2\grupo_6\Debug\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\josue\Dropbox\CEFET-MG\8º período\Computação Gráfica\Aula prática\Trabalho prático 2 - Ambiente 3d\CGTP2\grupo_6\Debug\SOIL.pdb'; linking object as if no debug info
+  cenario3d.vcxproj -> C:\Users\josue\Dropbox\CEFET-MG\8º período\Computação Gráfica\Aula prática\Trabalho prático 2 - Ambiente 3d\CGTP2\grupo_6\Debug\cenario3d.exe
+  cenario3d.vcxproj -> C:\Users\josue\Dropbox\CEFET-MG\8º período\Computação Gráfica\Aula prática\Trabalho prático 2 - Ambiente 3d\CGTP2\grupo_6\Debug\cenario3d.pdb (Full PDB)

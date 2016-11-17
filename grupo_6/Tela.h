@@ -8,6 +8,7 @@
 //Custom includes
 #include "Estruturas.h"
 #include "Camera.h"
+#include "EsferaMundo.h"
 
 #define FORWARD 'w'
 #define BACKWARD 's'
@@ -23,18 +24,19 @@ class Tela
 {
 private:
 	//variaveis de controle
-	GLuint ceuTextura;
 	Camera camera;
 	Coord2d mouse;
 	bool keyBuffer[8]; //Respectivamente forward, backward, left, right,up,down, click, rightclick
     bool fullScreen;
-	GLfloat xRotated, yRotated, zRotated;
-	GLdouble radius = 5;
-	float speed; 
-    //Objetos
-	//Animacoes
 	glutWindow janela;
-	GLUquadricObj *pSphere = NULL;
+    
+	//Objetos com quadricas
+	EsferaMundo esferaMundo;
+
+	//Objetos complexos
+
+	//Animacoes
+	
 
 public:
 	Tela();
@@ -44,11 +46,6 @@ public:
 	void Initialize();
 	void Reshape(GLsizei w, GLsizei h);
 	void Display();
-	void DrawSphere();
-
-	//Funções de textura
-	GLuint LoadTexture(const char* filename);
-	void LoadAllTextures();
 
     //FUnções de captura de eventos do teclado
 	void KeyboardDown(unsigned char key, int x, int y);

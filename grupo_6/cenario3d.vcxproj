@@ -134,11 +134,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="EsferaMundo.cpp" />
+    <ClCompile Include="FuncoesExtra.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Tela.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="EsferaMundo.h" />
+    <ClInclude Include="FuncoesExtra.h" />
     <ClInclude Include="Tela.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
