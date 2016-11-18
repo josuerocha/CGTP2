@@ -9,6 +9,7 @@
 #include "Estruturas.h"
 #include "Camera.h"
 #include "EsferaMundo.h"
+#include "PlanoChao.h"
 
 #define FORWARD 'w'
 #define BACKWARD 's'
@@ -30,6 +31,9 @@ private:
     bool fullScreen;
 	glutWindow janela;
     
+	//Objetos
+	PlanoChao planoChao;
+
 	//Objetos com quadricas
 	EsferaMundo esferaMundo;
 

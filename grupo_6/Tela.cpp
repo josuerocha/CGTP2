@@ -19,6 +19,7 @@ void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glEnable( GL_DEPTH_TEST);
 	esferaMundo.Load();
+	planoChao.Load();
 }
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {
@@ -236,6 +237,7 @@ void Tela::Display() {
     glMatrixMode(GL_MODELVIEW);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	planoChao.Display();
 	esferaMundo.Display();
 
     glutSwapBuffers();
