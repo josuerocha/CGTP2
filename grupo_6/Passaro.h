@@ -11,8 +11,8 @@
 
 class Passaro{
     private:
-     int asa1 = 45;
-     int asa2 = 45;
+     int wingRotation;
+     bool decreaseRotation;
 
     public:
     Passaro();
