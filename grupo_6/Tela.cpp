@@ -17,6 +17,8 @@ void Tela::Initialize(){
 	
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo.getRadius());
+	//Posicionando objetos
+	vetorPassaros.push_back(new Passaro(Coord3d(10,10,0)));
 
 	//Carregando texturas
 	esferaMundo.Load();
@@ -275,7 +277,13 @@ void Tela::Display() {
 	planoChao.Display();
 	esferaMundo.Display();
 	neblina.Display();
-	passaro.Display();
+	DisplayBirds();
 
     glutSwapBuffers();
+}
+
+void Tela::DisplayBirds(){
+	for (int i = 0; i<vetorPassaros.size(); i++){
+		vetorPassaros[i]->Display();
+	}
 }

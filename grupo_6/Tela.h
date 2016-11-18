@@ -5,6 +5,7 @@
 #include "GL/glut.h"
 #include <iostream>
 #include "soil/SOIL.h"
+#include <vector>
 
 //Custom includes
 #include "Estruturas.h"
@@ -41,7 +42,7 @@ private:
     
 	//Objetos
 	PlanoChao planoChao;
-	Passaro passaro;
+	std::vector <Passaro*> vetorPassaros;
 
 	//Objetos com quadricas
 	EsferaMundo esferaMundo;
@@ -68,8 +69,11 @@ public:
 	void KeyboardSpecialDown(int key, int x, int y);
 	void KeyboardSpecialUp(int key, int x, int y);
 
-	//Funções de controle de ações
+	//Funções de controle de acoes
     void ControleTela();
+
+	//Funcoes de exibicao de objetos
+	void DisplayBirds();
 };
 
 #endif

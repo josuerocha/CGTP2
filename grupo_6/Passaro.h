@@ -11,11 +11,12 @@
 
 class Passaro{
     private:
-     int wingRotation;
-     bool decreaseRotation;
+        Coord3d coord;
+        int wingRotation;
+        bool decreaseRotation;
 
     public:
-    Passaro();
+    Passaro(Coord3d coord);
     ~Passaro();
 
     void DrawHead();

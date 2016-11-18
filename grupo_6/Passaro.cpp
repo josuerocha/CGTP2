@@ -1,7 +1,8 @@
 #include "Passaro.h"
 
-Passaro::Passaro(){
+Passaro::Passaro(Coord3d coord){
     wingRotation = 45;
+    this->coord = coord;
     decreaseRotation = false;
 }
 
@@ -84,9 +85,12 @@ void Passaro::DrawWings(){
 }
 
 void Passaro::Display(){
-    DrawHead();
-    DrawBody();
-    DrawBeak();
-    DrawEyes();
-    DrawWings();
+    glPushMatrix();
+        glTranslatef(coord.x,coord.y,coord.z);
+        DrawHead();
+        DrawBody();
+        DrawBeak();
+        DrawEyes();
+        DrawWings();
+    glPopMatrix();
 }
