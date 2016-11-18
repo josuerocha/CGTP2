@@ -12,7 +12,9 @@
 #include "EsferaMundo.h"
 #include "PlanoChao.h"
 #include "Neblina.h"
+#include "Passaro.h"
 
+//Definicoes de teclas
 #define FORWARD 'w'
 #define BACKWARD 's'
 #define LEFT 'a'
@@ -25,6 +27,7 @@
 #define CAM_COORDINATES 'c'
 #define FOG_INCREASE 'f'
 #define FOG_DECREASE 'g'
+//----------------------
 
 class Tela
 {
@@ -38,6 +41,7 @@ private:
     
 	//Objetos
 	PlanoChao planoChao;
+	Passaro passaro;
 
 	//Objetos com quadricas
 	EsferaMundo esferaMundo;

@@ -275,6 +275,7 @@ void Tela::Display() {
 	planoChao.Display();
 	esferaMundo.Display();
 	neblina.Display();
+	passaro.Display();
 
     glutSwapBuffers();
 }
