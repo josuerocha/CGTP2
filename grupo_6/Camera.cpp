@@ -16,6 +16,10 @@ Camera::~Camera(){
 
 }
 
+void Camera::setLimitRadius(GLdouble limitRadius){
+    this->limitRadius = limitRadius;
+}
+
 void Camera::setSpeed(float speed){
     this->speed = speed;
 }
@@ -155,4 +159,14 @@ void Camera::MoveDown(){
 void Camera::Update(){
     glLoadIdentity();
 	gluLookAt(coord.x, coord.y, coord.z, lookAt.x , lookAt.y, lookAt.z , 0.0f, 1.0f, 0.0f);
+}
+
+bool Camera::CheckBounds(){
+    bool ableToMove = false;
+    if(camera.y > 0.5){
+        float distanceCenter = 
+        if()
+    }
+
+    return ableToMove;
 }

@@ -2,11 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Tela::Tela()
-{	
-	//animacaoInicial = AnimacaoInicial();
-
-	//menu = new MainMenu();
+Tela::Tela(){	
 	//Inicia cenário com tela inteira
 	fullScreen = true;
 }
@@ -18,8 +14,14 @@ Tela::~Tela(){
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glEnable( GL_DEPTH_TEST);
+	
+	//Setando limites da câmera
+	camera.setLimitRadius(esferaMundo.getRadius());
+
+	//Carregando texturas
 	esferaMundo.Load();
 	planoChao.Load();
+
 }
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {

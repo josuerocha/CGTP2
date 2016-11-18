@@ -14,3 +14,8 @@ GLuint FuncoesExtra::LoadTexture(const char* filename){
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	return tex_ID;
 }
+
+float FuncoesExtra::CalculateDistance3d(Coord a,Coord b){
+	float distance = pow(b.x - a.x,2) + pow(b.y - a.y,2) + pow(b.z - a.z,2);
+	return distance; 
+}

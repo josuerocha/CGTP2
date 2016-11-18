@@ -7,6 +7,7 @@
 
 //Custom includes
 #include "Estruturas.h"
+#include "FuncoesExtra.h"
 
 class Camera{
     private:
@@ -15,6 +16,7 @@ class Camera{
     Coord3d normalVector;
     float speed;
     float angle;
+    GLdouble limitRadius;
 
     public:
     Camera();
@@ -52,6 +54,10 @@ class Camera{
 
     void MoveUp();
     void MoveDown();
+
+    void setLimitRadius(GLdouble limitRadius);
+
+    bool CheckBounds();
 
     void Update();
 };
