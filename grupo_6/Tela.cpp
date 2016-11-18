@@ -92,7 +92,7 @@ void Tela::KeyboardSpecialDown(int key, int x, int y){
 	cout << "Tecla especial pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			camera.setSpeed(0.05);
+			camera.setSpeed(0.1);
 		break;
 
 		case UP:
@@ -109,7 +109,7 @@ void Tela::KeyboardSpecialUp(int key, int x, int y){
 	cout << "Tecla especial solta: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			camera.setSpeed(0.01);
+			camera.setSpeed(0.05);
 		break;
 
 		case UP:

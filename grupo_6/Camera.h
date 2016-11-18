@@ -57,7 +57,7 @@ class Camera{
 
     void setLimitRadius(GLdouble limitRadius);
 
-    bool CheckBounds();
+    bool CheckBounds(Coord3d newCamCoordinate);
 
     void Update();
 };

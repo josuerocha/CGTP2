@@ -5,9 +5,9 @@ using namespace std;
 Camera::Camera()
 {	
     coord = Coord3d(0.52,0.43,5.30);
-    normalVector = Coord3d(0,0,-1);
+    normalVector = Coord3d(0,0,1);
     lookAt = Coord3d(0,0.43,0);
-    setSpeed(0.01);
+    setSpeed(0.05);
     angle = 0;
     Update();
 }
@@ -94,26 +94,39 @@ void Camera::AlterLookAtZ(float delta){
 
 void Camera::MoveForward(){
    
-    AlterCoordX(-normalVector.x * speed);
-    AlterLookAtX(-normalVector.x * speed);
+    float camX = -normalVector.x * speed + coord.x;
+    float camY = -normalVector.y * speed + coord.y;
+    float camZ = -normalVector.z * speed + coord.z;
 
-    AlterCoordY(-normalVector.y * speed);
-    AlterLookAtY(-normalVector.y * speed);
+    Coord3d newCamCoordinate = Coord3d(camX,camY,camZ);
+   
+   if(CheckBounds(newCamCoordinate)){
+      
+        setCoord(newCamCoordinate);
 
-    AlterCoordZ(-normalVector.z * speed);
-    AlterLookAtZ(-normalVector.z * speed);
+        AlterLookAtX(-normalVector.x * speed);
+        AlterLookAtY(-normalVector.y * speed);
+        AlterLookAtZ(-normalVector.z * speed);
+   }
+
 }
 
 void Camera::MoveBack(){
+    float camX = normalVector.x * speed + coord.x;
+    float camY = normalVector.y * speed + coord.y;
+    float camZ = normalVector.z * speed + coord.z;
 
-    AlterCoordX(normalVector.x * speed);
-    AlterLookAtX(normalVector.x * speed);
+    Coord3d newCamCoordinate = Coord3d(camX,camY,camZ);
+   
+    if(CheckBounds(newCamCoordinate)){
+      
+        setCoord(newCamCoordinate);
 
-    AlterCoordY(normalVector.y * speed);
-    AlterLookAtY(normalVector.y * speed);
+        AlterLookAtX(normalVector.x * speed);
+        AlterLookAtY(normalVector.y * speed);
+        AlterLookAtZ(normalVector.z * speed);
+   }
 
-    AlterCoordZ(normalVector.z * speed);
-    AlterLookAtZ(normalVector.z * speed);
 }
 
 void Camera::RotateRight(){
@@ -143,17 +156,32 @@ void Camera::RotateLeft(){
 }
 
 void Camera::MoveUp(){
-    coord.y += speed;
-    lookAt.y += speed;
+    
+    float newCamY = coord.y + speed;
+    Coord3d newCamCoordinate = Coord3d(coord.x,newCamY,coord.z);
 
-    normalVector.y = coord.y - lookAt.y;
+    float bogusCamY = coord.y + 0.5;
+    Coord3d bogusCamCoordinate = Coord3d(coord.x,bogusCamY,coord.z);
+
+    if(CheckBounds(bogusCamCoordinate)){
+        setCoord(newCamCoordinate);
+        lookAt.y += speed;
+        normalVector.y = coord.y - lookAt.y;
+    }
 }
 
 void Camera::MoveDown(){
-    coord.y -= speed;
-    lookAt.y -= speed;
+    
+    float newCamY = coord.y - speed;
+    Coord3d newCamCoordinate = Coord3d(coord.x,newCamY,coord.z);
+    float bogusCamY = coord.y - 0.5;
+    Coord3d bogusCamCoordinate = Coord3d(coord.x,bogusCamY,coord.z);
 
-    normalVector.y = coord.y - lookAt.y;    
+    if(CheckBounds(bogusCamCoordinate)){
+        setCoord(newCamCoordinate);
+        lookAt.y -= speed;
+        normalVector.y = coord.y - lookAt.y;
+    }
 }
 
 void Camera::Update(){
@@ -161,11 +189,13 @@ void Camera::Update(){
 	gluLookAt(coord.x, coord.y, coord.z, lookAt.x , lookAt.y, lookAt.z , 0.0f, 1.0f, 0.0f);
 }
 
-bool Camera::CheckBounds(){
+bool Camera::CheckBounds(Coord3d newCamCoordinate){
     bool ableToMove = false;
-    if(camera.y > 0.5){
-        float distanceCenter = 
-        if()
+    if(newCamCoordinate.y > 0.40){
+        float distanceCenter = FuncoesExtra::CalculateDistance3d(Coord3d(0,0,0),newCamCoordinate);
+        if(distanceCenter < (pow(limitRadius - 10,2))){
+            ableToMove = true;
+        }
     }
 
     return ableToMove;

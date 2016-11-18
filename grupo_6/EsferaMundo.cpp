@@ -9,10 +9,10 @@ using namespace std;
 EsferaMundo::EsferaMundo()
 {
    
-    pSphere = gluNewQuadric();
-    gluQuadricDrawStyle(pSphere, GLU_FILL);
-    gluQuadricNormals(pSphere, GLU_SMOOTH);
-    gluQuadricTexture(pSphere, GLU_TRUE);
+    sphere_ptr = gluNewQuadric();
+    gluQuadricDrawStyle(sphere_ptr, GLU_FILL);
+    gluQuadricNormals(sphere_ptr, GLU_SMOOTH);
+    gluQuadricTexture(sphere_ptr, GLU_TRUE);
 
     //Rotação esfera
     
@@ -42,7 +42,7 @@ void EsferaMundo::Display(){
     glRotatef(zRotated,0.0,0.0,1.0);
     glScalef(1.0,1.0,1.0);
     
-	gluSphere(pSphere, radius, 18, 18);
+	gluSphere(sphere_ptr, radius, 18, 18);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
