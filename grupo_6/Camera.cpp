@@ -4,10 +4,12 @@ using namespace std;
 
 Camera::Camera()
 {	
-    coord = Coord3d(0,0,5);
-    normalVector = Coord3d(0,0,1);
-    speed = 0.01;
+    coord = Coord3d(0.52,0.43,5.30);
+    normalVector = Coord3d(0,0,-1);
+    lookAt = Coord3d(0,0.43,0);
+    setSpeed(0.01);
     angle = 0;
+    Update();
 }
 
 Camera::~Camera(){

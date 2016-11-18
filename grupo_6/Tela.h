@@ -20,6 +20,7 @@
 #define UP 'e'
 #define DOWN 'g'
 #define EXIT_ENVIRONMENT 27
+#define CAM_COORDINATES 'c'
 
 class Tela
 {

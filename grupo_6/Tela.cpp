@@ -57,6 +57,10 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 		case EXIT_ENVIRONMENT:
 			exit(0);
 		break;
+
+		case CAM_COORDINATES:
+			cout<<"POSICAO DA CAMERA: "<<endl;
+			cout<<"X "<<camera.getCoord_ptr()->x<<" Y "<<camera.getCoord_ptr()->y<<" Z "<<camera.getCoord_ptr()->z<<endl;
 	}
 	cout << "POSICAO X: " << x << "POSICAO Y: " << y << endl;
 }
@@ -236,7 +240,7 @@ void Tela::ControleTela(){
 void Tela::Display() {
     glMatrixMode(GL_MODELVIEW);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+	camera.Update();
 	planoChao.Display();
 	esferaMundo.Display();
 
