@@ -39,6 +39,12 @@ int main(int argc, char **argv){
 	Initialize();
 
 	glutTimerFunc(1000 / 45, Timer, 0);
+    
+	//Configurações da neblina
+	float color[] = {1,1,1,1};
+	glEnable(GL_FOG);
+    glFogi(GL_FOG_MODE, GL_EXP);
+    glFogfv(GL_FOG_COLOR, color);
 	
 	//Funções de captura de eventos do teclado
 	glutIgnoreKeyRepeat(1);

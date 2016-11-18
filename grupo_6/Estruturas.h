@@ -56,13 +56,14 @@ typedef struct Dimensao3d {
 	}
 } Dimensao3d;
 
-typedef struct Cor {
-	float r, g,b;
-	Cor() {};
-	Cor(float r, float g, float b) {
+typedef struct Color {
+	float r, g, b, a;
+	Color() {};
+	Color(float r, float g, float b, float a) {
 		this->r = r;
 		this->g = g;
 		this->b = b;
+		this->a = a;
 	}
 } Cor;
 

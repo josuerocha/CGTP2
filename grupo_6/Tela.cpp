@@ -60,9 +60,18 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 			exit(0);
 		break;
 
+		case FOG_INCREASE://Increase fog density
+			keyBuffer[8] = true;		
+		break;
+		
+		case FOG_DECREASE://Decrease fog density
+			keyBuffer[9] = true;
+		break;
+
 		case CAM_COORDINATES:
 			cout<<"POSICAO DA CAMERA: "<<endl;
 			cout<<"X "<<camera.getCoord_ptr()->x<<" Y "<<camera.getCoord_ptr()->y<<" Z "<<camera.getCoord_ptr()->z<<endl;
+		break;
 	}
 	cout << "POSICAO X: " << x << "POSICAO Y: " << y << endl;
 }
@@ -84,6 +93,14 @@ void Tela::KeyboardUp(unsigned char key, int x, int y) {
 
 	case LEFT:
 		keyBuffer[3] = false;
+		break;
+
+	case FOG_INCREASE://Increase fog density
+			keyBuffer[8] = false;		
+		break;
+		
+	case FOG_DECREASE://Decrease fog density
+			keyBuffer[9] = false;
 		break;
 	}
 }
@@ -214,37 +231,50 @@ void Tela::ControleTela(){
 	//Movimento para frente
 	if(keyBuffer[0]){
 		camera.MoveForward();
+		camera.Update();
 	}
 	//Movimento para trás;
 	if(keyBuffer[1]){
 		camera.MoveBack();
+		camera.Update();
 	}
 	//Rotaciona camera direita
 	if(keyBuffer[2]){
 		camera.RotateLeft();
+		camera.Update();
 	}
 	//Rotaciona camera esquerda
 	if(keyBuffer[3]){
 		camera.RotateRight();
+		camera.Update();
 	}
 	//Move camera para cima
 	if(keyBuffer[4]){
 		camera.MoveUp();
+		camera.Update();
 	}
 	//Move camera para baixo
 	if(keyBuffer[5]){
 		camera.MoveDown();
+		camera.Update();
 	}
-
-	camera.Update();
+	if(keyBuffer[8]){
+		neblina.AlterDensity(1.1);
+	}
+	if(keyBuffer[9]){
+		neblina.AlterDensity(0.9);
+	}
 }
 
 void Tela::Display() {
     glMatrixMode(GL_MODELVIEW);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	//Muda estados dos componentes da tela
 	camera.Update();
 	planoChao.Display();
 	esferaMundo.Display();
+	neblina.Display();
 
     glutSwapBuffers();
 }

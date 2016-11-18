@@ -42,7 +42,7 @@ void EsferaMundo::Display(){
     glRotatef(zRotated,0.0,0.0,1.0);
     glScalef(1.0,1.0,1.0);
     
-	gluSphere(sphere_ptr, radius, 18, 18);
+	gluSphere(sphere_ptr, radius, 30, 30);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
