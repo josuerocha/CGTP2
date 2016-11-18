@@ -12,8 +12,8 @@ Passaro::~Passaro(){
 
 void Passaro::DrawBeak(){
     glPushMatrix();	
-		glTranslated(0,0,1);
-		glutSolidCone(0.4,0.5,30,30);
+		glTranslated(0,0,0.4);
+		glutSolidCone(0.2,0.4,30,30);
 	glPopMatrix();
 }
 
@@ -23,22 +23,25 @@ void Passaro::DrawHead(){
 
 void Passaro::DrawEyes(){
     glPushMatrix();
+		//color eye 1
+
 		glColor3ub(0,0,0);
-		glTranslated(1,0,0);
-		glutSolidSphere(0.2,30,30);
+		glTranslated(0.5,0,0);
+		glutSolidSphere(0.1,30,30);
 	glPopMatrix();
+
 	glPushMatrix();
 		glColor3ub(0,0,0);
-		glTranslated(-1,0,0);
-		glutSolidSphere(0.2,30,30);
+		glTranslated(-0.5,0,0);
+		glutSolidSphere(0.1,30,30);
 	glPopMatrix();
 
 }
 
 void Passaro::DrawBody(){
     glPushMatrix();
-        glTranslated(0,0,-2.5);
-        glutSolidSphere(2,30,30);		
+        glTranslated(0,0,-1);
+        glutSolidSphere(0.9f,30,30);		
 	glPopMatrix();
 }
 void Passaro::DrawWings(){
@@ -58,28 +61,26 @@ void Passaro::DrawWings(){
     }
 
 	glRotatef(wingRotation,0,0,1);
-
+    
+	//drawing wing 1
 	glPushMatrix();		
-		glRotatef(90,0,1,0);
-		glRotatef(90,0,1,0);
-		glTranslatef(-2,0,2.5);
+		glRotatef(180,0,1,0);
+		glTranslatef(-0.75f,0.0f,0.75f);
 		glBegin(GL_TRIANGLES);
-			glVertex3f(2,0,2);
-			glVertex3f(2,0,-2);
-			glVertex3f(-2,0,0);
+			glVertex3f(0.75f,0.0f,0.75f);
+			glVertex3f(0.75f,0.0f,-0.75f);
+			glVertex3f(-0.75f,0.0f,0.0f);
 		glEnd();		
 	glPopMatrix();
 		
+	//drawing wing 2
 	glPushMatrix();
-		glColor3ub(139,69,19);
-		glRotatef(90,0,1,0);
-		glRotatef(-90,0,1,0);
-		glTranslatef(-2,0,-2.5);
+		glTranslatef(-0.75f,0,-0.75f);
 
 		glBegin(GL_TRIANGLES);
-			glVertex3f(2,0,2);
-			glVertex3f(2,0,-2);
-			glVertex3f(-2,0,0);
+			glVertex3f(0.75f,0.0f,0.75f);
+			glVertex3f(0.75f,0.0f,-0.75f);
+			glVertex3f(-0.75f,0.0f,0.0f);
 		glEnd();		
 	glPopMatrix();
 }

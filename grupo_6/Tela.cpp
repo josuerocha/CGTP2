@@ -18,7 +18,7 @@ void Tela::Initialize(){
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo.getRadius());
 	//Posicionando objetos
-	vetorPassaros.push_back(new Passaro(Coord3d(10,10,0)));
+	vetorPassaros.push_back(new Passaro(Coord3d(2,2,2)));
 
 	//Carregando texturas
 	esferaMundo.Load();
@@ -111,7 +111,7 @@ void Tela::KeyboardSpecialDown(int key, int x, int y){
 	cout << "Tecla especial pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			camera.setSpeed(0.1);
+			camera.setSpeed(0.25);
 		break;
 
 		case UP:
@@ -128,7 +128,7 @@ void Tela::KeyboardSpecialUp(int key, int x, int y){
 	cout << "Tecla especial solta: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			camera.setSpeed(0.05);
+			camera.setSpeed(0.1);
 		break;
 
 		case UP:
