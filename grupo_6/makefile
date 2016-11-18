@@ -1,6 +1,6 @@
 all:
 	@echo "Compilando..."
-	@g++ Main.cpp Tela.cpp Camera.cpp EsferaMundo.cpp FuncoesExtra.cpp PlanoChao.cpp Passaro.cpp Neblina.cpp soil/*.c -o Main.bin -w -Wall -lglut -lGL -lGLU
+	@g++ Main.cpp Tela.cpp Camera.cpp EsferaMundo.cpp FuncoesExtra.cpp PlanoChao.cpp Passaro.cpp Neblina.cpp CarregadorTexturas.cpp soil/*.c -o Main.bin -w -Wall -lglut -lGL -lGLU
 
 execute: all
 	@echo "Executando..."

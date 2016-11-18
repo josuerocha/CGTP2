@@ -18,7 +18,6 @@ public:
     FuncoesExtra();
 	~FuncoesExtra();
 
-    static GLuint LoadTexture(const char* filename);
     static float CalculateDistance3d(Coord3d a,Coord3d b);
 
 

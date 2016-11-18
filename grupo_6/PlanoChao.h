@@ -16,9 +16,11 @@ class PlanoChao{
 
     public:
         PlanoChao();
+        PlanoChao(GLuint chaoTextura);
+        
 	    ~PlanoChao();
+
         void Display();
-        void Load();
 
 };
 

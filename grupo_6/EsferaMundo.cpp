@@ -5,10 +5,12 @@
 
 
 using namespace std;
+EsferaMundo::EsferaMundo(){
 
-EsferaMundo::EsferaMundo()
-{
-   
+}
+
+EsferaMundo::EsferaMundo(GLuint ceuTextura){
+   this->ceuTextura = ceuTextura;
     sphere_ptr = gluNewQuadric();
     gluQuadricDrawStyle(sphere_ptr, GLU_FILL);
     gluQuadricNormals(sphere_ptr, GLU_SMOOTH);
@@ -21,12 +23,7 @@ EsferaMundo::EsferaMundo()
     zRotated = 30.0;
 }
 
-EsferaMundo::~EsferaMundo()
-{
-}
-
-void EsferaMundo::Load(){
-     this->ceuTextura = FuncoesExtra::LoadTexture("files/ceu.jpg");
+EsferaMundo::~EsferaMundo(){
 }
 
 void EsferaMundo::Display(){

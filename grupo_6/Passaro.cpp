@@ -68,7 +68,7 @@ void Passaro::DrawWings(){
 		glTranslatef(-0.75f,0.0f,0.75f);
 		glBegin(GL_TRIANGLES);
 			glVertex3f(0.75f,0.0f,0.75f);
-			glVertex3f(0.75f,0.0f,-0.75f);
+			glVertex3f(1.25f,0.0f,-0.75f);
 			glVertex3f(-0.75f,0.0f,0.0f);
 		glEnd();		
 	glPopMatrix();
@@ -79,7 +79,7 @@ void Passaro::DrawWings(){
 
 		glBegin(GL_TRIANGLES);
 			glVertex3f(0.75f,0.0f,0.75f);
-			glVertex3f(0.75f,0.0f,-0.75f);
+			glVertex3f(1.25f,0.0f,-0.75f);
 			glVertex3f(-0.75f,0.0f,0.0f);
 		glEnd();		
 	glPopMatrix();

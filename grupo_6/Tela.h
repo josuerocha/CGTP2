@@ -14,6 +14,7 @@
 #include "PlanoChao.h"
 #include "Neblina.h"
 #include "Passaro.h"
+#include "CarregadorTexturas.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -34,18 +35,22 @@ class Tela
 {
 private:
 	//variaveis de controle
-	Camera camera;
 	Coord2d mouse;
 	bool keyBuffer[10]; //Respectivamente forward, backward, left, right,up,down, click, rightclick, fog up, fog down
     bool fullScreen;
 	glutWindow janela;
+
+	//Classes de controle
+	Camera camera;
+	CarregadorTexturas carregadorTexturas;
     
 	//Objetos
-	PlanoChao planoChao;
+	PlanoChao* planoChao;
+	EsferaMundo* esferaMundo;
 	std::vector <Passaro*> vetorPassaros;
-
+	
 	//Objetos com quadricas
-	EsferaMundo esferaMundo;
+	
 
 	//Objetos complexos
 

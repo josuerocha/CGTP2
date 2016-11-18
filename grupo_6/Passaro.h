@@ -11,6 +11,7 @@
 
 class Passaro{
     private:
+        
         Coord3d coord;
         int wingRotation;
         bool decreaseRotation;

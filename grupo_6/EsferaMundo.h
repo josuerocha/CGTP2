@@ -19,10 +19,11 @@ class EsferaMundo{
 
     public:
         EsferaMundo();
+        EsferaMundo(GLuint ceuTextura);
 	    ~EsferaMundo();
+
         GLdouble getRadius();
         void Display();
-        void Load();
 
 };
 

@@ -15,14 +15,18 @@ void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glEnable( GL_DEPTH_TEST);
 	
+	//Carregando texturas
+	carregadorTexturas.LoadAll();
+
+	//Criando objetos
+	planoChao = new PlanoChao(carregadorTexturas.chaoTextura);
+	esferaMundo = new EsferaMundo(carregadorTexturas.ceuTextura);
+
 	//Setando limites da câmera
-	camera.setLimitRadius(esferaMundo.getRadius());
+	camera.setLimitRadius(esferaMundo->getRadius());
 	//Posicionando objetos
 	vetorPassaros.push_back(new Passaro(Coord3d(2,2,2)));
-
-	//Carregando texturas
-	esferaMundo.Load();
-	planoChao.Load();
+	
 
 }
 
@@ -274,8 +278,8 @@ void Tela::Display() {
 
 	//Muda estados dos componentes da tela
 	camera.Update();
-	planoChao.Display();
-	esferaMundo.Display();
+	planoChao->Display();
+	esferaMundo->Display();
 	neblina.Display();
 	DisplayBirds();
 

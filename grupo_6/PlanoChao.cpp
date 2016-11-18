@@ -8,16 +8,16 @@ using namespace std;
 
 PlanoChao::PlanoChao()
 {
-   
-    
+  
+}
+
+PlanoChao::PlanoChao(GLuint chaoTextura)
+{
+   this->chaoTextura = chaoTextura;
 }
 
 PlanoChao::~PlanoChao()
 {
-}
-
-void PlanoChao::Load(){
-     this->chaoTextura = FuncoesExtra::LoadTexture("files/grass.jpg");
 }
 
 void PlanoChao::Display(){
