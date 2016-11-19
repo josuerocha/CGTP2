@@ -26,7 +26,6 @@ Galho::Galho(float x, float y, float z, float g, float c, float angy2,GLuint* fo
 	folhas.push_back(new Folha(0.5*comprimento, -0.25*grossura, 0, 20, 40, -angY,folhasTex));
 	folhas.push_back(new Folha(0.4*comprimento, -0.2*grossura, 0, 20, 40, -angY,folhasTex));
 	folhas.push_back(new Folha(0.3*comprimento, -0.15*grossura, 0, 20, 40, -angY,folhasTex));
-
 }
 
 
@@ -51,7 +50,7 @@ void Galho::Display() {
 	glPopMatrix();
 
 	for (int i = 0;i < folhas.size();i++) {
-		folhas[i]->desenha();
+		folhas[i]->Display();
 	}
 	glPopMatrix();
 

@@ -17,13 +17,14 @@ Folha::Folha(float x, float y, float z, float g, float c, float angy2, GLuint* f
 	angY = angy2;
 	angZ =0;
 	angZMax = 40;
-	velocidade = 0.1;
+	velocidade = 1;
 	subindo = true;
 }
 
 
-void Folha::desenha() {
-
+void Folha::Display() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, *folhasTex);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
 	//glRotatef(angX, 1, 0, 0);
@@ -56,7 +57,7 @@ void Folha::desenha() {
 	else if (angZ <= 0)
 		subindo = true;
 
-
+	glEnable(GL_TEXTURE_2D);
 }
 
 

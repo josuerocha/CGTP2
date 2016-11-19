@@ -33,7 +33,7 @@ public:
 	Folha(float x, float y, float z, float g, float c, float angy2,GLuint* folhasTex);//contrutor, inicializa variaveis gerais
 
 
-	void desenha();//e' chamada pelo programa principal para desenhar o Obj.
+	void Display();//e' chamada pelo programa principal para desenhar o Obj.
 
 	float getPosiX();
 	float getPosiY();

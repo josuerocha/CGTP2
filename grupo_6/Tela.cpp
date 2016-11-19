@@ -28,7 +28,7 @@ void Tela::Initialize(){
 	camera.setLimitRadius(esferaMundo->getRadius());
 	//Posicionando objetos
 	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6)));
-	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.troncoArvore,&carregadorTexturas.folhasArvores));
+	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 }
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {
