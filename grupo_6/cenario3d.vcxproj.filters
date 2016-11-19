@@ -33,6 +33,27 @@
     <ClCompile Include="PlanoChao.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Arvore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Folha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Galho.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Moinho.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Neblina.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Passaro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CarregadorTexturas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -48,6 +69,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlanoChao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Arvore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Folha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Galho.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Moinho.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Neblina.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Passaro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CarregadorTexturas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
