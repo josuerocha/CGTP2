@@ -12,6 +12,8 @@ using namespace std;
 
 class Galho {
 private:
+	GLuint* troncoTex;
+
 	float posiX;//a coordenada X do seu centro
 	float posiY;//a coordenada Y do seu centro
 	float posiZ;//a coordenada Z do seu centro
@@ -31,10 +33,10 @@ private:
 
 public:
 
-	Galho(float x,float y,float z,float g,float c,float angy2);//contrutor, inicializa variaveis gerais
+	Galho(float x,float y,float z,float g,float c,float angy2,GLuint* folhasTex, GLuint* troncoTex);//contrutor, inicializa variaveis gerais
 
 
-	void desenha();//e' chamada pelo programa principal para desenhar o Obj.
+	void Display();//e' chamada pelo programa principal para desenhar o Obj.
 
 	float getPosiX();
 	float getPosiY();

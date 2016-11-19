@@ -6,9 +6,9 @@
 
 #define PI 3.14159265
 using namespace std;
-Galho::Galho(float x, float y, float z, float g, float c, float angy2) {
+Galho::Galho(float x, float y, float z, float g, float c, float angy2,GLuint* folhasTex, GLuint* troncoTex) {
 
-
+	this->troncoTex = troncoTex;
 	posiX = x;
 	posiY = y;
 	posiZ = z;
@@ -18,20 +18,20 @@ Galho::Galho(float x, float y, float z, float g, float c, float angy2) {
 	angY = angy2;
 	angZ = 45;
 
-	folhas.push_back(new Folha(comprimento, 0, 0,20,40,-angY));
-	folhas.push_back(new Folha(0.9*comprimento, -0.05*grossura, 0, 20, 40, -angY));
-	folhas.push_back(new Folha(0.8*comprimento, -0.1*grossura, 0, 20, 40, -angY));
-	folhas.push_back(new Folha(0.7*comprimento, -0.15*grossura, 0, 20, 40, -angY));
-	folhas.push_back(new Folha(0.6*comprimento, -0.2*grossura, 0, 20, 40, -angY));
-	folhas.push_back(new Folha(0.5*comprimento, -0.25*grossura, 0, 20, 40, -angY));
-	folhas.push_back(new Folha(0.4*comprimento, -0.2*grossura, 0, 20, 40, -angY));
-	folhas.push_back(new Folha(0.3*comprimento, -0.15*grossura, 0, 20, 40, -angY));
+	folhas.push_back(new Folha(comprimento, 0, 0,20,40,-angY,folhasTex));
+	folhas.push_back(new Folha(0.9*comprimento, -0.05*grossura, 0, 20, 40, -angY,folhasTex));
+	folhas.push_back(new Folha(0.8*comprimento, -0.1*grossura, 0, 20, 40, -angY,folhasTex));
+	folhas.push_back(new Folha(0.7*comprimento, -0.15*grossura, 0, 20, 40, -angY,folhasTex));
+	folhas.push_back(new Folha(0.6*comprimento, -0.2*grossura, 0, 20, 40, -angY,folhasTex));
+	folhas.push_back(new Folha(0.5*comprimento, -0.25*grossura, 0, 20, 40, -angY,folhasTex));
+	folhas.push_back(new Folha(0.4*comprimento, -0.2*grossura, 0, 20, 40, -angY,folhasTex));
+	folhas.push_back(new Folha(0.3*comprimento, -0.15*grossura, 0, 20, 40, -angY,folhasTex));
 
 }
 
 
-void Galho::desenha() {
-	glColor3f(0, 0.2, 0);
+void Galho::Display() {
+	
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
 	glRotatef(angX, 1, 0, 0);
@@ -54,8 +54,6 @@ void Galho::desenha() {
 		folhas[i]->desenha();
 	}
 	glPopMatrix();
-
-	
 
 }
 

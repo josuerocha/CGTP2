@@ -29,19 +29,16 @@ private:
 	float velocAngParabola;//velocidade de mudanca do angulo da parabola(para outro tipo de obj.)
 	float angHelice;
 	vector <Galho*> galhos;
-	//GLuint* cima1;// Ponteiros para as posicoes com texturas do vetor do programa principal
-	//GLuint* lado1;
-	//GLuint* frente1;
-	//GLuint* tras1;
-	//GLuint* corpo;
-	//GLuint* eixo;
+	
+	// Ponteiros para as texturas
+	GLuint* folhasTex;
+	GLuint* troncoTex;
 
 public:
 
-	Arvore(Coord3d coord);//contrutor, inicializa variaveis gerais
+	Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex);
 
-
-	void desenha();//e' chamada pelo programa principal para desenhar o Obj.
+	void Display();
 	
 	float getPosiX();
 	float getPosiY();

@@ -16,6 +16,8 @@ public:
     GLuint metal;
     GLuint madeira;
     GLuint madeiraVermelha;
+    GLuint troncoArvore;
+    GLuint folhasArvores;
 
     CarregadorTexturas();
     ~CarregadorTexturas();

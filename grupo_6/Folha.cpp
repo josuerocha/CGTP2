@@ -6,7 +6,8 @@
 
 #define PI 3.14159265
 using namespace std;
-Folha::Folha(float x, float y, float z, float g, float c, float angy2) {
+Folha::Folha(float x, float y, float z, float g, float c, float angy2, GLuint* folhasTex) {
+	this->folhasTex = folhasTex;
 	posiX = x;
 	posiY = y;
 	posiZ = z;

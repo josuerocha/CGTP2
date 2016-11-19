@@ -7,8 +7,10 @@
 
 #define PI 3.14159265
 using namespace std;
-Arvore::Arvore(Coord3d coord) {
+Arvore::Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex) {
 
+	this->folhasTex = folhasTex;
+	this->troncoTex = troncoTex;
 
 	posiX = coord.x;
 	posiY = coord.y;
@@ -19,30 +21,18 @@ Arvore::Arvore(Coord3d coord) {
 	angX = 0;
 	angY = 0;
 	angZ = 0;
-	/*
-	galhos.push_back(new Galho(posiX+0*dimX, posiY + 0.90*dimY, posiZ,15,200,0));
-	galhos.push_back(new Galho(posiX + 0.25*dimX, posiY + 0.65*dimY, posiZ,20, 200, 180));
-	galhos.push_back(new Galho(posiX + 0.30*dimX, posiY + 0.60*dimY, posiZ, 20, 200, 45));
-	galhos.push_back(new Galho(posiX + 0.15*dimX, posiY + 0.75*dimY, posiZ, 15, 200, -45));
-	galhos.push_back(new Galho(posiX + 0.05*dimX, posiY + 0.85*dimY, posiZ, 15, 200, 135));
-	galhos.push_back(new Galho(posiX + 0.20*dimX, posiY + 0.70*dimY, posiZ, 15, 200, -135));
-	galhos.push_back(new Galho(posiX + 0.05*dimX, posiY + 0.70*dimY, posiZ, 15, 200, 15));
-	galhos.push_back(new Galho(posiX + 0.10*dimX, posiY + 0.80*dimY, posiZ, 15, 200, -85));
-	galhos.push_back(new Galho(posiX + 0.10*dimX, posiY + 0.75*dimY, posiZ, 15, 200, 85));
-	*/
+
 	for (int a = 1;a < 4;a++) {
 		for (int c = a;c < 180;c+=35) {
-			galhos.push_back(new Galho(posiX , posiY + (0.5+a*0.15)*dimY, posiZ, 20, 200, c));
-			galhos.push_back(new Galho(posiX , posiY + (0.5+a*0.15)*dimY, posiZ, 20, 200, -c));
-			//galhos.push_back(new Galho(posiX + (0.5 - a*0.15)*dimX, posiY + (0.45 + a*0.15)*dimY, posiZ, 20, 200, c));
-			//galhos.push_back(new Galho(posiX + (0.5 - a*0.15)*dimX, posiY + (0.45 + a*0.15)*dimY, posiZ, 20, 200, -c));
+			galhos.push_back(new Galho(posiX , posiY + (0.5+a*0.15)*dimY, posiZ, 20, 200, c,folhasTex,troncoTex));
+			galhos.push_back(new Galho(posiX , posiY + (0.5+a*0.15)*dimY, posiZ, 20, 200, -c,folhasTex,troncoTex));
 		}
 	}
 
 }
 
 
-void Arvore::desenha() {
+void Arvore::Display() {
 
 	glColor3f(0.36, 0.2, 0.09);
 	glPushMatrix();
@@ -82,7 +72,7 @@ void Arvore::desenha() {
 
 	
 	for (int i = 0;i < galhos.size();i++) {
-		galhos[i]->desenha();
+		galhos[i]->Display();
 	}
 	glPopMatrix();
 	glPopMatrix();

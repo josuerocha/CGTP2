@@ -15,7 +15,8 @@ void CarregadorTexturas::LoadAll(){
 	 this->madeira = LoadTexture("files/madeira.jpg");
 	 this->madeiraVermelha = LoadTexture("files/madeiravermelha.jpg");
 	 this->metal = LoadTexture("files/metal.jpg");
-
+	 this->troncoArvore = LoadTexture("files/tronco.jpg");
+	 this->folhasArvores = LoadTexture("files/folhas.jpg");
 }
 
 GLuint CarregadorTexturas::LoadTexture(const char* filename){
