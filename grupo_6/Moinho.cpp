@@ -57,7 +57,7 @@ void Moinho::Display() {
 	gluQuadricNormals(obj2, GLU_SMOOTH);
 	gluQuadricTexture(obj2, GL_TRUE);
 	glRotatef(-90, 1, 0, 0);
-	gluCylinder(obj2, 0.5, 0.5, 1, 20, 20);
+	gluCylinder(obj2, 0.75, 0.5, 1, 20, 20);
 	glPopMatrix();
 
 	glPushMatrix();
