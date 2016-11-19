@@ -38,7 +38,8 @@ Moinho::Moinho(GLuint* c1,
 
 
 void Moinho::Display() {
-
+	glPushMatrix();
+	glScalef(0.01,0.01,0.01);
 	glPushMatrix();
 		
 		glTranslatef(posiX, posiY, posiZ);
@@ -166,6 +167,7 @@ void Moinho::desenhaHeliceParte() {
 		glVertex3f(0.5*dimX, -0.07*dimY, -0.02*dimZ);
 	glEnd();
 
+	glPopMatrix();
 	glPopMatrix();
 
 }
