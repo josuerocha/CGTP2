@@ -8,6 +8,8 @@
 #include <vector>
 #include <iostream>
 #include "Galho.h"
+#include "Estruturas.h"
+
 using namespace std;
 
 
@@ -36,7 +38,7 @@ private:
 
 public:
 
-	Arvore();//contrutor, inicializa variaveis gerais
+	Arvore(Coord3d coord);//contrutor, inicializa variaveis gerais
 
 
 	void desenha();//e' chamada pelo programa principal para desenhar o Obj.

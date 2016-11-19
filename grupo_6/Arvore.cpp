@@ -7,15 +7,15 @@
 
 #define PI 3.14159265
 using namespace std;
-Arvore::Arvore() {
+Arvore::Arvore(Coord3d coord) {
 
 
-	posiX = 0;
-	posiY = 0;
-	posiZ = 0;
-	dimX = 0.5;
-	dimY = 5;
-	dimZ = 0.5;
+	posiX = coord.x;
+	posiY = coord.y;
+	posiZ = coord.z;
+	dimX = 50;
+	dimY = 500;
+	dimZ = 50;
 	angX = 0;
 	angY = 0;
 	angZ = 0;
@@ -43,6 +43,7 @@ Arvore::Arvore() {
 
 
 void Arvore::desenha() {
+
 	glColor3f(0.36, 0.2, 0.09);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
@@ -50,6 +51,9 @@ void Arvore::desenha() {
 	glRotatef(angY, 0, 1, 0);
 	glRotatef(angZ, 0, 0, 1);
 
+	glPushMatrix();
+	glScalef(0.01, 0.01, 0.01);
+	
 	glPushMatrix();
 	glTranslatef(0, 0, 0);//dependendo do angulo que desenha pode ser glTranslatef(-0.25*dimX,0,0);
 	glScalef(dimX, 0.5*dimY, dimZ);
@@ -76,13 +80,12 @@ void Arvore::desenha() {
 	gluSphere(obj1, 0.5, 20, 20);
 	glPopMatrix();
 
-
-	glPopMatrix();
 	
 	for (int i = 0;i < galhos.size();i++) {
 		galhos[i]->desenha();
 	}
-
+	glPopMatrix();
+	glPopMatrix();
 }
 
 

@@ -78,8 +78,6 @@ void Moinho::Display() {
 
 	desenhaHelice();
 	glPopMatrix();
-
-
 }
 void Moinho::desenhaHelice() {
 
