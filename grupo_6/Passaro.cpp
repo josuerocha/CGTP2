@@ -24,14 +24,11 @@ void Passaro::DrawHead(){
 void Passaro::DrawEyes(){
     glPushMatrix();
 		//color eye 1
-
-		glColor3ub(0,0,0);
 		glTranslated(0.5,0,0);
 		glutSolidSphere(0.1,30,30);
 	glPopMatrix();
 
 	glPushMatrix();
-		glColor3ub(0,0,0);
 		glTranslated(-0.5,0,0);
 		glutSolidSphere(0.1,30,30);
 	glPopMatrix();
