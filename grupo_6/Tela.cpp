@@ -22,13 +22,13 @@ void Tela::Initialize(){
 	//Criando objetos
 	planoChao = new PlanoChao(&carregadorTexturas.chaoTextura);
 	esferaMundo = new EsferaMundo(&carregadorTexturas.ceuTextura);
-	moinho = new Moinho(&carregadorTexturas.metal, &carregadorTexturas.metal, &carregadorTexturas.madeira, &carregadorTexturas.madeira, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(50,0,50));
+	moinho = new Moinho(&carregadorTexturas.madeira, &carregadorTexturas.metal, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(10,0,10));
 
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo->getRadius());
 	//Posicionando objetos
 	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6)));
-	vetorArvores.push_back(new Arvore(Coord3d(50,0,50)));
+	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10)));
 }
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {

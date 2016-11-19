@@ -11,15 +11,16 @@ Moinho::Moinho(GLuint* c1,
 	GLuint* f1,
 	GLuint* t1,
 	GLuint* co,
-	GLuint* ei,Coord3d coord) {
+	GLuint* ei,
+	Coord3d coord) {
 
 
-	posiX = coord.x;
-	posiY = coord.y;
-	posiZ = coord.z;
-	dimX = 300;
-	dimY = 500;
-	dimZ = 200;
+	posiX= coord.x;
+	posiY= coord.y;
+	posiZ= coord.z;
+	dimX = 3;
+	dimY = 5;
+	dimZ = 2;
 	angX = 0;
 	angY = 180;
 	angZ = 0;
@@ -38,21 +39,19 @@ Moinho::Moinho(GLuint* c1,
 
 
 void Moinho::Display() {
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
-	glScalef(0.01,0.01,0.01);
-	glPushMatrix();
-		
-		glTranslatef(posiX, posiY, posiZ);
-		glRotatef(angX, 1, 0, 0);
-		glRotatef(angY, 0, 1, 0);
-		glRotatef(angZ, 0, 0, 1);
+	glTranslatef(posiX, posiY, posiZ);
+	glRotatef(angX, 1, 0, 0);
+	glRotatef(angY, 0, 1, 0);
+	glRotatef(angZ, 0, 0, 1);
 
 	glPushMatrix();
 	glTranslatef(0, 0, 0);//dependendo do angulo que desenha pode ser glTranslatef(-0.25*dimX,0,0);
 	glScalef(0.5*dimX, dimY, 0.75*dimZ);
 	//desenhar um cilindro raio 0.5 e altura 1, base centrada no(0,0,0), paralelo ao eixo X
 	GLUquadricObj *obj2 = gluNewQuadric();
-	glEnable(GL_TEXTURE_2D);
+	//glEnable(GL_TEXTURE_2D);
 	//glColor3f(0.5, 0.5, 0.5);
 	glBindTexture(GL_TEXTURE_2D, *corpo);
 	gluQuadricNormals(obj2, GLU_SMOOTH);
@@ -64,10 +63,9 @@ void Moinho::Display() {
 	glPushMatrix();
 	glTranslatef(0, 0.75*dimY, -0.5*dimZ);//dependendo do angulo que desenha pode ser glTranslatef(-0.25*dimX,0,0);
 	glScalef(0.25*dimX, 0.25*dimX, 0.15*dimZ);
-
 	//desenhar um cilindro raio 0.5 e altura 1, base centrada no(0,0,0), paralelo ao eixo X
 	GLUquadricObj *obj3 = gluNewQuadric();
-	glEnable(GL_TEXTURE_2D);
+	//glEnable(GL_TEXTURE_2D);
 	//glColor3f(0.5, 0.5, 0.5);
 	glBindTexture(GL_TEXTURE_2D, *eixo);
 	gluQuadricNormals(obj3, GLU_SMOOTH);
@@ -78,6 +76,8 @@ void Moinho::Display() {
 
 	desenhaHelice();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
 }
 void Moinho::desenhaHelice() {
 
@@ -102,70 +102,67 @@ void Moinho::desenhaHeliceParte() {
 	glBindTexture(GL_TEXTURE_2D, *lado1);
 	glBegin(GL_QUADS);
 	glNormal3f(1, 0, 0);
-		glTexCoord2f(1.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(1.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(0.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, -0.02*dimZ);
-		glTexCoord2f(0.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, -0.02*dimZ);
+	glTexCoord2f(1.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(1.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(0.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, -0.02*dimZ);
+	glTexCoord2f(0.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, -0.02*dimZ);
 	glEnd();
 
 	//area frontal
 	
 	glBindTexture(GL_TEXTURE_2D, *tras1);
 	glBegin(GL_QUADS);
-		glNormal3f(0, 0, 1);
-		glTexCoord2f(1.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(1.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(0.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(0.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, 0.02*dimZ);
+	glNormal3f(0, 0, 1);
+	glTexCoord2f(1.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(1.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(0.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(0.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, 0.02*dimZ);
 	glEnd();
 
 	//area lateral esquerda
 
 	glBindTexture(GL_TEXTURE_2D, *lado1);
 	glBegin(GL_QUADS);
-		glNormal3f(-1, 0, 0);
-		glTexCoord2f(1.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(1.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(0.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, -0.02*dimZ);
-		glTexCoord2f(0.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, -0.02*dimZ);
+	glNormal3f(-1, 0, 0);
+	glTexCoord2f(1.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(1.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(0.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, -0.02*dimZ);
+	glTexCoord2f(0.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, -0.02*dimZ);
 	glEnd();
 
-	//area do tras
+	//area do tr�s
 
 	glBindTexture(GL_TEXTURE_2D, *frente1);
-	
 	glBegin(GL_QUADS);
-		glNormal3f(0, 0, -1);
-		glTexCoord2f(0.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, -0.02*dimZ);
-		glTexCoord2f(0.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, -0.02*dimZ);
-		glTexCoord2f(1.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, -0.02*dimZ);
-		glTexCoord2f(1.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, -0.02*dimZ);
+	glNormal3f(0, 0, -1);
+	glTexCoord2f(0.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, -0.02*dimZ);
+	glTexCoord2f(0.0f, 0.0f);glVertex3f(0.5*dimX, -0.07*dimY, -0.02*dimZ);
+	glTexCoord2f(1.0f, 0.0f);glVertex3f(-0.5*dimX, -0.07*dimY, -0.02*dimZ);
+	glTexCoord2f(1.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, -0.02*dimZ);
 	glEnd();
 
 	//area de cima
 
 	glBindTexture(GL_TEXTURE_2D, *cima1);
 	glBegin(GL_QUADS);
-		glNormal3f(0, 1, 0);
-		glTexCoord2f(1.0f, 0.0f);glVertex3f(0.5*dimX, 0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(0.0f, 0.0f);glVertex3f(-0.5*dimX, 0.07*dimY, 0.02*dimZ);
-		glTexCoord2f(0.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, -0.02*dimZ);
-		glTexCoord2f(1.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, -0.02*dimZ);
+	glNormal3f(0, 1, 0);
+	glTexCoord2f(1.0f, 0.0f);glVertex3f(0.5*dimX, 0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(0.0f, 0.0f);glVertex3f(-0.5*dimX, 0.07*dimY, 0.02*dimZ);
+	glTexCoord2f(0.0f, 1.0f);glVertex3f(-0.5*dimX, 0.07*dimY, -0.02*dimZ);
+	glTexCoord2f(1.0f, 1.0f);glVertex3f(0.5*dimX, 0.07*dimY, -0.02*dimZ);
 	glEnd();
 
 	//area de baixo
 
 	glBindTexture(GL_TEXTURE_2D, *cima1);
-
 	glBegin(GL_QUADS);
-		glNormal3f(0, -1, 0);
-		glVertex3f(0.5*dimX, -0.07*dimY, 0.02*dimZ);
-		glVertex3f(-0.5*dimX, -0.07*dimY, 0.02*dimZ);
-		glVertex3f(-0.5*dimX, -0.07*dimY, -0.02*dimZ);
-		glVertex3f(0.5*dimX, -0.07*dimY, -0.02*dimZ);
+	glNormal3f(0, -1, 0);
+	glVertex3f(0.5*dimX, -0.07*dimY, 0.02*dimZ);
+	glVertex3f(-0.5*dimX, -0.07*dimY, 0.02*dimZ);
+	glVertex3f(-0.5*dimX, -0.07*dimY, -0.02*dimZ);
+	glVertex3f(0.5*dimX, -0.07*dimY, -0.02*dimZ);
 	glEnd();
 
-	glPopMatrix();
 	glPopMatrix();
 
 }

@@ -1,13 +1,12 @@
 #ifndef MOINHO_H
 #define MOINHO_H
 
-//Standard includes
 #include "GL/glut.h"
 #include "soil/SOIL.h"
 #include <math.h>
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
-//Custom includes
 #include "Estruturas.h"
 
 class Moinho {
@@ -42,7 +41,7 @@ public:
 		Coord3d coord);//contrutor, inicializa variaveis gerais
 
 	
-	void Display();
+	void Display();//e' chamada pelo programa principal para desenhar o Obj.
 
 	void desenhaHelice();
 	void desenhaHeliceParte();
