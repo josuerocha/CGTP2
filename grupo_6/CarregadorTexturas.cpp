@@ -12,6 +12,9 @@ CarregadorTexturas::~CarregadorTexturas(){
 void CarregadorTexturas::LoadAll(){
      this->ceuTextura = LoadTexture("files/ceu.jpg");
      this->chaoTextura = LoadTexture("files/grass.jpg");
+	 this->madeira = LoadTexture("files/madeira.jpg");
+	 this->madeiraVermelha = LoadTexture("files/madeiravermelha.jpg");
+	 this->metal = LoadTexture("files/metal.jpg");
 
 }
 

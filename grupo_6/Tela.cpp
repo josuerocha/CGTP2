@@ -19,8 +19,9 @@ void Tela::Initialize(){
 	carregadorTexturas.LoadAll();
 
 	//Criando objetos
-	planoChao = new PlanoChao(carregadorTexturas.chaoTextura);
-	esferaMundo = new EsferaMundo(carregadorTexturas.ceuTextura);
+	planoChao = new PlanoChao(&carregadorTexturas.chaoTextura);
+	esferaMundo = new EsferaMundo(&carregadorTexturas.ceuTextura);
+	moinho = new Moinho(&carregadorTexturas.metal, &carregadorTexturas.metal, &carregadorTexturas.madeira, &carregadorTexturas.madeira, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(5,0,5));
 
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo->getRadius());
@@ -281,6 +282,7 @@ void Tela::Display() {
 	planoChao->Display();
 	esferaMundo->Display();
 	neblina.Display();
+	moinho->Display();
 	DisplayBirds();
 
     glutSwapBuffers();

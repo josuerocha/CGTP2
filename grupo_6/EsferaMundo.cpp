@@ -9,8 +9,8 @@ EsferaMundo::EsferaMundo(){
 
 }
 
-EsferaMundo::EsferaMundo(GLuint ceuTextura){
-   this->ceuTextura = ceuTextura;
+EsferaMundo::EsferaMundo(GLuint* ceuTextura){
+    this->ceuTextura = *ceuTextura;
     sphere_ptr = gluNewQuadric();
     gluQuadricDrawStyle(sphere_ptr, GLU_FILL);
     gluQuadricNormals(sphere_ptr, GLU_SMOOTH);

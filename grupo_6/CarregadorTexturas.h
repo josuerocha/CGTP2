@@ -13,6 +13,9 @@ private:
 public:
     GLuint chaoTextura;
     GLuint ceuTextura;
+    GLuint metal;
+    GLuint madeira;
+    GLuint madeiraVermelha;
 
     CarregadorTexturas();
     ~CarregadorTexturas();

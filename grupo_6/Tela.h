@@ -15,6 +15,7 @@
 #include "Neblina.h"
 #include "Passaro.h"
 #include "CarregadorTexturas.h"
+#include "Moinho.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -48,6 +49,7 @@ private:
 	PlanoChao* planoChao;
 	EsferaMundo* esferaMundo;
 	std::vector <Passaro*> vetorPassaros;
+	Moinho* moinho;
 	
 	//Objetos com quadricas
 	

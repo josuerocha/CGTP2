@@ -11,9 +11,9 @@ PlanoChao::PlanoChao()
   
 }
 
-PlanoChao::PlanoChao(GLuint chaoTextura)
+PlanoChao::PlanoChao(GLuint* chaoTextura)
 {
-   this->chaoTextura = chaoTextura;
+   this->chaoTextura = *chaoTextura;
 }
 
 PlanoChao::~PlanoChao()
