@@ -5,6 +5,7 @@ using namespace std;
 Tela::Tela(){	
 	//Inicia cenário com tela inteira
 	fullScreen = true;
+	light_mode1 = true;
 }
 
 Tela::~Tela(){
@@ -26,9 +27,8 @@ void Tela::Initialize(){
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo->getRadius());
 	//Posicionando objetos
-	vetorPassaros.push_back(new Passaro(Coord3d(2,2,2)));
-	
-
+	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6)));
+	vetorArvores.push_back(new Arvore());
 }
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {
@@ -79,6 +79,7 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 			cout<<"POSICAO DA CAMERA: "<<endl;
 			cout<<"X "<<camera.getCoord_ptr()->x<<" Y "<<camera.getCoord_ptr()->y<<" Z "<<camera.getCoord_ptr()->z<<endl;
 		break;
+
 	}
 	cout << "POSICAO X: " << x << "POSICAO Y: " << y << endl;
 }
@@ -274,6 +275,7 @@ void Tela::ControleTela(){
 }
 
 void Tela::Display() {
+
     glMatrixMode(GL_MODELVIEW);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -284,12 +286,20 @@ void Tela::Display() {
 	neblina.Display();
 	moinho->Display();
 	DisplayBirds();
+	DisplayTrees();
 
     glutSwapBuffers();
+	glDisable(GL_COLOR_MATERIAL);
 }
 
 void Tela::DisplayBirds(){
 	for (int i = 0; i<vetorPassaros.size(); i++){
 		vetorPassaros[i]->Display();
+	}
+}
+
+void Tela::DisplayTrees(){
+	for (int i = 0; i<vetorArvores.size(); i++){
+		vetorArvores[i]->desenha();
 	}
 }

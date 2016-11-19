@@ -16,6 +16,7 @@
 #include "Passaro.h"
 #include "CarregadorTexturas.h"
 #include "Moinho.h"
+#include "Arvore.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -40,7 +41,7 @@ private:
 	bool keyBuffer[10]; //Respectivamente forward, backward, left, right,up,down, click, rightclick, fog up, fog down
     bool fullScreen;
 	glutWindow janela;
-
+	bool light_mode1;
 	//Classes de controle
 	Camera camera;
 	CarregadorTexturas carregadorTexturas;
@@ -48,9 +49,12 @@ private:
 	//Objetos
 	PlanoChao* planoChao;
 	EsferaMundo* esferaMundo;
-	std::vector <Passaro*> vetorPassaros;
 	Moinho* moinho;
-	
+
+	//Vetores de objetos
+	std::vector <Passaro*> vetorPassaros;
+	std::vector <Arvore*> vetorArvores;
+
 	//Objetos com quadricas
 	
 
@@ -58,6 +62,9 @@ private:
 
 	//Animacoes
 	Neblina neblina;
+
+	//Luzes
+
 
 public:
 	Tela();
@@ -81,6 +88,7 @@ public:
 
 	//Funcoes de exibicao de objetos
 	void DisplayBirds();
+	void DisplayTrees();
 };
 
 #endif
