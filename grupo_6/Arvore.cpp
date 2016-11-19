@@ -33,7 +33,8 @@ Arvore::Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex) {
 
 
 void Arvore::Display() {
-
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, *troncoTex);
 	glColor3f(0.36, 0.2, 0.09);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
@@ -70,7 +71,7 @@ void Arvore::Display() {
 	gluSphere(obj1, 0.5, 20, 20);
 	glPopMatrix();
 
-	
+	glDisable(GL_TEXTURE_2D);
 	for (int i = 0;i < galhos.size();i++) {
 		galhos[i]->Display();
 	}

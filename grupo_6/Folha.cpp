@@ -57,7 +57,7 @@ void Folha::Display() {
 	else if (angZ <= 0)
 		subindo = true;
 
-	glEnable(GL_TEXTURE_2D);
+	glDisable(GL_TEXTURE_2D);
 }
 
 
