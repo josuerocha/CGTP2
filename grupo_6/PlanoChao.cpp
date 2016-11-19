@@ -32,5 +32,3 @@ void PlanoChao::Display(){
 	glEnd();
     glDisable(GL_TEXTURE_2D);
 }
-
-
