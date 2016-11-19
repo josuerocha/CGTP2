@@ -1,9 +1,14 @@
 #include "Passaro.h"
 
-Passaro::Passaro(Coord3d coord){
+using namespace std;
+
+Passaro::Passaro(Coord3d coord,Coord2d raioElipse, float speed){
     wingRotation = 45;
     this->coord = coord;
     decreaseRotation = false;
+	this->raioVoo = raioElipse;
+	this->speed = speed;
+	anguloVoo = 0;
 }
 
 Passaro::~Passaro(){
@@ -85,10 +90,24 @@ void Passaro::DrawWings(){
 void Passaro::Display(){
     glPushMatrix();
         glTranslatef(coord.x,coord.y,coord.z);
+		glRotatef(anguloVoo,0,0,1); //Rotaciona passaro enquanto voa
         DrawHead();
         DrawBody();
         DrawBeak();
         DrawEyes();
         DrawWings();
     glPopMatrix();
+
+	Fly();
+}
+
+void Passaro::Fly(){
+	Coord2d proximaPosicao = FuncoesExtra::ElipsePoints(raioVoo.x,raioVoo.y, anguloVoo);
+
+	coord.x	= proximaPosicao.x;
+	coord.z	= proximaPosicao.y;
+
+	anguloVoo += speed;
+
+	if(anguloVoo >= 360){ anguloVoo = 0; }
 }

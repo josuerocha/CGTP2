@@ -27,7 +27,7 @@ void Tela::Initialize(){
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo->getRadius());
 	//Posicionando objetos
-	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6)));
+	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6),Coord2d(30,5),2));
 	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 }
 

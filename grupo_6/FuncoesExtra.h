@@ -1,6 +1,7 @@
 #ifndef FuncoesExtra_h
 #define FuncoesExtra_h
 
+
 //Standard includes
 #include "GL/glut.h"
 #include <iostream>
@@ -19,7 +20,7 @@ public:
 	~FuncoesExtra();
 
     static float CalculateDistance3d(Coord3d a,Coord3d b);
-
+    static Coord2d ElipsePoints(float raioX, float raioY, int angle);
 
 };
 

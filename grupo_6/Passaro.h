@@ -8,6 +8,7 @@
 
 //Custom includes
 #include "Estruturas.h"
+#include "FuncoesExtra.h"
 
 class Passaro{
     private:
@@ -16,17 +17,22 @@ class Passaro{
         int wingRotation;
         bool decreaseRotation;
 
+        Coord2d raioVoo;
+        float anguloVoo;
+        float speed;
+
     public:
-    Passaro(Coord3d coord);
-    ~Passaro();
+        Passaro(Coord3d coord, Coord2d raioElipse, float speed);
+        ~Passaro();
 
-    void DrawHead();
-    void DrawBody();
-    void DrawBeak();
-    void DrawEyes();
-    void DrawWings();
+        void DrawHead();
+        void DrawBody();
+        void DrawBeak();
+        void DrawEyes();
+        void DrawWings();
+        void Fly();
 
-    void Display();
+        void Display();
 
 };
 
