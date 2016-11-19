@@ -25,7 +25,7 @@ Moinho::Moinho(GLuint* c1,
 	angY = 180;
 	angZ = 0;
 	velocidade = 0;
-	velocAngParabola = 0.03;
+	velocAngParabola = 0.5;
 	angHelice = 0;
 	cima1 = c1;
 	lado1 = l1;
