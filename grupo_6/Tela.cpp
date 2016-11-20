@@ -15,6 +15,34 @@ Tela::~Tela(){
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glEnable( GL_DEPTH_TEST);
+
+	GLfloat luzAmbiente[4] = {1.0, 1.0, 1.0, 1.0};                         /*vetores que armazenam dados a serem utilizados na configuracao de luzes*/
+	GLfloat luzEmissiva[4] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat luzdifusa[4]={0.4f,0.4f,0.4f,1.0};
+	GLfloat luzemissivaposicao[4] = {0.0, 30.0, -80.0, 1.0};
+	GLfloat posicaoLuz[4] = {0.0, 20.0, 0.0, 1.0};
+	GLfloat posicaocamera[4] = {camera.getCoord_ptr()->x,camera.getCoord_ptr()->y,camera.getCoord_ptr()->z,1.0};
+	GLfloat posicaoLuzespecular[4] = {0.0, 20.0, 80.0, 1.0};
+	glShadeModel(GL_SMOOTH);                                               /*sombreamento suavizado*/
+
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);                   /*configura luz ambiente*/
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);                         /*configura as diversas luzes do programa*/
+	glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuz );
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
+	glLightfv(GL_LIGHT1, GL_POSITION, posicaocamera);
+	glLightfv(GL_LIGHT2, GL_SPECULAR, luzAmbiente);
+	glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuzespecular);
+	glLightfv(GL_LIGHT3, GL_EMISSION, luzEmissiva);
+	glLightfv(GL_LIGHT3, GL_POSITION, luzemissivaposicao);
+
+	glEnable(GL_COLOR_MATERIAL);                                           /*habilita o uso de configuração de materiais*/
+	glEnable(GL_LIGHTING);                      						   /*habilita iluminação*/
+	glEnable(GL_LIGHT0);												   /*habilita as diversas luzes*/
+	glEnable(GL_LIGHT1);
+	glEnable(GL_LIGHT2);
+	glEnable(GL_LIGHT3);
+
 	
 	rgbComponents = 0;
 	//Carregando texturas
@@ -97,8 +125,8 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 		break;
 		
 		case INCREMENT_LIGHT:  
-			
-			if((rgbComponents + 0.1f) >= 0){
+			//cout<<"AAAAA "<< rgbComponents + 0.1f;
+			if((rgbComponents + 0.1f) >= 0 && (rgbComponents + 0.1f) <= 1){
 				rgbComponents += 0.1f;
 				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
 				cout<<"LIGHT INCREMENTED"<< rgbComponents <<endl;
@@ -107,8 +135,8 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 		break;
 
 		case DECREMENT_LIGHT:  
-			
-			if((rgbComponents - 0.1f) >= 0){
+			//cout<<"AAAAA "<< rgbComponents - 0.1f;
+			if((rgbComponents - 0.1f) >= 0 && (rgbComponents - 0.1f) <= 1){
 				rgbComponents -= 0.1f;
 				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
 				cout<<"LIGHT DECREMENTED"<< rgbComponents <<endl;

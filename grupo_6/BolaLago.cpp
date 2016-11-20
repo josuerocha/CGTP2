@@ -28,7 +28,6 @@ BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float
 
 void BolaLago::desenha() {
 	glPushMatrix();
-	glNormal3f(0, 1, 0);
 
 	ambiente[0] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
 	ambiente[1] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
@@ -40,8 +39,8 @@ void BolaLago::desenha() {
 	glMaterialfv(GL_FRONT, GL_AMBIENT, ambiente);
 	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *waterTex);
+	//glEnable(GL_TEXTURE_2D);
+	//glBindTexture(GL_TEXTURE_2D, *waterTex);
 
 	glTranslatef(posiX, posiY, posiZ);
 
@@ -82,7 +81,7 @@ void BolaLago::desenha() {
 		}
 	}
 
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_2D);
 }
 
 
