@@ -73,7 +73,7 @@ void Arvore::Display() {
 	glPopMatrix();
 
 	glDisable(GL_TEXTURE_2D);
-	for (int i = 0;i < galhos.size();i++) {
+	for (uint i = 0;i < galhos.size();i++) {
 		galhos[i]->Display();
 	}
 	glPopMatrix();

@@ -13,9 +13,9 @@
 class EsferaMundo{
     private:
         GLuint ceuTextura;
-        GLUquadricObj *sphere_ptr = NULL;
+        GLUquadricObj *sphere_ptr;
         GLfloat xRotated, yRotated, zRotated;
-	    GLdouble radius = 500;
+	    GLdouble radius;
 
     public:
         EsferaMundo();

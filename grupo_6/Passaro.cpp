@@ -147,7 +147,6 @@ void Passaro::Fly(){
 }
 
 void Passaro::LerArquivo() {
-	int posicao = 0;
 	vector <Coord3d> out_vertices;
 	vector <float> out_uvs;
 	vector <float> out_normals;
@@ -173,7 +172,7 @@ void Passaro::LerArquivo() {
 				   // else : parse lineHeader
 		if (strcmp(lineHeader, "vn") == 0) {
 			Coord3d normal;
-			fscanf(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z, &normal);
+			fscanf(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
 			temp_normais.push_back(normal);
 		}
 		else if (strcmp(lineHeader, "v1") == 0) {
