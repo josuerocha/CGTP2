@@ -31,7 +31,6 @@ Arvore::Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex) {
 
 }
 
-
 void Arvore::Display() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *troncoTex);
@@ -73,7 +72,7 @@ void Arvore::Display() {
 	glPopMatrix();
 
 	glDisable(GL_TEXTURE_2D);
-	for (uint i = 0;i < galhos.size();i++) {
+	for (unsigned int i = 0;i < galhos.size();i++) {
 		galhos[i]->Display();
 	}
 	glPopMatrix();

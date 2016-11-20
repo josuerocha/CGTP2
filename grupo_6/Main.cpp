@@ -45,6 +45,10 @@ int main(int argc, char **argv){
 	glEnable(GL_FOG);
     glFogi(GL_FOG_MODE, GL_EXP);
     glFogfv(GL_FOG_COLOR, color);
+
+	//COnfigurações de luz
+	glEnable(GL_LIGHTING);
+	glEnable(GL_COLOR_MATERIAL);
 	
 	//Funções de captura de eventos do teclado
 	glutIgnoreKeyRepeat(1);

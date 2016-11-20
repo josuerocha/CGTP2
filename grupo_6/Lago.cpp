@@ -37,7 +37,7 @@ Lago::Lago(Coord3d coord) {
 
 void Lago::Display() {
 	
-	for (uint i = 0;i < bolas.size();i++) {
+	for (unsigned int i = 0;i < bolas.size();i++) {
 		bolas[i]->desenha();
 	}
 

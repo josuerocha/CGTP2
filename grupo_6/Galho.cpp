@@ -51,7 +51,7 @@ void Galho::Display() {
 	gluSphere(obj1, 0.5, 20, 20);
 	glPopMatrix();
 
-	for (uint i = 0;i < folhas.size();i++) {
+	for (unsigned int i = 0;i < folhas.size();i++) {
 		folhas[i]->Display();
 	}
 	glPopMatrix();

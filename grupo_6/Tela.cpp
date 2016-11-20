@@ -301,13 +301,13 @@ void Tela::Display() {
 }
 
 void Tela::DisplayBirds(){
-	for (uint i = 0; i<vetorPassaros.size(); i++){
+	for (unsigned int i = 0; i<vetorPassaros.size(); i++){
 		vetorPassaros[i]->Display();
 	}
 }
 
 void Tela::DisplayTrees(){
-	for (uint i = 0; i<vetorArvores.size(); i++){
+	for (unsigned int i = 0; i<vetorArvores.size(); i++){
 		vetorArvores[i]->Display();
 	}
 }
