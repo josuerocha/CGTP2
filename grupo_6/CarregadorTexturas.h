@@ -18,6 +18,10 @@ public:
     GLuint madeiraVermelha;
     GLuint troncoArvore;
     GLuint folhasArvores;
+    GLuint redBird;
+	GLuint brownBird;
+	GLuint colorfulBird;
+    GLuint eye;
 
     CarregadorTexturas();
     ~CarregadorTexturas();

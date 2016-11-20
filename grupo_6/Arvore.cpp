@@ -35,6 +35,7 @@ Arvore::Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex) {
 void Arvore::Display() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *troncoTex);
+	
 	glColor3f(0.36, 0.2, 0.09);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);

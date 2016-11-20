@@ -2,13 +2,16 @@
 
 using namespace std;
 
-Passaro::Passaro(Coord3d coord,Coord2d raioElipse, float speed){
+Passaro::Passaro(Coord3d coord,Coord2d raioElipse, float speed, GLuint* texturaCorpo,GLuint* texturaOlho){
     wingRotation = 45;
     this->coord = coord;
     decreaseRotation = false;
 	this->raioVoo = raioElipse;
 	this->speed = speed;
 	anguloVoo = 0;
+
+	this->texturaCorpo = texturaCorpo;
+	this->texturaOlho = texturaOlho;
 }
 
 Passaro::~Passaro(){
@@ -23,31 +26,56 @@ void Passaro::DrawBeak(){
 }
 
 void Passaro::DrawHead(){
-		glutSolidSphere(0.5,30,30);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, *texturaCorpo);
+		GLUquadricObj *obj = gluNewQuadric();
+
+		gluQuadricNormals(obj, GLU_SMOOTH);
+		gluQuadricTexture(obj, GL_TRUE);
+		
+		gluSphere(obj,0.5,30,30);
+
+		glDisable(GL_TEXTURE_2D);
 }
 
 void Passaro::DrawEyes(){
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, *texturaOlho);
+
+	GLUquadricObj *obj = gluNewQuadric();
+	gluQuadricNormals(obj, GLU_SMOOTH);
+	gluQuadricTexture(obj, GL_TRUE);
+
     glPushMatrix();
 		//color eye 1
 		glTranslated(0.5,0,0);
-		glutSolidSphere(0.1,30,30);
+		gluSphere(obj,0.1,30,30);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslated(-0.5,0,0);
-		glutSolidSphere(0.1,30,30);
+		gluSphere(obj,0.1,30,30);
 	glPopMatrix();
 
+	glDisable(GL_TEXTURE_2D);
 }
 
 void Passaro::DrawBody(){
-    glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, *texturaCorpo);
+    
+	GLUquadricObj *obj = gluNewQuadric();
+	gluQuadricNormals(obj, GLU_SMOOTH);
+	gluQuadricTexture(obj, GL_TRUE);
+
+	glPushMatrix();
         glTranslated(0,0,-1);
-        glutSolidSphere(0.9f,30,30);		
+        gluSphere(obj,0.8f,30,30);		
 	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
 }
 void Passaro::DrawWings(){
-
 	if(wingRotation == 45){
         decreaseRotation = true;
     }
@@ -61,6 +89,9 @@ void Passaro::DrawWings(){
     else{
         wingRotation += 5;
     }
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, *texturaCorpo);
 
 	glRotatef(wingRotation,0,0,1);
     
@@ -85,12 +116,14 @@ void Passaro::DrawWings(){
 			glVertex3f(-0.75f,0.0f,0.0f);
 		glEnd();		
 	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
 }
 
 void Passaro::Display(){
     glPushMatrix();
         glTranslatef(coord.x,coord.y,coord.z);
-		glRotatef(anguloVoo,0,0,1); //Rotaciona passaro enquanto voa
+		glRotatef(-anguloVoo,0,1,0); //Rotaciona passaro enquanto voa
         DrawHead();
         DrawBody();
         DrawBeak();

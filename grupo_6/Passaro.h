@@ -20,9 +20,11 @@ class Passaro{
         Coord2d raioVoo;
         float anguloVoo;
         float speed;
+        GLuint* texturaCorpo;
+        GLuint* texturaOlho;
 
     public:
-        Passaro(Coord3d coord, Coord2d raioElipse, float speed);
+        Passaro(Coord3d coord, Coord2d raioElipse, float speed,GLuint* texturaCorpo,GLuint* texturaOlho);
         ~Passaro();
 
         void DrawHead();
