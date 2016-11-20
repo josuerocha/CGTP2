@@ -34,7 +34,6 @@ void Arvore::Display() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *troncoTex);
 	
-	glColor3f(0.36, 0.2, 0.09);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
 	glRotatef(angX, 1, 0, 0);
@@ -63,8 +62,7 @@ void Arvore::Display() {
 	glScalef(dimX, dimY, dimZ);//glScalef(0.5*dimX, dimY, 1);
 											  //desenhar um circulo raio 0.5, centro(0,0,0)
 	GLUquadricObj *obj1 = gluNewQuadric();
-	//glColor3f(0.5, 0.5, 0.5);
-	//glBindTexture(GL_TEXTURE_2D, texture_id[textura]);
+
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
 	gluSphere(obj1, 0.5, 20, 20);
