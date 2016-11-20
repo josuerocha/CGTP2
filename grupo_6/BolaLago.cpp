@@ -34,9 +34,10 @@ void BolaLago::desenha() {
 	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
 	ambiente[3] = 1-((posiY - posiYMin) / (posiYMax - posiYMin));
 
-	brilho = 100;
+	brilho = 50;
 
 	glMaterialfv(GL_FRONT, GL_AMBIENT, ambiente);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, ambiente);
 	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
 	//glEnable(GL_TEXTURE_2D);
