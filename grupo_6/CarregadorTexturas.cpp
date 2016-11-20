@@ -10,8 +10,7 @@ CarregadorTexturas::~CarregadorTexturas(){
 }
 
 void CarregadorTexturas::LoadAll(){
-	 glGenTextures (1, &cadeira);
-	 this->cadeira = LoadTexture("files/cadeira.jpg");
+
      this->ceuTextura = LoadTexture("files/ceu.jpg");
      this->chaoTextura = LoadTexture("files/grass.jpg");
 	 this->madeira = LoadTexture("files/madeira.jpg");

@@ -36,6 +36,7 @@
 #define DIFFUSE_LIGHT 'o'
 #define INCREMENT_LIGHT '+'
 #define DECREMENT_LIGHT '-'
+#define FIXED_LIGHT_SWITCH 'l'
 //----------------------
 
 class Tela
@@ -47,6 +48,7 @@ private:
     bool fullScreen;
 	glutWindow janela;
 	bool diffuseLightFlag;
+	bool fixedLightFlag;
 	//Classes de controle
 	Camera camera;
 	CarregadorTexturas carregadorTexturas;

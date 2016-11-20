@@ -30,18 +30,18 @@ EsferaMundo::~EsferaMundo(){
 
 void EsferaMundo::Display(){
 	glPushMatrix();
-    glBindTexture(GL_TEXTURE_2D,ceuTextura);
-	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    
-    glTranslatef(0.0,0.0,-5.0);
-    glRotatef(xRotated,1.0,0.0,0.0);
-    glRotatef(yRotated,0.0,1.0,0.0);
-    glRotatef(zRotated,0.0,0.0,1.0);
-    glScalef(1.0,1.0,1.0);
-    
-	gluSphere(sphere_ptr, radius, 30, 30);
+        glBindTexture(GL_TEXTURE_2D,ceuTextura);
+        //glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+        //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        
+        glTranslatef(0.0,0.0,-5.0);
+        glRotatef(xRotated,1.0,0.0,0.0);
+        glRotatef(yRotated,0.0,1.0,0.0);
+        glRotatef(zRotated,0.0,0.0,1.0);
+        glScalef(1.0,1.0,1.0);
+        
+        gluSphere(sphere_ptr, radius, 30, 30);
 	glPopMatrix();
 }
 
