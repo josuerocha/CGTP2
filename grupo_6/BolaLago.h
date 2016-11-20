@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 class BolaLago {
-private:
+	private:
 	float posiX;//a coordenada X do seu centro
 	float posiY;//a coordenada Y do seu centro
 	float posiZ;//a coordenada Z do seu centro
@@ -24,12 +24,12 @@ private:
 	float tempo;
 	float ambiente[4];
 	float brilho;
+
+	GLuint* waterTex;
 	
+	public:
 
-public:
-
-	BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2);//contrutor, inicializa variaveis gerais
-
+	BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* waterTex);
 
 	void desenha();//e' chamada pelo programa principal para desenhar o Obj.
 

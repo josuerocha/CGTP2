@@ -6,7 +6,7 @@
 
 #define PI 3.14159265
 using namespace std;
-BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2) {
+BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* waterTex) {
 	posiX = x;
 	posiY = y;
 	posiZ = z;
@@ -22,6 +22,7 @@ BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float
 	tempoEspera = 100;
 	tempo = tempo2;
 
+	this->waterTex = waterTex;
 }
 
 
@@ -40,7 +41,7 @@ void BolaLago::desenha() {
 	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
 	glEnable(GL_TEXTURE_2D);
-
+	glBindTexture(GL_TEXTURE_2D, *waterTex);
 
 	glTranslatef(posiX, posiY, posiZ);
 
@@ -80,7 +81,7 @@ void BolaLago::desenha() {
 			posiY = posiYdescanso;
 		}
 	}
-	
+
 	glDisable(GL_TEXTURE_2D);
 }
 

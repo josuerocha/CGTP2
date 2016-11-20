@@ -28,9 +28,11 @@ private:
 	float qtdBolasZ;
 	float qtdBolasX;
 
+	GLuint* waterTex;
+
 public:
 
-	Lago(Coord3d coord);
+	Lago(Coord3d coord, GLuint* waterTex);
 
 
 	void Display();

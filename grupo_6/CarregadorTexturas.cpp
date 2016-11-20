@@ -21,6 +21,7 @@ void CarregadorTexturas::LoadAll(){
 	 this->brownBird = LoadTexture("files/birdbrown.jpg");
 	 this->colorfulBird = LoadTexture("files/birdcolorful.jpg");
 	 this->eye = LoadTexture("files/eye.jpg");
+	 this->water = LoadTexture("files/water.jpg");
 }
 
 GLuint CarregadorTexturas::LoadTexture(const char* filename){

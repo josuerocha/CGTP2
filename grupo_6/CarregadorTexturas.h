@@ -22,6 +22,7 @@ public:
 	GLuint brownBird;
 	GLuint colorfulBird;
     GLuint eye;
+    GLuint water;
 
     CarregadorTexturas();
     ~CarregadorTexturas();

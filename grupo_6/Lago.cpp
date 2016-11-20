@@ -8,7 +8,7 @@ using namespace std;
 
 #define PI 3.14159265
 using namespace std;
-Lago::Lago(Coord3d coord) {
+Lago::Lago(Coord3d coord,GLuint* waterTex) {
 
 	posiX = coord.x;
 	posiY = coord.y;
@@ -20,14 +20,16 @@ Lago::Lago(Coord3d coord) {
 	qtdBolasX = 20;
 	tamanhoBolas = dimZ/(qtdBolasZ*0.75);
 
+	this->waterTex = waterTex;
+
 	int c = 0;
 	for (int a = 1;a <= qtdBolasX/2;a++) {
 		if(a<= qtdBolasZ/2)c+=2;
 		for (int b = 1;b <= c/2;b++) {
-			bolas.push_back(new BolaLago(posiX + (((qtdBolasX/2)+1-a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*a-35*b));
-			bolas.push_back(new BolaLago(posiX + (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*a-35*b));
-			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*(qtdBolasX+1-a)-35*b));
-			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*(qtdBolasX+1-a)-35*b));
+			bolas.push_back(new BolaLago(posiX + (((qtdBolasX/2)+1-a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*a-35*b,waterTex));
+			bolas.push_back(new BolaLago(posiX + (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*a-35*b,waterTex));
+			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*(qtdBolasX+1-a)-35*b,waterTex));
+			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*(qtdBolasX+1-a)-35*b,waterTex));
 		}
 	}
 

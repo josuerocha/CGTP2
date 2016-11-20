@@ -11,7 +11,7 @@ EsferaMundo::EsferaMundo(){
 
 EsferaMundo::EsferaMundo(GLuint* ceuTextura){
     sphere_ptr = NULL;
-    radius = 500;
+    radius = 160;
     this->ceuTextura = *ceuTextura;
     sphere_ptr = gluNewQuadric();
     gluQuadricDrawStyle(sphere_ptr, GLU_FILL);

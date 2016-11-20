@@ -42,7 +42,7 @@ void Arvore::Display() {
 	glRotatef(angZ, 0, 0, 1);
 
 	glPushMatrix();
-	glScalef(0.01, 0.01, 0.01);
+	glScalef(0.05, 0.05, 0.05);
 	
 	glPushMatrix();
 	glTranslatef(0, 0, 0);//dependendo do angulo que desenha pode ser glTranslatef(-0.25*dimX,0,0);
@@ -50,7 +50,7 @@ void Arvore::Display() {
 	//desenhar um cilindro raio 0.5 e altura 1, base centrada no(0,0,0), paralelo ao eixo X
 	GLUquadricObj *obj2 = gluNewQuadric();
 	glEnable(GL_TEXTURE_2D);
-	//glColor3f(0.5, 0.5, 0.5);
+
 	//glBindTexture(GL_TEXTURE_2D, *corpo);
 	gluQuadricNormals(obj2, GLU_SMOOTH);
 	gluQuadricTexture(obj2, GL_TRUE);
