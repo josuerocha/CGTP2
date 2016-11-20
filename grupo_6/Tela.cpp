@@ -68,7 +68,7 @@ void Tela::Initialize(){
 	vetorPassaros.push_back(new Passaro(Coord3d(10,6,6),Coord2d(40,20),0.5,&carregadorTexturas.colorfulBird,&carregadorTexturas.eye));
 	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6),Coord2d(30,5),0.5,&carregadorTexturas.brownBird,&carregadorTexturas.eye));
 	
-	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.cadeira));
+	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 	//vetorArvores.push_back(new Arvore(Coord3d(-8,0,-8),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 	//vetorArvores.push_back(new Arvore(Coord3d(-6,0,-6),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 
