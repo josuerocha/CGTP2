@@ -5,6 +5,10 @@
 #include "GL/glut.h"
 #include <iostream>
 #include "soil/SOIL.h"
+#include <iomanip>
+#include <fstream>
+#include <string>
+#include <cstring>
 
 //Custom includes
 #include "Estruturas.h"
