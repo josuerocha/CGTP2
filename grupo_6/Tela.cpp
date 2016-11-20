@@ -14,7 +14,6 @@ Tela::~Tela(){
 
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
-	glEnable( GL_DEPTH_TEST);
 
 	GLfloat luzAmbiente[4] = {0.2, 0.2, 0.2, 1.0};                         /*vetores que armazenam dados a serem utilizados na configuracao de luzes*/
 	GLfloat luzEmissiva[4] = {1.0, 1.0, 1.0, 1.0};
@@ -36,13 +35,16 @@ void Tela::Initialize(){
 	glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuzespecular);
 	glLightfv(GL_LIGHT3, GL_EMISSION, luzEmissiva);
 	glLightfv(GL_LIGHT3, GL_POSITION, luzemissivaposicao);
-            						   
+
+	glEnable(GL_COLOR_MATERIAL);                                           
+	glEnable(GL_LIGHTING);                      						   
 	glEnable(GL_LIGHT0);												   
 	glEnable(GL_LIGHT1);
 	glEnable(GL_LIGHT2);
 	glEnable(GL_LIGHT3);
 
-	glEnable (GL_TEXTURE_2D);                                            /*habilita texturas 2d e elas são configuradas*/
+	glEnable( GL_DEPTH_TEST);
+	glEnable ( GL_TEXTURE_2D );                                            /*habilita texturas 2d e elas são configuradas*/
 	
 	rgbComponents = 0;
 	//Carregando texturas
@@ -58,7 +60,7 @@ void Tela::Initialize(){
 	vetorPassaros.push_back(new Passaro(Coord3d(10,6,6),Coord2d(40,20),0.5,&carregadorTexturas.colorfulBird,&carregadorTexturas.eye));
 	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6),Coord2d(30,5),0.5,&carregadorTexturas.brownBird,&carregadorTexturas.eye));
 	
-	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
+	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.cadeira));
 	//vetorArvores.push_back(new Arvore(Coord3d(-8,0,-8),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 	//vetorArvores.push_back(new Arvore(Coord3d(-6,0,-6),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 
@@ -339,10 +341,19 @@ void Tela::ControleTela(){
 }
 
 void Tela::Display() {
-	
+	glLoadIdentity();
+	GLfloat posicaocamera[4] = {camera.getCoord_ptr()->x,camera.getCoord_ptr()->y,camera.getCoord_ptr()->z,1.0};
+	glLightfv(GL_LIGHT1, GL_POSITION, posicaocamera);
+
+	glEnable(GL_COLOR_MATERIAL);
     //glMatrixMode(GL_MODELVIEW);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	GLfloat espec_grama[4] = {0.6, 0.5, 0, 1.0};
+	GLint especMaterial = 60;
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT, espec_grama);
+	glMateriali(GL_FRONT, GL_SHININESS, especMaterial);
 	//Muda estados dos componentes da tela
 	camera.Update();
 	planoChao->Display();

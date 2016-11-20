@@ -12,9 +12,11 @@ using namespace std;
 
 //Custom includes
 #include "Tela.h"
+#include "CarregadorTexturas.h"
 
 //Criação do objeto tela
 Tela tela = Tela();
+CarregadorTexturas* carregadorTexturas;
 
 //Assinaturas dos métodos
 void KeyboardDown(unsigned char key, int x, int y);
@@ -44,8 +46,7 @@ int main(int argc, char **argv){
     glFogi(GL_FOG_MODE, GL_EXP);
     glFogfv(GL_FOG_COLOR, color);
 	
-	//AAAAAA
-	glEnable(GL_COLOR_MATERIAL);                                           
+	//AAAAAA                                      
 	glEnable(GL_LIGHTING);          
 	GLfloat espec_grama[4] = {0.7, 0.7, 0.7, 1.0};
 	GLint especMaterial = 100;
@@ -76,6 +77,7 @@ int main(int argc, char **argv){
 
 void Initialize(){
 	tela.Initialize();
+	carregadorTexturas = new CarregadorTexturas;
 }
 
 void KeyboardDown(unsigned char key, int x, int y) {
@@ -117,6 +119,8 @@ void Timer(int value) {
 
 	glutTimerFunc(25, Timer, value);      /* 30 frames per second */
 }
+
+void gol();
 
 void DisplayScene(){
 	tela.Display();

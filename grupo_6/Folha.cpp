@@ -34,11 +34,12 @@ void Folha::Display() {
 	glTranslatef(0,-0.5*comprimento, 0);
 	glScalef(grossura,comprimento, grossura);//glScalef(0.5*dimX, dimY, 1);
 											  //desenhar um circulo raio 0.5, centro(0,0,0)
-	GLUquadricObj *obj1 = gluNewQuadric();
-	//glBindTexture(GL_TEXTURE_2D, texture_id[textura]);
+	GLUquadricObj *obj1;
+	obj1 = gluNewQuadric();
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
 	gluSphere(obj1, 0.5, 20, 20);
+
 	glPopMatrix();
 
 
