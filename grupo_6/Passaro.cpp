@@ -123,6 +123,7 @@ void Passaro::DrawWings(){
 void Passaro::Display(){
     glPushMatrix();
         glTranslatef(coord.x,coord.y,coord.z);
+		glScalef(0.5,0.5,0.5);
 		glRotatef(-anguloVoo,0,1,0); //Rotaciona passaro enquanto voa
         DrawHead();
         DrawBody();
@@ -154,7 +155,7 @@ void Passaro::LerArquivo() {
 	vector <unsigned int> vertexIndices, uvIndices, normalIndices;
 
 
-	const char * path = "Passaro.txt";
+	const char * path = "passaro.txt";
 
 	FILE * file = fopen(path, "r");
 	if (file == NULL) {

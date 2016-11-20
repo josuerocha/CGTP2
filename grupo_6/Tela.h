@@ -17,6 +17,7 @@
 #include "CarregadorTexturas.h"
 #include "Moinho.h"
 #include "Arvore.h"
+#include "Lago.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -50,6 +51,7 @@ private:
 	PlanoChao* planoChao;
 	EsferaMundo* esferaMundo;
 	Moinho* moinho;
+	Lago* lago;
 
 	//Vetores de objetos
 	std::vector <Passaro*> vetorPassaros;
