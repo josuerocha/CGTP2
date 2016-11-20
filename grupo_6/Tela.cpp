@@ -6,6 +6,7 @@ Tela::Tela(){
 	//Inicia cenário com tela inteira
 	fullScreen = true;
 	diffuseLightFlag = true;
+	fixedLightFlag = true;
 }
 
 Tela::~Tela(){
@@ -14,34 +15,38 @@ Tela::~Tela(){
 
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
-
-	GLfloat luzAmbiente[4] = {0.2, 0.2, 0.2, 1.0};                         /*vetores que armazenam dados a serem utilizados na configuracao de luzes*/
-	GLfloat luzEmissiva[4] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat luzdifusa[4]={0.5f,0.5f,0.5f,1.0};
-	GLfloat luzemissivaposicao[4] = {0.0, 30.0, -80.0, 1.0};
-	GLfloat posicaoLuz[4] = {0.0, 20.0, 0.0, 1.0};
-	GLfloat posicaocamera[4] = {camera.getCoord_ptr()->x,camera.getCoord_ptr()->y,camera.getCoord_ptr()->z,1.0};
-	GLfloat posicaoLuzespecular[4] = {0.0, 20.0, 80.0, 1.0};
 	
 	glShadeModel(GL_SMOOTH); //sombreamento suave                                              
 
-	//
+ 	//Luz ambiente
+	GLfloat posicaoLuzAmbiente[4] = {0.0, 20.0, 0.0, 1.0};
+	GLfloat luzAmbiente[4] = {0.2, 0.2, 0.2, 1.0};          
+
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);                   
-
 	glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);                         
-	glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuz );
+	glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuzAmbiente);
 
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
+	//Luz difusa e especular em cima da camera
+	GLfloat posicaocamera[4] = {camera.getCoord_ptr()->x,camera.getCoord_ptr()->y,camera.getCoord_ptr()->z,1.0};
+	GLfloat luzMovel[4]={0.1f,0.1f,0.1f,1.0};
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, luzMovel);
+	glLightfv(GL_LIGHT1, GL_EMISSION, luzMovel);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, luzMovel);
 	glLightfv(GL_LIGHT1, GL_POSITION, posicaocamera);
 
-	glLightfv(GL_LIGHT2, GL_SPECULAR, luzAmbiente);
-	glLightfv(GL_LIGHT2, GL_DIFFUSE, luzAmbiente);
-	glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuzespecular);
+	//Luz na posicao fixa 1
+	GLfloat luzFixa1[4] = {0.2f, 0.2f, 1.0f, 1.0f};
+	GLfloat posicaoLuzFixa1[4] = {0.0f, 1.0f, 20.0f, 1.0f};
+	glLightfv(GL_LIGHT2, GL_DIFFUSE, luzFixa1);
+	glLightfv(GL_LIGHT2, GL_SPECULAR, luzFixa1);
+	glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuzFixa1);
 
-	glLightfv(GL_LIGHT4, GL_EMISSION, luzEmissiva);
-	glLightfv(GL_LIGHT4, GL_POSITION, luzemissivaposicao);
-
-
+	//Luz na posicao fixa 2
+	GLfloat luzFixa2[4] = {1.0f, 0.2f, 0.2f, 1.0f};
+	GLfloat posicaoLuzFixa2[4] = {0.0f, 1.0f, -20.0f, 1.0f};
+	glLightfv(GL_LIGHT3, GL_DIFFUSE, luzFixa2);
+	glLightfv(GL_LIGHT3, GL_SPECULAR, luzFixa2);
+	glLightfv(GL_LIGHT3, GL_POSITION, posicaoLuzFixa2);
 
 	glEnable(GL_COLOR_MATERIAL);                                           
 	glEnable(GL_LIGHTING);                      						   
@@ -139,7 +144,7 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 			if((rgbComponents + 0.1f) >= 0 && (rgbComponents + 0.1f) <= 2.1){
 				rgbComponents += 0.1f;
 				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
-				cout<<"LIGHT INCREMENTED"<< rgbComponents <<endl;
+				glLightfv(GL_LIGHT1, GL_SPECULAR, luzdifusa);
 			}
 
 		break;
@@ -149,21 +154,21 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 			if((rgbComponents - 0.1f) >= 0 && (rgbComponents - 0.1f) <= 2.1){
 				rgbComponents -= 0.1f;
 				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
-				cout<<"LIGHT DECREMENTED"<< rgbComponents <<endl;
+				glLightfv(GL_LIGHT1, GL_SPECULAR, luzdifusa);
 			}
 
 		break;
 
 		case FIXED_LIGHT_SWITCH:
-			if(fixedLightsActive){
-				glEnable(GL_LIGHT4);
-				glEnable(GL_LIGHT5);
+			if(fixedLightFlag){
+				glEnable(GL_LIGHT2);
+				glEnable(GL_LIGHT3);
 			}
 			else{
-				glDisable(GL_LIGHT4);
-				glDisable(GL_LIGHT5);
+				glDisable(GL_LIGHT2);
+				glDisable(GL_LIGHT3);
 			}
-			fixedLightsActive = !fixedLightsActive;
+			fixedLightFlag = !fixedLightFlag;
 		break;
 		
 	}

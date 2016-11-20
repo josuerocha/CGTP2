@@ -47,7 +47,7 @@ private:
     bool fullScreen;
 	glutWindow janela;
 	bool diffuseLightFlag;
-	bool fixedLightsActive;
+	bool fixedLightFlag;
 	//Classes de controle
 	Camera camera;
 	CarregadorTexturas carregadorTexturas;
