@@ -28,7 +28,6 @@ Arvore::Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex) {
 			galhos.push_back(new Galho(posiX , posiY + (0.5+a*0.15)*dimY, posiZ, 20, 200, -c,folhasTex,troncoTex));
 		}
 	}
-
 }
 
 void Arvore::Display() {

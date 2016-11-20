@@ -27,21 +27,33 @@ BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float
 
 void BolaLago::desenha() {
 	glPushMatrix();
-	glColor4f(0.3*((posiY - posiYMin) / (posiYMax - posiYMin)), 0.3*((posiY - posiYMin) / (posiYMax - posiYMin)), 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin)), 1-((posiY - posiYMin) / (posiYMax - posiYMin)));
+	glNormal3f(0, 1, 0);
+
+	ambiente[0] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[1] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[3] = 1-((posiY - posiYMin) / (posiYMax - posiYMin));
+
+	brilho = 100;
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT, ambiente);
+	glMateriali(GL_FRONT, GL_SHININESS, brilho);
+
+	glEnable(GL_TEXTURE_2D);
+
+
 	glTranslatef(posiX, posiY, posiZ);
 
 	glPushMatrix();
 	glScalef(dimX, dimY, dimZ);
-											  //desenhar um circulo raio 0.5, centro(0,0,0)
+
 	GLUquadricObj *obj1 = gluNewQuadric();
-	//glColor3f(0.5, 0.5, 0.5);
-	//glBindTexture(GL_TEXTURE_2D, texture_id[textura]);
+
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
 	gluSphere(obj1, 0.5, 20, 20);
 	glPopMatrix();
 
-	glColor3f(1,1,1);
 	glPopMatrix();
 
 
@@ -68,9 +80,8 @@ void BolaLago::desenha() {
 			posiY = posiYdescanso;
 		}
 	}
-
 	
-
+	glDisable(GL_TEXTURE_2D);
 }
 
 

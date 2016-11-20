@@ -10,7 +10,6 @@ using namespace std;
 using namespace std;
 Lago::Lago(Coord3d coord) {
 
-
 	posiX = coord.x;
 	posiY = coord.y;
 	posiZ = coord.z;

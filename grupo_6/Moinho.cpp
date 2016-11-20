@@ -14,7 +14,6 @@ Moinho::Moinho(GLuint* c1,
 	GLuint* ei,
 	Coord3d coord) {
 
-
 	posiX= coord.x;
 	posiY= coord.y;
 	posiZ= coord.z;
@@ -39,6 +38,9 @@ Moinho::Moinho(GLuint* c1,
 
 
 void Moinho::Display() {
+	GLfloat espec_grama[4] = {0.7, 0.7, 0.7, 1.0};
+	GLint especMaterial = 100;
+
 	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
@@ -46,13 +48,16 @@ void Moinho::Display() {
 	glRotatef(angY, 0, 1, 0);
 	glRotatef(angZ, 0, 0, 1);
 
+
 	glPushMatrix();
-	glTranslatef(0, 0, 0);//dependendo do angulo que desenha pode ser glTranslatef(-0.25*dimX,0,0);
+	glTranslatef(0, 0, 0);
 	glScalef(0.5*dimX, dimY, 0.75*dimZ);
-	//desenhar um cilindro raio 0.5 e altura 1, base centrada no(0,0,0), paralelo ao eixo X
+
 	GLUquadricObj *obj2 = gluNewQuadric();
-	//glEnable(GL_TEXTURE_2D);
-	//glColor3f(0.5, 0.5, 0.5);
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT, espec_grama);
+	glMateriali(GL_FRONT, GL_SHININESS, especMaterial);
+
 	glBindTexture(GL_TEXTURE_2D, *corpo);
 	gluQuadricNormals(obj2, GLU_SMOOTH);
 	gluQuadricTexture(obj2, GL_TRUE);
@@ -61,12 +66,12 @@ void Moinho::Display() {
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(0, 0.75*dimY, -0.5*dimZ);//dependendo do angulo que desenha pode ser glTranslatef(-0.25*dimX,0,0);
+	glTranslatef(0, 0.75*dimY, -0.5*dimZ);
 	glScalef(0.25*dimX, 0.25*dimX, 0.15*dimZ);
-	//desenhar um cilindro raio 0.5 e altura 1, base centrada no(0,0,0), paralelo ao eixo X
+	
 	GLUquadricObj *obj3 = gluNewQuadric();
 	//glEnable(GL_TEXTURE_2D);
-	//glColor3f(0.5, 0.5, 0.5);
+
 	glBindTexture(GL_TEXTURE_2D, *eixo);
 	gluQuadricNormals(obj3, GLU_SMOOTH);
 	gluQuadricTexture(obj3, GL_TRUE);

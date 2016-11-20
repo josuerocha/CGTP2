@@ -32,6 +32,9 @@
 #define CAM_COORDINATES 'c'
 #define FOG_INCREASE 'f'
 #define FOG_DECREASE 'g'
+#define DIFFUSE_LIGHT 'o'
+#define INCREMENT_LIGHT '+'
+#define DECREMENT_LIGHT '-'
 //----------------------
 
 class Tela
@@ -42,7 +45,7 @@ private:
 	bool keyBuffer[10]; //Respectivamente forward, backward, left, right,up,down, click, rightclick, fog up, fog down
     bool fullScreen;
 	glutWindow janela;
-	bool light_mode1;
+	bool diffuseLightFlag;
 	//Classes de controle
 	Camera camera;
 	CarregadorTexturas carregadorTexturas;
@@ -53,6 +56,7 @@ private:
 	Moinho* moinho;
 	Lago* lago;
 
+	float rgbComponents;
 	//Vetores de objetos
 	std::vector <Passaro*> vetorPassaros;
 	std::vector <Arvore*> vetorArvores;

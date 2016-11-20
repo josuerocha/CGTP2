@@ -5,7 +5,7 @@ using namespace std;
 Tela::Tela(){	
 	//Inicia cenário com tela inteira
 	fullScreen = true;
-	light_mode1 = true;
+	diffuseLightFlag = true;
 }
 
 Tela::~Tela(){
@@ -16,6 +16,7 @@ void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glEnable( GL_DEPTH_TEST);
 	
+	rgbComponents = 0;
 	//Carregando texturas
 	carregadorTexturas.LoadAll();
 
@@ -40,6 +41,8 @@ void Tela::Initialize(){
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {
 	cout << "Tecla regular pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
+
+	GLfloat luzdifusa[4] = {rgbComponents, rgbComponents, rgbComponents, 1.0};
 
 	switch (key) {
         case FORWARD:
@@ -87,6 +90,32 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 			cout<<"X "<<camera.getCoord_ptr()->x<<" Y "<<camera.getCoord_ptr()->y<<" Z "<<camera.getCoord_ptr()->z<<endl;
 		break;
 
+		case DIFFUSE_LIGHT:
+			if(diffuseLightFlag) {   glEnable(GL_LIGHT1); }
+			else {  glDisable(GL_LIGHT1); }
+			diffuseLightFlag = !diffuseLightFlag;
+		break;
+		
+		case INCREMENT_LIGHT:  
+			
+			if((rgbComponents + 0.1f) >= 0){
+				rgbComponents += 0.1f;
+				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
+				cout<<"LIGHT INCREMENTED"<< rgbComponents <<endl;
+			}
+
+		break;
+
+		case DECREMENT_LIGHT:  
+			
+			if((rgbComponents - 0.1f) >= 0){
+				rgbComponents -= 0.1f;
+				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
+				cout<<"LIGHT DECREMENTED"<< rgbComponents <<endl;
+			}
+
+		break;
+		
 	}
 	cout << "POSICAO X: " << x << "POSICAO Y: " << y << endl;
 }
