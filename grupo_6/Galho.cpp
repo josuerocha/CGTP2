@@ -30,7 +30,7 @@ Galho::Galho(float x, float y, float z, float g, float c, float angy2,GLuint* fo
 
 
 void Galho::Display() {
-	glEnable(GL_TEXTURE_2D);
+
 	glBindTexture(GL_TEXTURE_2D, *troncoTex);
 
 	glPushMatrix();
@@ -56,9 +56,7 @@ void Galho::Display() {
 	}
 	glPopMatrix();
 
-	glDisable(GL_TEXTURE_2D);
 }
-
 
 float Galho::getPosiX() { return posiX; }
 float Galho::getPosiY() { return posiY; }

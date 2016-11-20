@@ -36,8 +36,6 @@ int main(int argc, char **argv){
 	glutInitWindowSize(800,600);
 	glutCreateWindow("Morgan Falls Lake");
 
-	Initialize();
-
 	glutTimerFunc(1000 / 45, Timer, 0);
     
 	//Configurações da neblina
@@ -45,11 +43,19 @@ int main(int argc, char **argv){
 	glEnable(GL_FOG);
     glFogi(GL_FOG_MODE, GL_EXP);
     glFogfv(GL_FOG_COLOR, color);
-
-	//COnfigurações de luz
-	glEnable(GL_LIGHTING);
-	glEnable(GL_COLOR_MATERIAL);
 	
+	//AAAAAA
+	glEnable(GL_COLOR_MATERIAL);                                           
+	glEnable(GL_LIGHTING);          
+	GLfloat espec_grama[4] = {0.7, 0.7, 0.7, 1.0};
+	GLint especMaterial = 100;
+	glEnable(GL_TEXTURE_2D);
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, espec_grama);
+	glMateriali(GL_FRONT, GL_SHININESS, especMaterial);
+	
+	Initialize();
+
 	//Funções de captura de eventos do teclado
 	glutIgnoreKeyRepeat(1);
 	glutKeyboardFunc(KeyboardDown);

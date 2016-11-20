@@ -31,30 +31,38 @@ Arvore::Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex) {
 }
 
 void Arvore::Display() {
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *troncoTex);
-	
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, ambiente);
+	glMateriali(GL_FRONT, GL_SHININESS, brilho);
+
+	ambiente[0] = 0.0;
+	ambiente[1] = 0.5;
+	ambiente[2] = 0.5;
+	ambiente[3] = 1;
+
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
 	glRotatef(angX, 1, 0, 0);
 	glRotatef(angY, 0, 1, 0);
 	glRotatef(angZ, 0, 0, 1);
 
+	brilho = 100;
+
 	glPushMatrix();
 	glScalef(0.05, 0.05, 0.05);
 	
 	glPushMatrix();
-	glTranslatef(0, 0, 0);//dependendo do angulo que desenha pode ser glTranslatef(-0.25*dimX,0,0);
+	glTranslatef(0, 0, 0);
 	glScalef(dimX, 0.5*dimY, dimZ);
-	//desenhar um cilindro raio 0.5 e altura 1, base centrada no(0,0,0), paralelo ao eixo X
-	GLUquadricObj *obj2 = gluNewQuadric();
-	glEnable(GL_TEXTURE_2D);
+	
+	glBindTexture(GL_TEXTURE_2D, *troncoTex);
 
-	//glBindTexture(GL_TEXTURE_2D, *corpo);
+	GLUquadricObj *obj2 = gluNewQuadric();
+
 	gluQuadricNormals(obj2, GLU_SMOOTH);
 	gluQuadricTexture(obj2, GL_TRUE);
 	glRotatef(-90, 1, 0, 0);
-	gluCylinder(obj2, 0.5, 0.5, 1, 20, 20);
+	gluCylinder(obj2, 0.5, 0.5, 2, 10, 10);
 	glPopMatrix();
 
 	glPushMatrix();
@@ -63,12 +71,17 @@ void Arvore::Display() {
 											  //desenhar um circulo raio 0.5, centro(0,0,0)
 	GLUquadricObj *obj1 = gluNewQuadric();
 
+	GLUquadricObj *quad;
+	quad = gluNewQuadric();
+	gluQuadricNormals(quad, GLU_SMOOTH);
+	gluQuadricTexture(quad, GL_TRUE);
+	gluCylinder( quad, 0.05, 0.05, 4.0, 10.0, 10.0);
+
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
 	gluSphere(obj1, 0.5, 20, 20);
 	glPopMatrix();
 
-	glDisable(GL_TEXTURE_2D);
 	for (unsigned int i = 0;i < galhos.size();i++) {
 		galhos[i]->Display();
 	}

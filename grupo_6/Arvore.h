@@ -34,6 +34,9 @@ private:
 	GLuint* folhasTex;
 	GLuint* troncoTex;
 
+	float ambiente[4];
+	GLint brilho;
+
 public:
 
 	Arvore(Coord3d coord,GLuint* folhasTex, GLuint* troncoTex);

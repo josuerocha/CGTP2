@@ -23,7 +23,7 @@ class BolaLago {
 	float tempoEspera;//tempo entre ondas
 	float tempo;
 	float ambiente[4];
-	float brilho;
+	GLint brilho;
 
 	GLuint* waterTex;
 	

@@ -26,7 +26,6 @@ void Passaro::DrawBeak(){
 }
 
 void Passaro::DrawHead(){
-		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, *texturaCorpo);
 		
 		GLUquadricObj *obj = gluNewQuadric();
@@ -35,11 +34,9 @@ void Passaro::DrawHead(){
 		
 		gluSphere(obj,0.5,30,30);
 
-		glDisable(GL_TEXTURE_2D);
 }
 
 void Passaro::DrawEyes(){
-	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *texturaOlho);
 
 	GLUquadricObj *obj = gluNewQuadric();
@@ -57,11 +54,9 @@ void Passaro::DrawEyes(){
 		gluSphere(obj,0.1,30,30);
 	glPopMatrix();
 
-	glDisable(GL_TEXTURE_2D);
 }
 
 void Passaro::DrawBody(){
-	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *texturaCorpo);
     
 	GLUquadricObj *obj = gluNewQuadric();
@@ -73,7 +68,6 @@ void Passaro::DrawBody(){
         gluSphere(obj,0.8f,30,30);		
 	glPopMatrix();
 
-	glDisable(GL_TEXTURE_2D);
 }
 void Passaro::DrawWings(){
 	if(wingRotation == 45){
@@ -90,7 +84,6 @@ void Passaro::DrawWings(){
         wingRotation += 5;
     }
 
-	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *texturaCorpo);
 
 	glRotatef(wingRotation,0,0,1);
@@ -117,7 +110,6 @@ void Passaro::DrawWings(){
 		glEnd();		
 	glPopMatrix();
 
-	glDisable(GL_TEXTURE_2D);
 }
 
 void Passaro::Display(){

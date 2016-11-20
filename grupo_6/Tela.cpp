@@ -16,13 +16,14 @@ void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glEnable( GL_DEPTH_TEST);
 
-	GLfloat luzAmbiente[4] = {1.0, 1.0, 1.0, 1.0};                         /*vetores que armazenam dados a serem utilizados na configuracao de luzes*/
+	GLfloat luzAmbiente[4] = {0.2, 0.2, 0.2, 1.0};                         /*vetores que armazenam dados a serem utilizados na configuracao de luzes*/
 	GLfloat luzEmissiva[4] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat luzdifusa[4]={0.4f,0.4f,0.4f,1.0};
+	GLfloat luzdifusa[4]={1.0f,1.0f,1.0f,1.0};
 	GLfloat luzemissivaposicao[4] = {0.0, 30.0, -80.0, 1.0};
 	GLfloat posicaoLuz[4] = {0.0, 20.0, 0.0, 1.0};
 	GLfloat posicaocamera[4] = {camera.getCoord_ptr()->x,camera.getCoord_ptr()->y,camera.getCoord_ptr()->z,1.0};
 	GLfloat posicaoLuzespecular[4] = {0.0, 20.0, 80.0, 1.0};
+	
 	glShadeModel(GL_SMOOTH);                                               /*sombreamento suavizado*/
 
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);                   /*configura luz ambiente*/
@@ -35,14 +36,13 @@ void Tela::Initialize(){
 	glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuzespecular);
 	glLightfv(GL_LIGHT3, GL_EMISSION, luzEmissiva);
 	glLightfv(GL_LIGHT3, GL_POSITION, luzemissivaposicao);
-
-	glEnable(GL_COLOR_MATERIAL);                                           /*habilita o uso de configuração de materiais*/
-	glEnable(GL_LIGHTING);                      						   /*habilita iluminação*/
-	glEnable(GL_LIGHT0);												   /*habilita as diversas luzes*/
+            						   
+	glEnable(GL_LIGHT0);												   
 	glEnable(GL_LIGHT1);
 	glEnable(GL_LIGHT2);
 	glEnable(GL_LIGHT3);
 
+	glEnable (GL_TEXTURE_2D);                                            /*habilita texturas 2d e elas são configuradas*/
 	
 	rgbComponents = 0;
 	//Carregando texturas
@@ -339,8 +339,8 @@ void Tela::ControleTela(){
 }
 
 void Tela::Display() {
-
-    glMatrixMode(GL_MODELVIEW);
+	
+    //glMatrixMode(GL_MODELVIEW);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//Muda estados dos componentes da tela
@@ -354,7 +354,6 @@ void Tela::Display() {
 	DisplayTrees();
 
     glutSwapBuffers();
-	glDisable(GL_COLOR_MATERIAL);
 }
 
 void Tela::DisplayBirds(){

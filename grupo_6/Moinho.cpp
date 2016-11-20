@@ -41,7 +41,6 @@ void Moinho::Display() {
 	GLfloat espec_grama[4] = {0.7, 0.7, 0.7, 1.0};
 	GLint especMaterial = 100;
 
-	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
 	glRotatef(angX, 1, 0, 0);
@@ -70,7 +69,6 @@ void Moinho::Display() {
 	glScalef(0.25*dimX, 0.25*dimX, 0.15*dimZ);
 	
 	GLUquadricObj *obj3 = gluNewQuadric();
-	//glEnable(GL_TEXTURE_2D);
 
 	glBindTexture(GL_TEXTURE_2D, *eixo);
 	gluQuadricNormals(obj3, GLU_SMOOTH);
@@ -81,7 +79,6 @@ void Moinho::Display() {
 
 	desenhaHelice();
 	glPopMatrix();
-	glDisable(GL_TEXTURE_2D);
 
 }
 void Moinho::desenhaHelice() {

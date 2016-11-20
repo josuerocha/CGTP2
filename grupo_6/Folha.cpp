@@ -23,11 +23,9 @@ Folha::Folha(float x, float y, float z, float g, float c, float angy2, GLuint* f
 
 
 void Folha::Display() {
-	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *folhasTex);
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
-	//glRotatef(angX, 1, 0, 0);
 	glRotatef(-45, 0, 0, 1);
 	glRotatef(angY, 0, 1, 0);
 
@@ -37,7 +35,6 @@ void Folha::Display() {
 	glScalef(grossura,comprimento, grossura);//glScalef(0.5*dimX, dimY, 1);
 											  //desenhar um circulo raio 0.5, centro(0,0,0)
 	GLUquadricObj *obj1 = gluNewQuadric();
-	//glColor3f(0.5, 0.5, 0.5);
 	//glBindTexture(GL_TEXTURE_2D, texture_id[textura]);
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
@@ -57,7 +54,6 @@ void Folha::Display() {
 	else if (angZ <= 0)
 		subindo = true;
 
-	glDisable(GL_TEXTURE_2D);
 }
 
 

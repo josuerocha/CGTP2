@@ -30,7 +30,6 @@ EsferaMundo::~EsferaMundo(){
 
 void EsferaMundo::Display(){
 	glPushMatrix();
-	glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,ceuTextura);
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -42,7 +41,6 @@ void EsferaMundo::Display(){
     glScalef(1.0,1.0,1.0);
     
 	gluSphere(sphere_ptr, radius, 30, 30);
-	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
 

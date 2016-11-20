@@ -34,14 +34,10 @@ void BolaLago::desenha() {
 	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
 	ambiente[3] = 1-((posiY - posiYMin) / (posiYMax - posiYMin));
 
-	brilho = 100;
-
-	glMaterialfv(GL_FRONT, GL_AMBIENT, ambiente);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, ambiente);
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, ambiente);
 	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
-	//glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *waterTex);
+	brilho = 100;
 
 	glTranslatef(posiX, posiY, posiZ);
 
@@ -49,6 +45,8 @@ void BolaLago::desenha() {
 	glScalef(dimX, dimY, dimZ);
 
 	GLUquadricObj *obj1 = gluNewQuadric();
+
+	glBindTexture(GL_TEXTURE_2D, *waterTex);
 
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
@@ -81,7 +79,6 @@ void BolaLago::desenha() {
 		}
 	}
 
-	//glDisable(GL_TEXTURE_2D);
 }
 
 
