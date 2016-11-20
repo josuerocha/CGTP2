@@ -134,12 +134,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arvore.cpp" />
+    <ClCompile Include="BolaLago.cpp" />
+    <ClCompile Include="Caixao.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CarregadorTexturas.cpp" />
     <ClCompile Include="EsferaMundo.cpp" />
     <ClCompile Include="Folha.cpp" />
     <ClCompile Include="FuncoesExtra.cpp" />
     <ClCompile Include="Galho.cpp" />
+    <ClCompile Include="Lago.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Moinho.cpp" />
     <ClCompile Include="Neblina.cpp" />
@@ -149,17 +152,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arvore.h" />
+    <ClInclude Include="BolaLago.h" />
+    <ClInclude Include="Caixao.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CarregadorTexturas.h" />
     <ClInclude Include="EsferaMundo.h" />
     <ClInclude Include="Folha.h" />
     <ClInclude Include="FuncoesExtra.h" />
     <ClInclude Include="Galho.h" />
+    <ClInclude Include="Lago.h" />
     <ClInclude Include="Moinho.h" />
     <ClInclude Include="Neblina.h" />
     <ClInclude Include="Passaro.h" />
     <ClInclude Include="PlanoChao.h" />
     <ClInclude Include="Tela.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="caixao.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

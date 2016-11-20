@@ -361,6 +361,7 @@ void Tela::Display() {
 	neblina.Display();
 	moinho->Display();
 	lago->Display();
+	caixao->Display();
 	DisplayBirds();
 	DisplayTrees();
 

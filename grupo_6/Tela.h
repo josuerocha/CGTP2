@@ -18,6 +18,7 @@
 #include "Moinho.h"
 #include "Arvore.h"
 #include "Lago.h"
+#include "Caixao.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -55,6 +56,7 @@ private:
 	EsferaMundo* esferaMundo;
 	Moinho* moinho;
 	Lago* lago;
+	Caixao* caixao;
 
 	float rgbComponents;
 	//Vetores de objetos
