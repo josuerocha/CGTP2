@@ -126,7 +126,7 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 		
 		case INCREMENT_LIGHT:  
 			//cout<<"AAAAA "<< rgbComponents + 0.1f;
-			if((rgbComponents + 0.1f) >= 0 && (rgbComponents + 0.1f) <= 1){
+			if((rgbComponents + 0.1f) >= 0 && (rgbComponents + 0.1f) <= 2.1){
 				rgbComponents += 0.1f;
 				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
 				cout<<"LIGHT INCREMENTED"<< rgbComponents <<endl;
@@ -136,7 +136,7 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 
 		case DECREMENT_LIGHT:  
 			//cout<<"AAAAA "<< rgbComponents - 0.1f;
-			if((rgbComponents - 0.1f) >= 0 && (rgbComponents - 0.1f) <= 1){
+			if((rgbComponents - 0.1f) >= 0 && (rgbComponents - 0.1f) <= 2.1){
 				rgbComponents -= 0.1f;
 				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
 				cout<<"LIGHT DECREMENTED"<< rgbComponents <<endl;
