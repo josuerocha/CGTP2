@@ -17,9 +17,9 @@ Moinho::Moinho(GLuint* c1,
 	posiX= coord.x;
 	posiY= coord.y;
 	posiZ= coord.z;
-	dimX = 3;
-	dimY = 5;
-	dimZ = 2;
+	dimX = 6;
+	dimY = 10;
+	dimZ = 4;
 	angX = 0;
 	angY = 180;
 	angZ = 0;
@@ -38,8 +38,8 @@ Moinho::Moinho(GLuint* c1,
 
 
 void Moinho::Display() {
-	GLfloat espec_grama[4] = {0.7, 0.7, 0.7, 1.0};
-	GLint especMaterial = 100;
+	GLfloat reflexao[4] = {0.7, 0.2, 0.3, 1.0};
+	GLint brilho = 100;
 
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
@@ -54,8 +54,8 @@ void Moinho::Display() {
 
 	GLUquadricObj *obj2 = gluNewQuadric();
 
-	glMaterialfv(GL_FRONT, GL_AMBIENT, espec_grama);
-	glMateriali(GL_FRONT, GL_SHININESS, especMaterial);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, reflexao);
+	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
 	glBindTexture(GL_TEXTURE_2D, *corpo);
 	gluQuadricNormals(obj2, GLU_SMOOTH);

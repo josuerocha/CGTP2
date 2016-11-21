@@ -189,6 +189,7 @@ void Camera::Update(){
 	gluLookAt(coord.x, coord.y, coord.z, lookAt.x , lookAt.y, lookAt.z , 0.0f, 1.0f, 0.0f);
     GLfloat camPosition[4] = {coord.x,coord.y,coord.z,1.0};
 	glLightfv(GL_LIGHT1, GL_POSITION, camPosition);
+    glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION,camPosition);
 }
 
 bool Camera::CheckBounds(Coord3d newCamCoordinate){

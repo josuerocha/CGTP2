@@ -18,9 +18,11 @@ private:
 
     Color colorMovingLight;
     Camera* camera;
+    GLuint* posteTex; 
+    GLuint* lampadaTex;
 
 public:
-    Luz(Camera* camera);
+    Luz(Camera* camera, GLuint* posteTex, GLuint* lampadaTex);
     ~Luz();
 
     void IncrementMovingLight();
@@ -28,6 +30,8 @@ public:
 
     void SwitchMovingLight();
     void SwitchFixedLights();
+
+    void Display();
 
 };
 

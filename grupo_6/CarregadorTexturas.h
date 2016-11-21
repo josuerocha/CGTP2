@@ -23,6 +23,8 @@ public:
 	GLuint colorfulBird;
     GLuint eye;
     GLuint water;
+    GLuint poste;
+    GLuint lampada;
 
     CarregadorTexturas();
     ~CarregadorTexturas();

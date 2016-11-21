@@ -14,7 +14,6 @@ Tela::~Tela(){
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	
-
 	glEnable(GL_COLOR_MATERIAL);                                           
 	glEnable(GL_LIGHTING);       
 	glShadeModel(GL_SMOOTH); //sombreamento suave                                              
@@ -22,7 +21,7 @@ void Tela::Initialize(){
 	glEnable( GL_DEPTH_TEST);
 	glEnable ( GL_TEXTURE_2D );                                            
 	
-	luz = new Luz(&camera);
+	luz = new Luz(&camera, &carregadorTexturas.poste, &carregadorTexturas.lampada);
 
 	//Carregando texturas
 	carregadorTexturas.LoadAll();
@@ -324,6 +323,7 @@ void Tela::Display() {
 	moinho->Display();
 	lago->Display();
 	caixao->Display();
+	luz->Display();
 	DisplayBirds();
 	DisplayTrees();
 
