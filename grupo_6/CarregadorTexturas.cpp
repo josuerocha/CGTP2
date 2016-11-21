@@ -10,7 +10,9 @@ CarregadorTexturas::~CarregadorTexturas(){
 }
 
 void CarregadorTexturas::LoadAll(){
-	this->lampada = LoadTexture("files/lampada.jpg");
+	this->mesa = LoadTexture("files/mesa.jpg");
+	this->banco = LoadTexture("files/banco.jpg");
+	this->lampada = LoadTexture("files/luz.jpg");
 	this->poste = LoadTexture("files/poste.jpg");
 	this->ceuTextura = LoadTexture("files/ceu.jpg");
 	this->chaoTextura = LoadTexture("files/grass.jpg");

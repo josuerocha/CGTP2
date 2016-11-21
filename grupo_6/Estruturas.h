@@ -67,4 +67,22 @@ typedef struct Color {
 	}
 } Cor;
 
+typedef struct Cilindro {
+	float baseRadius, topRadius, height,slices,stacks;
+	Cilindro() {
+		this->baseRadius = 0;
+		this->topRadius = 0;
+		this->height = 0;
+		this->slices = 0;
+		this->stacks = 0;
+	};
+	Cilindro(float baseRadius, float topRadius, float height, float slices, float stacks) {
+		this->baseRadius = baseRadius;
+		this->topRadius = topRadius;
+		this->height = height;
+		this->slices = slices;
+		this->stacks = stacks;
+	}
+} Cilindro;
+
 #endif

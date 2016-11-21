@@ -40,6 +40,9 @@ void Tela::Initialize(){
 	//vetorArvores.push_back(new Arvore(Coord3d(-8,0,-8),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 	//vetorArvores.push_back(new Arvore(Coord3d(-6,0,-6),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 
+	banco = new Banco(&carregadorTexturas.banco);
+	mesa = new Mesa(&carregadorTexturas.mesa);
+
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo->getRadius());
 	
@@ -146,7 +149,7 @@ void Tela::KeyboardSpecialDown(int key, int x, int y){
 	cout << "Tecla especial pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			camera.setSpeed(0.25);
+			camera.setSpeed(0.7);
 		break;
 
 		case UP:
@@ -163,7 +166,7 @@ void Tela::KeyboardSpecialUp(int key, int x, int y){
 	cout << "Tecla especial solta: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
 	switch(key){
 		case SHIFT:
-			camera.setSpeed(0.1);
+			camera.setSpeed(0.3);
 		break;
 
 		case UP:
@@ -324,6 +327,8 @@ void Tela::Display() {
 	lago->Display();
 	caixao->Display();
 	luz->Display();
+	mesa->Display();
+	banco->Display();
 	DisplayBirds();
 	DisplayTrees();
 

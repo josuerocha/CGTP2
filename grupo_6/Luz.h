@@ -16,6 +16,9 @@ private:
     bool fixedLightFlag;
     bool movingLightFlag;
 
+    Coord3d coordFixedLight1;
+    Coord3d coordFixedLight2;
+
     Color colorMovingLight;
     Camera* camera;
     GLuint* posteTex; 
@@ -33,6 +36,7 @@ public:
 
     void Display();
 
+    void DrawPole(Coord3d coord);
 };
 
 

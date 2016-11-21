@@ -20,6 +20,8 @@
 #include "Lago.h"
 #include "Caixao.h"
 #include "Luz.h"
+#include "Banco.h"
+#include "Mesa.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -60,6 +62,8 @@ private:
 	Moinho* moinho;
 	Lago* lago;
 	Caixao* caixao;
+	Banco* banco;
+	Mesa* mesa;
 
 	float rgbComponents;
 	//Vetores de objetos

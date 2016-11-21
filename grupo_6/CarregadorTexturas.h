@@ -25,6 +25,8 @@ public:
     GLuint water;
     GLuint poste;
     GLuint lampada;
+    GLuint mesa;
+    GLuint banco;
 
     CarregadorTexturas();
     ~CarregadorTexturas();
