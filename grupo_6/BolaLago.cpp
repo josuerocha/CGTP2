@@ -27,19 +27,22 @@ BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float
 
 
 void BolaLago::desenha() {
-	glDisable(GL_TEXTURE_2D);
 	glPushMatrix();
 
-//	ambiente[0] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
-//	ambiente[1] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
-//	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
-//	ambiente[3] = 1-((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[0] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[1] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[3] = 1-((posiY - posiYMin) / (posiYMax - posiYMin));
 
-//	brilho = 100;
+	ambiente[3] = rand() % ((1 - 0) + 1) + 0;
 
-//	glMaterialfv(GL_FRONT, GL_AMBIENT, ambiente);
-//	glMaterialfv(GL_FRONT, GL_DIFFUSE, ambiente);
-//	glMateriali(GL_FRONT, GL_SHININESS, brilho);
+	cout<<"ALPHA "<<ambiente[3]<<endl;
+
+	brilho = 100;
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT, ambiente);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, ambiente);
+	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
 	//glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *waterTex);
@@ -81,7 +84,6 @@ void BolaLago::desenha() {
 			posiY = posiYdescanso;
 		}
 	}
-	glEnable(GL_TEXTURE_2D);
 }
 
 
