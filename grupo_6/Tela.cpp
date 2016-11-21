@@ -305,18 +305,16 @@ void Tela::ControleTela(){
 }
 
 void Tela::Display() {
-	//glLoadIdentity();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_COLOR_MATERIAL);
-    //glMatrixMode(GL_MODELVIEW);
 	
 
-	GLfloat espec_grama[4] = {0.6, 0.5, 0, 1.0};
-	GLint especMaterial = 60;
+	GLfloat componenteReflexao[4] = {0.6, 0.5, 0, 1.0};
+	GLint brilho = 60;
 
-	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, espec_grama);
-	glMateriali(GL_FRONT, GL_SHININESS, especMaterial);
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, componenteReflexao);
+	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
 	//Muda estados dos componentes da tela
 	camera.Update();

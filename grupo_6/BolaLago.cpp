@@ -32,9 +32,9 @@ void BolaLago::desenha() {
 	ambiente[0] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
 	ambiente[1] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
 	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
-	ambiente[3] = 1-((posiY - posiYMin) / (posiYMax - posiYMin));
+	ambiente[3] = 1 - ((posiY - posiYMin) / (posiYMax - posiYMin));
 
-	ambiente[3] = rand();
+	//ambiente[3] = rand();
 
 	brilho = 100;
 
@@ -42,7 +42,6 @@ void BolaLago::desenha() {
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, ambiente);
 	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
-	//glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, *waterTex);
 
 	glTranslatef(posiX, posiY, posiZ);
