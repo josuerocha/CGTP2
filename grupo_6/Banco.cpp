@@ -116,7 +116,7 @@ void Banco::lerArquivo(const char *path) {
 	fclose(file);
 }
 void Banco::Display() {
-	lerArquivo("banco.txt");
+	lerArquivo("modelos//banco.txt");
 
 	glPushMatrix();
 	//	glBindTexture(GL_TEXTURE_2D, casaTextura);

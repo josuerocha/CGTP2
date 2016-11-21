@@ -98,7 +98,7 @@ void Caixao::lerArquivo(const char *path) {
 }
 
 void Caixao::Display() {
-	lerArquivo("caixao.txt");
+	lerArquivo("modelos//caixao.txt");
 	
 	//glBindTexture(GL_TEXTURE_2D, caixaoTextura);
 	

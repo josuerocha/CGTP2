@@ -141,7 +141,7 @@ void Mesa::lerArquivo(const char *path) {
 	fclose(file);
 }
 void Mesa::Display() {
-	lerArquivo("mesa.txt");
+	lerArquivo("modelos//mesa.txt");
 	
 	glPushMatrix();
 	glRotatef(-90, 1, 0, 0);
