@@ -19,6 +19,7 @@
 #include "Arvore.h"
 #include "Lago.h"
 #include "Caixao.h"
+#include "Luz.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -33,7 +34,7 @@
 #define CAM_COORDINATES 'c'
 #define FOG_INCREASE 'f'
 #define FOG_DECREASE 'g'
-#define DIFFUSE_LIGHT 'o'
+#define MOVING_LIGHT 'o'
 #define INCREMENT_LIGHT '+'
 #define DECREMENT_LIGHT '-'
 #define FIXED_LIGHT_SWITCH 'l'
@@ -47,11 +48,11 @@ private:
 	bool keyBuffer[10]; //Respectivamente forward, backward, left, right,up,down, click, rightclick, fog up, fog down
     bool fullScreen;
 	glutWindow janela;
-	bool diffuseLightFlag;
-	bool fixedLightFlag;
+	
 	//Classes de controle
 	Camera camera;
 	CarregadorTexturas carregadorTexturas;
+	Luz* luz;
     
 	//Objetos
 	PlanoChao* planoChao;

@@ -5,8 +5,6 @@ using namespace std;
 Tela::Tela(){	
 	//Inicia cenário com tela inteira
 	fullScreen = true;
-	diffuseLightFlag = true;
-	fixedLightFlag = true;
 }
 
 Tela::~Tela(){
@@ -16,50 +14,16 @@ Tela::~Tela(){
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	
-	glShadeModel(GL_SMOOTH); //sombreamento suave                                              
-
- 	//Luz ambiente
-	GLfloat posicaoLuzAmbiente[4] = {0.0, 20.0, 0.0, 1.0};
-	GLfloat luzAmbiente[4] = {0.2, 0.2, 0.2, 1.0};          
-
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);                   
-	glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);                         
-	glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuzAmbiente);
-
-	//Luz difusa e especular em cima da camera
-	GLfloat posicaocamera[4] = {camera.getCoord_ptr()->x,camera.getCoord_ptr()->y,camera.getCoord_ptr()->z,1.0};
-	GLfloat luzMovel[4]={0.1f,0.1f,0.1f,1.0};
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, luzMovel);
-	glLightfv(GL_LIGHT1, GL_EMISSION, luzMovel);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, luzMovel);
-	glLightfv(GL_LIGHT1, GL_POSITION, posicaocamera);
-
-	//Luz na posicao fixa 1
-	GLfloat luzFixa1[4] = {0.2f, 0.2f, 1.0f, 1.0f};
-	GLfloat posicaoLuzFixa1[4] = {0.0f, 1.0f, 20.0f, 1.0f};
-	glLightfv(GL_LIGHT2, GL_DIFFUSE, luzFixa1);
-	glLightfv(GL_LIGHT2, GL_SPECULAR, luzFixa1);
-	glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuzFixa1);
-
-	//Luz na posicao fixa 2
-	GLfloat luzFixa2[4] = {1.0f, 0.2f, 0.2f, 1.0f};
-	GLfloat posicaoLuzFixa2[4] = {0.0f, 1.0f, -20.0f, 1.0f};
-	glLightfv(GL_LIGHT3, GL_DIFFUSE, luzFixa2);
-	glLightfv(GL_LIGHT3, GL_SPECULAR, luzFixa2);
-	glLightfv(GL_LIGHT3, GL_POSITION, posicaoLuzFixa2);
 
 	glEnable(GL_COLOR_MATERIAL);                                           
-	glEnable(GL_LIGHTING);                      						   
-	glEnable(GL_LIGHT0);												   
-	glEnable(GL_LIGHT1);
-	glEnable(GL_LIGHT2);
-	glEnable(GL_LIGHT3);
-
+	glEnable(GL_LIGHTING);       
+	glShadeModel(GL_SMOOTH); //sombreamento suave                                              
 
 	glEnable( GL_DEPTH_TEST);
-	glEnable ( GL_TEXTURE_2D );                                            /*habilita texturas 2d e elas são configuradas*/
+	glEnable ( GL_TEXTURE_2D );                                            
 	
-	rgbComponents = 0;
+	luz = new Luz(&camera);
+
 	//Carregando texturas
 	carregadorTexturas.LoadAll();
 
@@ -84,8 +48,6 @@ void Tela::Initialize(){
 
 void Tela::KeyboardDown(unsigned char key, int x, int y) {
 	cout << "Tecla regular pressionada: " << char(key) << ". Mouse (" << x << ',' << y << ')' << endl;
-
-	GLfloat luzdifusa[4] = {rgbComponents, rgbComponents, rgbComponents, 1.0};
 
 	switch (key) {
         case FORWARD:
@@ -133,44 +95,21 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 			cout<<"X "<<camera.getCoord_ptr()->x<<" Y "<<camera.getCoord_ptr()->y<<" Z "<<camera.getCoord_ptr()->z<<endl;
 		break;
 
-		case DIFFUSE_LIGHT:
-			if(diffuseLightFlag) {   glEnable(GL_LIGHT1); }
-			else {  glDisable(GL_LIGHT1); }
-			diffuseLightFlag = !diffuseLightFlag;
+		case MOVING_LIGHT:
+			luz->SwitchMovingLight();
 		break;
 		
 		case INCREMENT_LIGHT:  
-			//cout<<"AAAAA "<< rgbComponents + 0.1f;
-			if((rgbComponents + 0.1f) >= 0 && (rgbComponents + 0.1f) <= 2.1){
-				rgbComponents += 0.1f;
-				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
-				glLightfv(GL_LIGHT1, GL_SPECULAR, luzdifusa);
-			}
-
+			luz->IncrementMovingLight();
 		break;
 
 		case DECREMENT_LIGHT:  
-			//cout<<"AAAAA "<< rgbComponents - 0.1f;
-			if((rgbComponents - 0.1f) >= 0 && (rgbComponents - 0.1f) <= 2.1){
-				rgbComponents -= 0.1f;
-				glLightfv(GL_LIGHT1, GL_DIFFUSE, luzdifusa);
-				glLightfv(GL_LIGHT1, GL_SPECULAR, luzdifusa);
-			}
-
+			luz->DecrementMovingLight();
 		break;
 
 		case FIXED_LIGHT_SWITCH:
-			if(fixedLightFlag){
-				glEnable(GL_LIGHT2);
-				glEnable(GL_LIGHT3);
-			}
-			else{
-				glDisable(GL_LIGHT2);
-				glDisable(GL_LIGHT3);
-			}
-			fixedLightFlag = !fixedLightFlag;
+			luz->SwitchFixedLights();
 		break;
-		
 	}
 	cout << "POSICAO X: " << x << "POSICAO Y: " << y << endl;
 }
@@ -366,19 +305,19 @@ void Tela::ControleTela(){
 }
 
 void Tela::Display() {
-	glLoadIdentity();
-	GLfloat posicaocamera[4] = {camera.getCoord_ptr()->x,camera.getCoord_ptr()->y,camera.getCoord_ptr()->z,1.0};
-	glLightfv(GL_LIGHT1, GL_POSITION, posicaocamera);
+	//glLoadIdentity();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glEnable(GL_COLOR_MATERIAL);
     //glMatrixMode(GL_MODELVIEW);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
 
 	GLfloat espec_grama[4] = {0.6, 0.5, 0, 1.0};
 	GLint especMaterial = 60;
 
-	glMaterialfv(GL_FRONT, GL_AMBIENT, espec_grama);
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, espec_grama);
 	glMateriali(GL_FRONT, GL_SHININESS, especMaterial);
+
 	//Muda estados dos componentes da tela
 	camera.Update();
 	planoChao->Display();

@@ -8,16 +8,26 @@
 
 //Custom includes
 #include "Estruturas.h"
+#include "Camera.h"
 
 class Luz{
 
 private:
+    bool fixedLightFlag;
+    bool movingLightFlag;
 
+    Color colorMovingLight;
+    Camera* camera;
 
 public:
-    Luz();
+    Luz(Camera* camera);
     ~Luz();
 
+    void IncrementMovingLight();
+    void DecrementMovingLight();
+
+    void SwitchMovingLight();
+    void SwitchFixedLights();
 
 };
 

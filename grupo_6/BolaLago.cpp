@@ -34,9 +34,7 @@ void BolaLago::desenha() {
 	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
 	ambiente[3] = 1-((posiY - posiYMin) / (posiYMax - posiYMin));
 
-	ambiente[3] = rand() % ((1 - 0) + 1) + 0;
-
-	cout<<"ALPHA "<<ambiente[3]<<endl;
+	ambiente[3] = rand();
 
 	brilho = 100;
 
