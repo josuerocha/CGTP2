@@ -14,7 +14,10 @@ Tela::~Tela(){
 void Tela::Initialize(){
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	
-	glEnable(GL_COLOR_MATERIAL);                                           
+	glEnable(GL_COLOR_MATERIAL);
+	glEnable (GL_BLEND); 
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
 	glEnable(GL_LIGHTING);       
 	glShadeModel(GL_SMOOTH); //sombreamento suave                                              
 
@@ -324,13 +327,14 @@ void Tela::Display() {
 	esferaMundo->Display();
 	neblina.Display();
 	moinho->Display();
-	lago->Display();
 	caixao->Display();
 	luz->Display();
 	mesa->Display();
 	banco->Display();
 	DisplayBirds();
 	DisplayTrees();
+
+	lago->Display();
 
     glutSwapBuffers();
 }

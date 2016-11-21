@@ -93,16 +93,37 @@ void Luz::SwitchFixedLights(){
         glDisable(GL_LIGHT2);
 		glDisable(GL_LIGHT3);  
         cout<<"DISABLING"<<endl;
+
+		GLfloat posicaoLuzAmbiente[4] = {0.0, 20.0, 0.0, 1.0};
+		GLfloat luzAmbiente[4] = {0.05, 0.05, 0.05, 1.0};          
+		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);                   
+		glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);                         
+		glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuzAmbiente);
+
     }
+
     else {  
         glEnable(GL_LIGHT2);
 		glEnable(GL_LIGHT3); 
         cout<<"ENABLING"<<endl;
+
+		GLfloat posicaoLuzAmbiente[4] = {0.0, 20.0, 0.0, 1.0};
+		GLfloat luzAmbiente[4] = {0.00, 0.00, 0.00, 1.0};          
+		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);                   
+		glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);                         
+		glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuzAmbiente);
+
     }
     fixedLightFlag = !fixedLightFlag;
 }
 
 void Luz::Display(){
+
+	GLUquadricObj *obj = gluNewQuadric();
+	gluQuadricNormals(obj, GLU_SMOOTH);
+	gluQuadricTexture(obj, GL_TRUE);
+	gluSphere(obj,1,30,30);
+
 	
 	DrawPole(coordFixedLight1);
 
@@ -127,6 +148,5 @@ void Luz::DrawPole(Coord3d coord){
 		gluQuadricNormals(obj2, GLU_SMOOTH);
 		gluQuadricTexture(obj2, GL_TRUE);
 		gluSphere(obj2,1,30,30);
-
 	glPopMatrix();
 }
