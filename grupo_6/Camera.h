@@ -15,6 +15,7 @@ class Camera{
     Coord3d lookAt;
     Coord3d normalVector;
     float speed;
+    float speedRotation;
     float angle;
     GLdouble limitRadius;
 

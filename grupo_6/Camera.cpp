@@ -7,6 +7,7 @@ Camera::Camera(){
     normalVector = Coord3d(-0.999573, 0, -0.0291989);
     lookAt = Coord3d(-60.6177, 12.03, 2.44907);
     setSpeed(0.05);
+    speedRotation = 0.025;
     angle = 1.6;
     Update();
 }
@@ -137,7 +138,7 @@ void Camera::MoveBack(){
 }
 
 void Camera::RotateRight(){
-    angle -= speed;
+    angle -= speedRotation;
     float deltax = sin(angle);
 	float deltaz = -cos(angle);
 
@@ -150,7 +151,7 @@ void Camera::RotateRight(){
 }
 
 void Camera::RotateLeft(){
-    angle += speed;
+    angle += speedRotation;
     float deltax = sin(angle);
 	float deltaz = -cos(angle);
 
