@@ -29,7 +29,7 @@ void Tela::Initialize(){
 	//Carregando texturas
 	carregadorTexturas.LoadAll();
 
-	//Criando objetos
+	//Criando objetos da fase
 	planoChao = new PlanoChao(&carregadorTexturas.chaoTextura);
 	esferaMundo = new EsferaMundo(&carregadorTexturas.ceuTextura);
 	moinho = new Moinho(&carregadorTexturas.madeira, &carregadorTexturas.metal, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(90,0,30));
@@ -41,8 +41,12 @@ void Tela::Initialize(){
 	
 	arvoreGrande = new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore);
 
-	vetorArvoresSimples.push_back(new ArvoreSimples(Coord3d(5,0,20),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
-	//vetorArvoresSimples.push_back(new ArvoreSimples(Coord3d(3,0,3),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
+	for (unsigned int i =0; i < 5; i++){
+		for (unsigned int j =0; j < 5; j++){
+			
+			vetorArvoresSimples.push_back(new ArvoreSimples(Coord3d(i*10-15,0,j*10+20),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
+		}
+	}
 
 	banco = new Banco(&carregadorTexturas.banco);
 	mesa = new Mesa(&carregadorTexturas.mesa);

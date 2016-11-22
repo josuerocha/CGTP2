@@ -7,6 +7,7 @@
 #define PI 3.14159265
 using namespace std;
 OndaLago::OndaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* textura) {
+	//Inicializando variaveis gerais
 	posiX = x;
 	posiY = y;
 	posiZ = z;
@@ -45,7 +46,7 @@ void OndaLago::desenha() {
 	
 	GLfloat componenteReflexao[4] = {0.5,0.5,0.5,1};
 
-
+	//variando componentes alpha e b
 	componenteReflexao[3] = (GLfloat) RandomFloat(0,1);
 	componenteReflexao[2] = (GLfloat) RandomFloat(0,1);
 
@@ -62,7 +63,7 @@ void OndaLago::desenha() {
 
 	glPushMatrix();
 	glScalef(dimX, dimY, dimZ);
-											  //desenhar um circulo raio 0.5, centro(0,0,0)
+											  //desenhar um esfera raio 0.5, centro(0,0,0)
 	GLUquadricObj *obj1 = gluNewQuadric();
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
