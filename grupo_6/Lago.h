@@ -1,6 +1,7 @@
 #ifndef LAGO_H
 #define LAGO_H
-//standard includes
+
+//Standard includes
 #include "GL/glut.h"
 #include "soil/SOIL.h"
 #include <math.h>
@@ -9,31 +10,33 @@
 #include <vector>
 #include <iostream>
 
-//custom includes
+//Custom includes
 #include "BolaLago.h"
 #include "Estruturas.h"
+
+using namespace std;
 
 
 class Lago {
 private:
+	GLuint* textura;
 
-	float posiX;
-	float posiY;
-	float posiZ;
-	float dimX;
-	float dimY;
-	float dimZ;
-	std::vector <BolaLago*> bolas;
+	float posiX;//a coordenada X do seu centro
+	float posiY;//a coordenada Y do seu centro
+	float posiZ;//a coordenada Z do seu centro
+	float dimX;// a dimencao em relacao ao eixo X
+	float dimY;// a dimencao em relacao ao eixo Y
+	float dimZ;// a dimencao em relacao ao eixo Z
+	vector <BolaLago*> bolas;
 	float tamanhoBolas;
 	float qtdBolasZ;
 	float qtdBolasX;
-
-	GLuint* waterTex;
+	float anguloDaOnda;
 
 public:
 
-	Lago(Coord3d coord, GLuint* waterTex);
-
+	Lago(Coord3d coord, GLuint* textura);
+	~Lago();
 
 	void Display();
 

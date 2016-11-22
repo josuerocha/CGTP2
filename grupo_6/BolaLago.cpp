@@ -6,7 +6,7 @@
 
 #define PI 3.14159265
 using namespace std;
-BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* waterTex) {
+BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* textura) {
 	posiX = x;
 	posiY = y;
 	posiZ = z;
@@ -14,48 +14,52 @@ BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float
 	dimX = dx;
 	dimY = dy;
 	dimZ = dz;
-	velocidade = 0.2;
+	velocidade = 0.8;
 	subindo = true;
 	subiu = false;
-	posiYMax = y + 0.2*dimY;
+	posiYMax = y + 0.4*dimY;
 	posiYMin = y - 0.0*dimY;
-	tempoEspera = 100;
+	tempoEspera = 5;
 	tempo = tempo2;
 
-	this->waterTex = waterTex;
+	this->textura = textura;
+
+	brilho = 0;
 }
 
 
 void BolaLago::desenha() {
+	glBindTexture(GL_TEXTURE_2D, *textura);
+
 	glPushMatrix();
 
-	ambiente[0] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
-	ambiente[1] = 0.3*((posiY - posiYMin) / (posiYMax - posiYMin));
-	ambiente[2] = 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin));
-	ambiente[3] = 1 - ((posiY - posiYMin) / (posiYMax - posiYMin));
+	glEnable(GL_BLEND);
+	
+	GLfloat componenteReflexao[4] = {0.3*((posiY - posiYMin) / (posiYMax - posiYMin)),  0.3*((posiY - posiYMin) / (posiYMax - posiYMin)), 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin)), 1-((posiY - posiYMin) / (posiYMax - posiYMin))};
 
-	//ambiente[3] = rand();
+	brilho += 1;
 
-	brilho = 100;
-
-	glMaterialfv(GL_FRONT, GL_AMBIENT, ambiente);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, ambiente);
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, componenteReflexao);
 	glMateriali(GL_FRONT, GL_SHININESS, brilho);
 
-	glBindTexture(GL_TEXTURE_2D, *waterTex);
+	if (brilho >= 100){
+		brilho = 0;
+	}
 
 	glTranslatef(posiX, posiY, posiZ);
 
 	glPushMatrix();
 	glScalef(dimX, dimY, dimZ);
-
+											  //desenhar um circulo raio 0.5, centro(0,0,0)
 	GLUquadricObj *obj1 = gluNewQuadric();
-
+	//glColor3f(0.5, 0.5, 0.5);
+	//glBindTexture(GL_TEXTURE_2D, texture_id[textura]);
 	gluQuadricNormals(obj1, GLU_SMOOTH);
 	gluQuadricTexture(obj1, GL_TRUE);
 	gluSphere(obj1, 0.5, 20, 20);
 	glPopMatrix();
 
+	glColor3f(1,1,1);
 	glPopMatrix();
 
 
@@ -67,6 +71,7 @@ void BolaLago::desenha() {
 		}
 		else {
 			posiY -= velocidade;
+
 		}
 		if (posiY >= posiYMax) {
 			subindo = false;
@@ -81,6 +86,9 @@ void BolaLago::desenha() {
 			posiY = posiYdescanso;
 		}
 	}
+
+	//glDisable(GL_BLEND);
+
 }
 
 

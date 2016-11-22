@@ -4,48 +4,55 @@
 #include <ctime>
 #include <vector>
 
-using namespace std;
 
 #define PI 3.14159265
 using namespace std;
-Lago::Lago(Coord3d coord,GLuint* waterTex) {
+Lago::Lago(Coord3d coord, GLuint* textura) {
+
+	this->textura = textura;
 
 	posiX = coord.x;
 	posiY = coord.y;
 	posiZ = coord.z;
-	dimX = 10;
-	dimY = 2.5;
-	dimZ = 10;
+	dimX = 20;
+	dimY = 5;
+	dimZ = 15;
 	qtdBolasZ = 10;
 	qtdBolasX = 20;
 	tamanhoBolas = dimZ/(qtdBolasZ*0.75);
+	anguloDaOnda = 2;
 
-	this->waterTex = waterTex;
+	
 
 	int c = 0;
 	for (int a = 1;a <= qtdBolasX/2;a++) {
-		if(a<= qtdBolasZ/2)c+=2;
+		if (a <= 1)c += qtdBolasZ;
+		//Criação das bolas que compoem o lago de acordo com sua dimensao
 		for (int b = 1;b <= c/2;b++) {
-			bolas.push_back(new BolaLago(posiX + (((qtdBolasX/2)+1-a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*a-35*b,waterTex));
-			bolas.push_back(new BolaLago(posiX + (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*a-35*b,waterTex));
-			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*(qtdBolasX+1-a)-35*b,waterTex));
-			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-35*(qtdBolasX+1-a)-35*b,waterTex));
+			bolas.push_back(new BolaLago(posiX + (((qtdBolasX/2)+1-a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*a-3*(ceil(b/anguloDaOnda)),textura));
+			bolas.push_back(new BolaLago(posiX + (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*a-3* (ceil(b / anguloDaOnda)),textura));
+			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*(qtdBolasX+1-a)-3* (ceil(b / anguloDaOnda)),textura));
+			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*(qtdBolasX+1-a)-3* (ceil(b / anguloDaOnda)),textura));
 		}
 	}
+}
+
+Lago::~Lago(){
 
 }
 
-
 void Lago::Display() {
 	
-	for (unsigned int i = 0;i < bolas.size();i++) {
+	for (int i = 0;i < bolas.size();i++) {
 		bolas[i]->desenha();
 	}
 
 }
 
+float Lago::getPosiX() { 
+	return posiX; 
+}
 
-float Lago::getPosiX() { return posiX; }
 float Lago::getPosiY() { return posiY; }
 float Lago::getPosiZ() { return posiZ; }
 float Lago::getDimX() { return dimX; }
