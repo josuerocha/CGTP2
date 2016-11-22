@@ -75,10 +75,10 @@
     <ClCompile Include="Barco.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="caixadeareia.cpp">
+    <ClCompile Include="Casa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Casa.cpp">
+    <ClCompile Include="CaixaAreia.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,13 +140,13 @@
     <ClInclude Include="Barco.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="caixadeareia.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Estruturas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Casa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CaixaAreia.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

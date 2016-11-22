@@ -27,10 +27,12 @@ public:
     GLuint lampada;
     GLuint mesa;
     GLuint banco;
-	GLuint barco;
 	GLuint topoAreia;
 	GLuint baseAreia;
 	GLuint caixao;
+	GLuint baseBarco;
+	GLuint cilindroBarco;
+	GLuint trianguloBarco;
 
     CarregadorTexturas();
     ~CarregadorTexturas();

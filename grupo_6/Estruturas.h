@@ -37,6 +37,23 @@ typedef struct Coord3d {
 	}
 } Coord3d;
 
+typedef struct Cone {
+	float base, height, slices,stacks;
+	Cone() {
+		this->base = 0;
+		this->height = 0;
+		this->slices = 0;
+		this->stacks = 0;
+	};
+	Cone(float base, float height, float slices, float stacks) {
+		this->base = base;
+		this->height = height;
+		this->slices = slices;
+		this->stacks = stacks;
+	}
+} Cone;
+
+
 typedef struct Dimensao2d {
 	float largura, altura;
 	Dimensao2d() {};

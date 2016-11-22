@@ -137,7 +137,7 @@
     <ClCompile Include="Banco.cpp" />
     <ClCompile Include="Barco.cpp" />
     <ClCompile Include="BolaLago.cpp" />
-    <ClCompile Include="caixadeareia.cpp" />
+    <ClCompile Include="CaixaAreia.cpp" />
     <ClCompile Include="Caixao.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CarregadorTexturas.cpp" />
@@ -161,7 +161,7 @@
     <ClInclude Include="Banco.h" />
     <ClInclude Include="Barco.h" />
     <ClInclude Include="BolaLago.h" />
-    <ClInclude Include="caixadeareia.h" />
+    <ClInclude Include="CaixaAreia.h" />
     <ClInclude Include="Caixao.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CarregadorTexturas.h" />

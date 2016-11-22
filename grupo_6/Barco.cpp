@@ -8,6 +8,10 @@
 
 using namespace std;
 
+GLUquadricObj *b_cilindro = gluNewQuadric();
+
+vector<Cilindro> cilindro_b;
+vector<Cone> triangulo;
 vector<Coord3d> b_normais;
 vector<Coord3d> b_temp_v1;
 vector<Coord3d> b_temp_v2;
@@ -26,10 +30,13 @@ Barco::Barco()
 {
 }
 
-Barco::Barco(GLuint* barcoTextura)
+Barco::Barco(GLuint* baseTextura, GLuint* cilindroTextura, GLuint* trianguloTextura)
 {
 
-	this->barcoTextura = *barcoTextura;
+	this->baseTextura = *baseTextura;
+	this->cilindroTextura = *cilindroTextura;
+	this->trianguloTextura = *trianguloTextura;
+	lerArquivo("modelos//barco.txt");
 
 }
 
@@ -55,6 +62,16 @@ void Barco::lerArquivo(const char *path) {
 			Coord3d normal;
 			fscanf(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
 			b_normais.push_back(normal);
+		}
+		else if (strcmp(lineHeader, "c") == 0) {
+			Cilindro b_c;
+			fscanf(file, "%f %f %f %f %f", &b_c.baseRadius, &b_c.topRadius, &b_c.height, &b_c.slices, &b_c.stacks);
+			cilindro_b.push_back(b_c);
+		}
+		else if (strcmp(lineHeader, "cu") == 0) {
+			Cone triangulo_;
+			fscanf(file, "%f %f %f %f", &triangulo_.base, &triangulo_.height, &triangulo_.slices, &triangulo_.stacks);
+			triangulo.push_back(triangulo_);
 		}
 		else if (strcmp(lineHeader, "v1") == 0) {
 			Coord3d v1;
@@ -105,12 +122,10 @@ void Barco::lerArquivo(const char *path) {
 	}
 	fclose(file);
 }
-void Barco::Display() {
-	lerArquivo("modelos//barco.txt");
-	glBindTexture(GL_TEXTURE_2D, barcoTextura);
-	//glTranslatef(-50,0,-50);
-	glPushMatrix();
 
+void Barco::DisplayBase() {
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, baseTextura);
 	glRotatef(90, 0, 1, 0);
 	glTranslatef(-20, 0, 20);
 	glBegin(GL_QUADS);
@@ -120,14 +135,14 @@ void Barco::Display() {
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v1[2].x, b_temp_v1[2].y + 0.8, b_temp_v1[2].z);
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(b_temp_v1[3].x, b_temp_v1[3].y + 0.8, b_temp_v1[3].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[1].x, b_normais[1].y, b_normais[1].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v2[0].x, b_temp_v2[0].y + 0.8, b_temp_v2[0].z);
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(b_temp_v2[1].x, b_temp_v2[1].y + 0.8, b_temp_v2[1].z);
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v2[2].x, b_temp_v2[2].y + 0.8, b_temp_v2[2].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[2].x, b_normais[2].y, b_normais[2].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v3[0].x, b_temp_v3[0].y + 0.8, b_temp_v3[0].z);
@@ -135,14 +150,14 @@ void Barco::Display() {
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v3[2].x, b_temp_v3[2].y + 0.8, b_temp_v3[2].z);
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(b_temp_v3[3].x, b_temp_v3[3].y + 0.8, b_temp_v3[3].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[3].x, b_normais[3].y, b_normais[3].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v4[0].x, b_temp_v4[0].y + 0.8, b_temp_v4[0].z);
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(b_temp_v4[1].x, b_temp_v4[1].y + 0.8, b_temp_v4[1].z);
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v4[2].x, b_temp_v4[2].y + 0.8, b_temp_v4[2].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[4].x, b_normais[4].y, b_normais[4].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v5[0].x, b_temp_v5[0].y + 0.8, b_temp_v5[0].z);
@@ -150,7 +165,7 @@ void Barco::Display() {
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v5[2].x, b_temp_v5[2].y + 0.8, b_temp_v5[2].z);
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(b_temp_v5[3].x, b_temp_v5[3].y + 0.8, b_temp_v5[3].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[5].x, b_normais[5].y, b_normais[5].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v6[0].x, b_temp_v6[0].y + 0.8, b_temp_v6[0].z);
@@ -158,15 +173,15 @@ void Barco::Display() {
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v6[2].x, b_temp_v6[2].y + 0.8, b_temp_v6[2].z);
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(b_temp_v6[3].x, b_temp_v6[3].y + 0.8, b_temp_v6[3].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[6].x, b_normais[6].y, b_normais[6].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v7[0].x, b_temp_v7[0].y + 0.8, b_temp_v7[0].z);
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(b_temp_v7[1].x, b_temp_v7[1].y + 0.8, b_temp_v7[1].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(b_temp_v7[1].x, b_temp_v7[1].y + 0.8, b_temp_v7[1].z);
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v7[2].x, b_temp_v7[2].y + 0.8, b_temp_v7[2].z);
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(b_temp_v7[3].x, b_temp_v7[3].y + 0.8, b_temp_v7[3].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[7].x, b_normais[7].y, b_normais[7].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v8[0].x, b_temp_v8[0].y + 0.8, b_temp_v8[0].z);
@@ -174,7 +189,7 @@ void Barco::Display() {
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(b_temp_v8[2].x, b_temp_v8[2].y + 0.8, b_temp_v8[2].z);
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(b_temp_v8[3].x, b_temp_v8[3].y + 0.8, b_temp_v8[3].z);
 	glEnd();
-	
+
 	glBegin(GL_QUADS);
 	glNormal3f(b_normais[8].x, b_normais[8].y, b_normais[8].z);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(b_temp_v9[0].x, b_temp_v9[0].y + 0.8, b_temp_v9[0].z);
@@ -184,6 +199,31 @@ void Barco::Display() {
 	glEnd();
 
 	glPopMatrix();
-	
 }
+
+void Barco::DisplayCilindro() {
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, cilindroTextura);
+	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
+	glTranslatef(20.0f, -20.0f, 1.0f);
+	gluCylinder(b_cilindro, cilindro_b[0].baseRadius, cilindro_b[0].topRadius, cilindro_b[0].height, cilindro_b[0].slices, cilindro_b[0].stacks);
+	glPopMatrix();
+}
+
+void Barco::DisplayTriangulo() {
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, trianguloTextura);
+	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
+	glRotatef(1.0f, 0.0f, 1.0f, 0.0f);
+	glTranslatef(20.01f, -20.01f, 3.10f);
+	glutSolidCone(triangulo[0].base, triangulo[0].height, triangulo[0].slices, triangulo[0].stacks);
+	glPopMatrix();
+}
+
+void Barco::Display() {
+	DisplayBase();
+	DisplayCilindro();
+	DisplayTriangulo();
+}
+
 

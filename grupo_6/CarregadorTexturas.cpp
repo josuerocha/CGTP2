@@ -10,17 +10,16 @@ CarregadorTexturas::~CarregadorTexturas(){
 }
 
 void CarregadorTexturas::LoadAll(){
-	this->barco = LoadTexture("files/barco.jpg");
 	this->mesa = LoadTexture("files/madeira.jpg");
 	this->banco = LoadTexture("files/madeira.jpg");
 	this->caixao = LoadTexture("files/baseareia.jpg");
-
+	this->baseBarco = LoadTexture("files/baseBarco.jpg");
+	this->cilindroBarco = LoadTexture("files/cilindroBarco.jpg");
+	this->trianguloBarco = LoadTexture("files/trianguloBarco.jpg");
 	this->topoAreia = LoadTexture("files/topoareia.jpg");
 	this->baseAreia = LoadTexture("files/baseareia.jpg");
-
 	this->lampada = LoadTexture("files/luz.jpg");
 	this->poste = LoadTexture("files/poste.jpg");
-
 	this->ceuTextura = LoadTexture("files/ceu.jpg");
 	this->chaoTextura = LoadTexture("files/grass.jpg");
 	this->madeira = LoadTexture("files/madeira.jpg");

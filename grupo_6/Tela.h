@@ -69,6 +69,7 @@ private:
 	Barco* barco;
 	CaixaAreia *caixaAreia;
 
+
 	float rgbComponents;
 	//Vetores de objetos
 	std::vector <Passaro*> vetorPassaros;

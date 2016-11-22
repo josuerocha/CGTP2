@@ -17,14 +17,19 @@
 class Barco
 {
 private:
-	GLuint barcoTextura;
+	GLuint baseTextura;
+	GLuint cilindroTextura;
+	GLuint trianguloTextura;
 public:
 	Barco();
-	Barco(GLuint* barcoTextura);
+	Barco(GLuint* barcoTextura, GLuint* cilindroTextura, GLuint* trianguloTextura);
 
 	~Barco();
 
 	void lerArquivo(const char *path);
+	void DisplayBase();
+	void DisplayCilindro();
+	void DisplayTriangulo();
 	void Display();
 
 };
