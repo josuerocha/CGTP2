@@ -29,12 +29,19 @@ BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float
 
 
 void BolaLago::desenha() {
+	bool enableTransparency = false;
+
 	glBindTexture(GL_TEXTURE_2D, *textura);
 
 	glPushMatrix();
 
-	glEnable(GL_BLEND); 
-	glBlendFunc(GL_SRC_ALPHA,GL_ONE);
+	float random = RandomFloat(0, 1);
+
+	if(random > 0.8){
+		glEnable(GL_BLEND); 
+		glBlendFunc(GL_SRC_ALPHA,GL_SRC_ALPHA);
+		enableTransparency = true;
+	}
 	
 	GLfloat componenteReflexao[4] = {0.3*((posiY - posiYMin) / (posiYMax - posiYMin)),  0.3*((posiY - posiYMin) / (posiYMax - posiYMin)), 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin)), 1-((posiY - posiYMin) / (posiYMax - posiYMin))};
 
@@ -87,11 +94,17 @@ void BolaLago::desenha() {
 			posiY = posiYdescanso;
 		}
 	}
-
-	glDisable(GL_BLEND);
-
+	if(enableTransparency){
+		glDisable(GL_BLEND);
+	}
 }
 
+float BolaLago::RandomFloat(float a, float b) {
+    float random = ((float) rand()) / (float) RAND_MAX;
+    float diff = b - a;
+    float r = random * diff;
+    return a + r;
+}
 
 float BolaLago::getPosiX() { return posiX; }
 float BolaLago::getPosiY() { return posiY; }

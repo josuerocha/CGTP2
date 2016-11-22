@@ -32,6 +32,8 @@ public:
 
 
 	void desenha();//e' chamada pelo programa principal para desenhar o Obj.
+	
+	float RandomFloat(float a, float b);
 
 	float getPosiX();
 	float getPosiY();
