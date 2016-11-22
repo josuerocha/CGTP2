@@ -35,6 +35,9 @@ void Tela::Initialize(){
 	moinho = new Moinho(&carregadorTexturas.madeira, &carregadorTexturas.metal, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(90,0,30));
 	lago = new Lago(Coord3d(20,-0.5,20),&carregadorTexturas.water);
 	foguete = new Foguete(&carregadorTexturas.metal,&carregadorTexturas.madeiraVermelha);
+	casa = new Casa(&carregadorTexturas.estruturaCasa,&carregadorTexturas.telhadoCasa);
+	correio = new CaixaDeCorreios(&carregadorTexturas.correioCaixa, &carregadorTexturas.correioCilindro);
+	caixaAreia = new CaixaAreia(&carregadorTexturas.topoAreia,&carregadorTexturas.baseAreia, &carregadorTexturas.balde, &carregadorTexturas.bola);
 
 	vetorPassaros.push_back(new Passaro(Coord3d(15,6,6),Coord2d(50,30),0.5,&carregadorTexturas.redBird,&carregadorTexturas.eye));
 	vetorPassaros.push_back(new Passaro(Coord3d(10,6,6),Coord2d(40,20),0.5,&carregadorTexturas.colorfulBird,&carregadorTexturas.eye));
@@ -51,7 +54,6 @@ void Tela::Initialize(){
 
 	banco = new Banco(&carregadorTexturas.banco);
 	mesa = new Mesa(&carregadorTexturas.mesa);
-	caixaAreia = new CaixaAreia(&carregadorTexturas.topoAreia,&carregadorTexturas.baseAreia);
 	barco = new Barco(&carregadorTexturas.baseBarco, &carregadorTexturas.cilindroBarco,&carregadorTexturas.trianguloBarco);
 	caixao = new Caixao(&carregadorTexturas.caixao,&carregadorTexturas.madeiraVermelha);
 
@@ -350,6 +352,8 @@ void Tela::Display() {
 	caixaAreia->Display();
 	arvoreGrande->Display();
 	foguete->Display();
+	casa->Display();
+	correio->Display();
 
 	//Exibe objetos em vetores
 	DisplayBirds();

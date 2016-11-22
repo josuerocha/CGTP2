@@ -34,6 +34,14 @@ public:
 	GLuint cilindroBarco;
 	GLuint trianguloBarco;
 
+    GLuint telhadoCasa;
+	GLuint estruturaCasa;
+	GLuint correioCilindro;
+	GLuint correioCaixa;
+	GLuint balde;
+	GLuint bola;
+
+
     CarregadorTexturas();
     ~CarregadorTexturas();
 

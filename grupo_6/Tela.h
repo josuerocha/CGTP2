@@ -26,6 +26,8 @@
 #include "CaixaAreia.h"
 #include "ArvoreSimples.h"
 #include "Foguete.h"
+#include "CaixaDeCorreios.h"
+#include "Casa.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -72,7 +74,8 @@ private:
 	CaixaAreia *caixaAreia;
 	Arvore* arvoreGrande;
 	Foguete* foguete;
-
+	CaixaDeCorreios *correio;
+	Casa* casa;
 	float rgbComponents;
 	//Vetores de objetos
 	std::vector <Passaro*> vetorPassaros;

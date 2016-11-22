@@ -19,9 +19,11 @@ class CaixaAreia
 private:
 	GLuint topoTextura;
 	GLuint baseTextura;
+	GLuint baldeTextura;
+	GLuint bolaTextura;
 public:
 	CaixaAreia();
-	CaixaAreia(GLuint* topoTextura, GLuint* baseTextura);
+	CaixaAreia(GLuint* topoTextura, GLuint* baseTextura, GLuint* baldeTextura, GLuint* bolaTextura);
 
 	~CaixaAreia();
 
@@ -29,6 +31,8 @@ public:
 	void Display();
 	void DisplayTopo();
 	void DisplayBase();
+	void DisplayBalde();
+	void DisplayBola();
 
 };
 #endif

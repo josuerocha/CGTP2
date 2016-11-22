@@ -33,6 +33,13 @@ void CarregadorTexturas::LoadAll(){
 	this->eye = LoadTexture("files/eye.jpg");
 	this->water = LoadTexture("files/water.jpg");
 	
+	this->estruturaCasa = LoadTexture("files/madeira.jpg");
+	this->telhadoCasa = LoadTexture("files/madeiravermelha.jpg");
+	this->balde = LoadTexture("files/trianguloBarco.jpg");
+	this->bola = LoadTexture("files/bola.jpg");
+	this->correioCaixa = LoadTexture("files/luz.jpg");
+	this->correioCilindro = LoadTexture("files/madeiravermelha.jpg");
+
 }
 
 GLuint CarregadorTexturas::LoadTexture(const char* filename){

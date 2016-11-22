@@ -8,6 +8,10 @@
 
 using namespace std;
 
+GLUquadricObj *bola = gluNewQuadric();
+GLUquadricObj *balde = gluNewQuadric();
+
+vector<Cilindro> ca_temp_ba;
 vector<Coord3d> ca_normais;
 vector<Coord3d> ca_temp_v1;
 vector<Coord3d> ca_temp_v2;
@@ -16,17 +20,19 @@ vector<Coord3d> ca_temp_v4;
 vector<Coord3d> ca_temp_v5;
 vector<Coord3d> ca_temp_v6;
 vector<Coord3d> ca_temp_v7;
+vector<Coord3d> ca_temp_bola;
 
 
 CaixaAreia::CaixaAreia()
 {
 }
 
-CaixaAreia::CaixaAreia(GLuint* topoTextura, GLuint* baseTextura)
+CaixaAreia::CaixaAreia(GLuint* topoTextura, GLuint* baseTextura, GLuint* baldeTextura, GLuint* bolaTextura)
 {
-
 	this->topoTextura = *topoTextura;
 	this->baseTextura = *baseTextura;
+	this->baldeTextura = *baldeTextura;
+	this->bolaTextura = *bolaTextura;
 
 	lerArquivo("modelos//caixadeareia.txt");
 }
@@ -53,6 +59,16 @@ void CaixaAreia::lerArquivo(const char *path) {
 			Coord3d normal;
 			fscanf(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
 			ca_normais.push_back(normal);
+		}
+		else if (strcmp(lineHeader, "b") == 0) {
+			Coord3d c;
+			fscanf(file, "%f %f %f", &c.x, &c.y, &c.z);
+			ca_temp_bola.push_back(c);
+		}
+		else if (strcmp(lineHeader, "c") == 0) {
+			Cilindro b;
+			fscanf(file, "%f %f %f %f %f", &b.baseRadius, &b.topRadius, &b.height,&b.slices,&b.stacks);
+			ca_temp_ba.push_back(b);
 		}
 		else if (strcmp(lineHeader, "v1") == 0) {
 			Coord3d v1;
@@ -155,8 +171,38 @@ void CaixaAreia::DisplayBase() {
 	glPopMatrix();
 
 }
+void CaixaAreia::DisplayBola() {
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, bolaTextura);
+	glTranslatef(71.0f, 3.0f, 3.0f);
+	gluSphere(bola, ca_temp_bola[0].x, ca_temp_bola[0].y, ca_temp_bola[0].z);
+	glPopMatrix();
+}
+
+void CaixaAreia::DisplayBalde() {
+	glPushMatrix();
+
+	glBindTexture(GL_TEXTURE_2D, baldeTextura);
+	glRotatef(-90, 1, 0, 0);
+	glTranslatef(70.0f, 0.0f, 2.1f);
+	gluCylinder(balde, ca_temp_ba[0].baseRadius, ca_temp_ba[0].topRadius, ca_temp_ba[0].height, ca_temp_ba[0].slices, ca_temp_ba[0].stacks);
+	glPopMatrix();
+	/*();
+	
+	glPopMatrix();*/
+	
+	//glTranslatef(71.8f, 3.0f, 0.4f);
+	
+	glPopMatrix();
+}
 
 void CaixaAreia::Display() {
+	gluQuadricNormals(bola, GLU_SMOOTH);
+	gluQuadricTexture(bola, GLU_TRUE);
+	gluQuadricNormals(balde, GLU_SMOOTH);
+	gluQuadricTexture(balde, GLU_TRUE);
 	DisplayBase();
 	DisplayTopo();
+	DisplayBalde();
+	DisplayBola();
 }
