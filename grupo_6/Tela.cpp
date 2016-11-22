@@ -39,9 +39,10 @@ void Tela::Initialize(){
 	vetorPassaros.push_back(new Passaro(Coord3d(10,6,6),Coord2d(40,20),0.5,&carregadorTexturas.colorfulBird,&carregadorTexturas.eye));
 	vetorPassaros.push_back(new Passaro(Coord3d(5,6,6),Coord2d(30,5),0.5,&carregadorTexturas.brownBird,&carregadorTexturas.eye));
 	
-	vetorArvores.push_back(new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
-	//vetorArvores.push_back(new Arvore(Coord3d(-8,0,-8),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
-	//vetorArvores.push_back(new Arvore(Coord3d(-6,0,-6),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
+	arvoreGrande = new Arvore(Coord3d(-10,0,-10),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore);
+
+	vetorArvoresSimples.push_back(new ArvoreSimples(Coord3d(5,0,20),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
+	//vetorArvoresSimples.push_back(new ArvoreSimples(Coord3d(3,0,3),&carregadorTexturas.folhasArvores,&carregadorTexturas.troncoArvore));
 
 	banco = new Banco(&carregadorTexturas.banco);
 	mesa = new Mesa(&carregadorTexturas.mesa);
@@ -342,6 +343,9 @@ void Tela::Display() {
 	banco->Display();
 	barco->Display();
 	caixaAreia->Display();
+	arvoreGrande->Display();
+
+	//Exibe objetos em vetores
 	DisplayBirds();
 	DisplayTrees();
 
@@ -357,7 +361,7 @@ void Tela::DisplayBirds(){
 }
 
 void Tela::DisplayTrees(){
-	for (unsigned int i = 0; i<vetorArvores.size(); i++){
-		vetorArvores[i]->Display();
+	for (unsigned int i = 0; i<vetorArvoresSimples.size(); i++){
+		vetorArvoresSimples[i]->Display();
 	}
 }

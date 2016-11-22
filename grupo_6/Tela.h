@@ -24,6 +24,7 @@
 #include "Mesa.h"
 #include "Barco.h"
 #include "CaixaAreia.h"
+#include "ArvoreSimples.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -68,12 +69,13 @@ private:
 	Mesa* mesa;
 	Barco* barco;
 	CaixaAreia *caixaAreia;
+	Arvore* arvoreGrande;
 
 
 	float rgbComponents;
 	//Vetores de objetos
 	std::vector <Passaro*> vetorPassaros;
-	std::vector <Arvore*> vetorArvores;
+	std::vector <ArvoreSimples*> vetorArvoresSimples;
 
 	//Objetos com quadricas
 	
