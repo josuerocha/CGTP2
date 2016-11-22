@@ -34,6 +34,7 @@ void Tela::Initialize(){
 	esferaMundo = new EsferaMundo(&carregadorTexturas.ceuTextura);
 	moinho = new Moinho(&carregadorTexturas.madeira, &carregadorTexturas.metal, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(90,0,30));
 	lago = new Lago(Coord3d(20,-0.5,20),&carregadorTexturas.water);
+	foguete = new Foguete(&carregadorTexturas.metal,&carregadorTexturas.madeiraVermelha);
 
 	vetorPassaros.push_back(new Passaro(Coord3d(15,6,6),Coord2d(50,30),0.5,&carregadorTexturas.redBird,&carregadorTexturas.eye));
 	vetorPassaros.push_back(new Passaro(Coord3d(10,6,6),Coord2d(40,20),0.5,&carregadorTexturas.colorfulBird,&carregadorTexturas.eye));
@@ -348,6 +349,7 @@ void Tela::Display() {
 	barco->Display();
 	caixaAreia->Display();
 	arvoreGrande->Display();
+	foguete->Display();
 
 	//Exibe objetos em vetores
 	DisplayBirds();

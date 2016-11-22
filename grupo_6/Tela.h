@@ -25,6 +25,7 @@
 #include "Barco.h"
 #include "CaixaAreia.h"
 #include "ArvoreSimples.h"
+#include "Foguete.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -70,7 +71,7 @@ private:
 	Barco* barco;
 	CaixaAreia *caixaAreia;
 	Arvore* arvoreGrande;
-
+	Foguete* foguete;
 
 	float rgbComponents;
 	//Vetores de objetos
