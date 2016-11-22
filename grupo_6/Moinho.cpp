@@ -62,12 +62,24 @@ void Moinho::Display() {
 	gluQuadricTexture(obj2, GL_TRUE);
 	glRotatef(-90, 1, 0, 0);
 	gluCylinder(obj2, 0.75, 0.5, 1, 20, 20);
+
+	glTranslatef(0,0,1);
+
+	glBindTexture(GL_TEXTURE_2D, *tras1);
+
+	GLUquadricObj *obj4 = gluNewQuadric();
+	gluQuadricNormals(obj4, GLU_SMOOTH);
+	gluQuadricTexture(obj4, GL_TRUE);
+	gluCylinder(obj4, 0.55, 0.0, 0.15, 20, 20);
+
 	glPopMatrix();
 
 	glPushMatrix();
 	glTranslatef(0, 0.75*dimY, -0.5*dimZ);
 	glScalef(0.25*dimX, 0.25*dimX, 0.15*dimZ);
 	
+	glBindTexture(GL_TEXTURE_2D, *corpo);
+
 	GLUquadricObj *obj3 = gluNewQuadric();
 
 	glBindTexture(GL_TEXTURE_2D, *eixo);
