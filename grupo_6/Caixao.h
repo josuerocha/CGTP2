@@ -18,10 +18,11 @@ class Caixao
 {
 private:
 	GLuint caixaoTextura;
-	
+	GLuint cruzTextura;
+
 public:
 	Caixao();
-	Caixao(GLuint* caixaoTextura);
+	Caixao(GLuint* caixaoTextura, GLuint* cruzTextura);
 
 	~Caixao();
 

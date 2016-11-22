@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Estruturas.h"
+#include "CarregadorTexturas.h"
 
 using namespace std;
 
@@ -23,10 +24,11 @@ Caixao::Caixao()
 	
 }
 
-Caixao::Caixao(GLuint* caixaoTextura)
+Caixao::Caixao(GLuint* caixaoTextura, GLuint* cruzTextura )
 {
 
 	this->caixaoTextura = *caixaoTextura;
+	this->cruzTextura = *cruzTextura;
 	lerArquivo("modelos//caixao.txt");
 }
 
@@ -83,7 +85,7 @@ void Caixao::lerArquivo(const char *path) {
 			fscanf(file, "%f %f %f", &v6.x, &v6.y, &v6.z);
 			c_temp_v6.push_back(v6);
 		}
-		else if (strcmp(lineHeader, "v7") == 0) {
+	else if (strcmp(lineHeader, "v7") == 0) {
 			Coord3d v7;
 			fscanf(file, "%f %f %f", &v7.x, &v7.y, &v7.z);
 			c_temp_v7.push_back(v7);
@@ -101,75 +103,177 @@ void Caixao::Display() {
 	
 	//glBindTexture(GL_TEXTURE_2D, caixaoTextura);
 	
+	GLfloat a = 60.0F;
+	GLUquadricObj *obj3 = gluNewQuadric();
+
+	for (unsigned int i = 0; i < 5; i++) {
+
+		glPushMatrix();
+		glBindTexture(GL_TEXTURE_2D, caixaoTextura);
+		glTranslatef(-80, 0, -a);
+		glRotatef(90, 0, 1, 0);
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[0].x, c_normais[0].y, c_normais[0].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v1[0].x, c_temp_v1[0].y, c_temp_v1[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v1[1].x, c_temp_v1[1].y, c_temp_v1[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v1[2].x, c_temp_v1[2].y, c_temp_v1[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v1[3].x, c_temp_v1[3].y, c_temp_v1[3].z);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[1].x, c_normais[1].y, c_normais[1].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v2[0].x, c_temp_v2[0].y, c_temp_v2[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v2[1].x, c_temp_v2[1].y, c_temp_v2[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v2[2].x, c_temp_v2[2].y, c_temp_v2[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v2[3].x, c_temp_v2[3].y, c_temp_v2[3].z);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[2].x, c_normais[2].y, c_normais[2].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v3[0].x, c_temp_v3[0].y, c_temp_v3[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v3[1].x, c_temp_v3[1].y, c_temp_v3[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v3[2].x, c_temp_v3[2].y, c_temp_v3[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v3[3].x, c_temp_v3[3].y, c_temp_v3[3].z);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[3].x, c_normais[3].y, c_normais[3].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v4[0].x, c_temp_v4[0].y, c_temp_v4[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v4[1].x, c_temp_v4[1].y, c_temp_v4[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v4[2].x, c_temp_v4[2].y, c_temp_v4[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v4[3].x, c_temp_v4[3].y, c_temp_v4[3].z);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[4].x, c_normais[4].y, c_normais[4].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v5[0].x, c_temp_v5[0].y, c_temp_v5[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v5[1].x, c_temp_v5[1].y, c_temp_v5[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v5[2].x, c_temp_v5[2].y, c_temp_v5[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v5[3].x, c_temp_v5[3].y, c_temp_v5[3].z);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[5].x, c_normais[5].y, c_normais[5].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v6[0].x, c_temp_v6[0].y, c_temp_v6[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v6[1].x, c_temp_v6[1].y, c_temp_v6[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v6[2].x, c_temp_v6[2].y, c_temp_v6[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v6[3].x, c_temp_v6[3].y, c_temp_v6[3].z);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[6].x, c_normais[6].y, c_normais[6].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v7[0].x, c_temp_v7[0].y, c_temp_v7[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v7[1].x, c_temp_v7[1].y, c_temp_v7[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v7[2].x, c_temp_v7[2].y, c_temp_v7[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v7[3].x, c_temp_v7[3].y, c_temp_v7[3].z);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glNormal3f(c_normais[7].x, c_normais[7].y, c_normais[7].z);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v8[0].x, c_temp_v8[0].y, c_temp_v8[0].z);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v8[1].x, c_temp_v8[1].y, c_temp_v8[1].z);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v8[2].x, c_temp_v8[2].y, c_temp_v8[2].z);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v8[3].x, c_temp_v8[3].y, c_temp_v8[3].z);
+		glEnd();
+
+		glPopMatrix();
+
+		a = a - 20.0F;
+	}
+
+
+	glBindTexture(GL_TEXTURE_2D, cruzTextura);
+
+	/*Cilindro Vertical*/
 	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D, caixaoTextura);
-	glTranslatef(-80, 0, -80);
-	glRotatef(90,0,1,0);
+	glTranslatef(-80, 1.5, 0);
+	glRotatef(-90, 1, 0, 0);
 
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[0].x, c_normais[0].y, c_normais[0].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v1[0].x, c_temp_v1[0].y, c_temp_v1[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v1[1].x, c_temp_v1[1].y, c_temp_v1[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v1[2].x, c_temp_v1[2].y, c_temp_v1[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v1[3].x, c_temp_v1[3].y, c_temp_v1[3].z);
-	glEnd();
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+	glPopMatrix();
 
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[1].x, c_normais[1].y, c_normais[1].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v2[0].x, c_temp_v2[0].y, c_temp_v2[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v2[1].x, c_temp_v2[1].y, c_temp_v2[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v2[2].x, c_temp_v2[2].y, c_temp_v2[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v2[3].x, c_temp_v2[3].y, c_temp_v2[3].z);
-	glEnd();
 
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[2].x, c_normais[2].y, c_normais[2].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v3[0].x, c_temp_v3[0].y, c_temp_v3[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v3[1].x, c_temp_v3[1].y, c_temp_v3[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v3[2].x, c_temp_v3[2].y, c_temp_v3[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v3[3].x, c_temp_v3[3].y,c_temp_v3[3].z);
-	glEnd();
+	/*Cilindro Horizontal*/
+	glPushMatrix();
+	glTranslatef(-80, 2, 0.5);
+	glRotatef(-180, 1, 0, 0);
 
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[3].x, c_normais[3].y, c_normais[3].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v4[0].x, c_temp_v4[0].y, c_temp_v4[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v4[1].x, c_temp_v4[1].y, c_temp_v4[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v4[2].x, c_temp_v4[2].y, c_temp_v4[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v4[3].x, c_temp_v4[3].y, c_temp_v4[3].z);
-	glEnd();
-
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[4].x, c_normais[4].y, c_normais[4].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v5[0].x, c_temp_v5[0].y, c_temp_v5[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v5[1].x, c_temp_v5[1].y, c_temp_v5[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v5[2].x, c_temp_v5[2].y, c_temp_v5[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v5[3].x, c_temp_v5[3].y, c_temp_v5[3].z);
-	glEnd();
-
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[5].x, c_normais[5].y, c_normais[5].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v6[0].x, c_temp_v6[0].y, c_temp_v6[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v6[1].x, c_temp_v6[1].y, c_temp_v6[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v6[2].x, c_temp_v6[2].y, c_temp_v6[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v6[3].x, c_temp_v6[3].y, c_temp_v6[3].z);
-	glEnd();
-
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[6].x, c_normais[6].y, c_normais[6].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v7[0].x, c_temp_v7[0].y, c_temp_v7[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v7[1].x, c_temp_v7[1].y, c_temp_v7[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v7[2].x, c_temp_v7[2].y, c_temp_v7[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v7[3].x, c_temp_v7[3].y, c_temp_v7[3].z);
-	glEnd();
-
-	glBegin(GL_QUADS);
-	glNormal3f(c_normais[7].x, c_normais[7].y, c_normais[7].z);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v8[0].x, c_temp_v8[0].y, c_temp_v8[0].z);
-	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v8[1].x, c_temp_v8[1].y, c_temp_v8[1].z);
-	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v8[2].x, c_temp_v8[2].y, c_temp_v8[2].z);
-	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v8[3].x, c_temp_v8[3].y, c_temp_v8[3].z);
-	glEnd();
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
 
 	glPopMatrix();
-	
+
+
+	/*Cilindro Vertical*/
+	glPushMatrix();
+	glTranslatef(-80, 1.5, 20);
+	glRotatef(-90, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+	glPopMatrix();
+
+	/*Cilindro Horizontal*/
+	glPushMatrix();
+	glTranslatef(-80, 2, 20.5);
+	glRotatef(-180, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+
+	glPopMatrix();
+
+
+	/*Cilindro Vertical*/
+	glPushMatrix();
+	glTranslatef(-80, 1.5, -20);
+	glRotatef(-90, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+	glPopMatrix();
+
+	/*Cilindro Horizontal*/
+	glPushMatrix();
+	glTranslatef(-80, 2, -19.5);
+	glRotatef(-180, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+
+	glPopMatrix();
+
+	/*Cilindro Vertical*/
+	glPushMatrix();
+	glTranslatef(-80, 1.5, -40);
+	glRotatef(-90, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+	glPopMatrix();
+
+	/*Cilindro Horizontal*/
+	glPushMatrix();
+	glTranslatef(-80, 2, -39.5);
+	glRotatef(-180, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+
+	glPopMatrix();
+
+	/*Cilindro Vertical*/
+	glPushMatrix();
+	glTranslatef(-80, 1.5, -59.5);
+	glRotatef(-90, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+	glPopMatrix();
+
+	/*Cilindro Horizontal*/
+	glPushMatrix();
+	glTranslatef(-80, 2, -59.0);
+	glRotatef(-180, 1, 0, 0);
+
+	gluCylinder(obj3, 0.05, 0.05, 1, 20, 20);
+
+	glPopMatrix();
+
+
+	//GLUquadricObj *obj3 = gluNewQuadric();
+
 }
