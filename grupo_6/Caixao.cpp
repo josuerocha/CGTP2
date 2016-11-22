@@ -103,71 +103,72 @@ void Caixao::Display() {
 	//glBindTexture(GL_TEXTURE_2D, caixaoTextura);
 	
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, caixaoTextura);
 	glTranslatef(-80, 0, -80);
 	glRotatef(90,0,1,0);
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[0].x, c_normais[0].y, c_normais[0].z);
-	glVertex3f(c_temp_v1[0].x, c_temp_v1[0].y, c_temp_v1[0].z);
-	glVertex3f(c_temp_v1[1].x, c_temp_v1[1].y, c_temp_v1[1].z);
-	glVertex3f(c_temp_v1[2].x, c_temp_v1[2].y, c_temp_v1[2].z);
-	glVertex3f(c_temp_v1[3].x, c_temp_v1[3].y, c_temp_v1[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v1[0].x, c_temp_v1[0].y, c_temp_v1[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v1[1].x, c_temp_v1[1].y, c_temp_v1[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v1[2].x, c_temp_v1[2].y, c_temp_v1[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v1[3].x, c_temp_v1[3].y, c_temp_v1[3].z);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[1].x, c_normais[1].y, c_normais[1].z);
-	glVertex3f(c_temp_v2[0].x, c_temp_v2[0].y, c_temp_v2[0].z);
-	glVertex3f(c_temp_v2[1].x, c_temp_v2[1].y, c_temp_v2[1].z);
-	glVertex3f(c_temp_v2[2].x, c_temp_v2[2].y, c_temp_v2[2].z);
-	glVertex3f(c_temp_v2[3].x, c_temp_v2[3].y, c_temp_v2[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v2[0].x, c_temp_v2[0].y, c_temp_v2[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v2[1].x, c_temp_v2[1].y, c_temp_v2[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v2[2].x, c_temp_v2[2].y, c_temp_v2[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v2[3].x, c_temp_v2[3].y, c_temp_v2[3].z);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[2].x, c_normais[2].y, c_normais[2].z);
-	glVertex3f(c_temp_v3[0].x, c_temp_v3[0].y, c_temp_v3[0].z);
-	glVertex3f(c_temp_v3[1].x, c_temp_v3[1].y, c_temp_v3[1].z);
-	glVertex3f(c_temp_v3[2].x, c_temp_v3[2].y, c_temp_v3[2].z);
-	glVertex3f(c_temp_v3[3].x, c_temp_v3[3].y,c_temp_v3[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v3[0].x, c_temp_v3[0].y, c_temp_v3[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v3[1].x, c_temp_v3[1].y, c_temp_v3[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v3[2].x, c_temp_v3[2].y, c_temp_v3[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v3[3].x, c_temp_v3[3].y,c_temp_v3[3].z);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[3].x, c_normais[3].y, c_normais[3].z);
-	glVertex3f(c_temp_v4[0].x, c_temp_v4[0].y, c_temp_v4[0].z);
-	glVertex3f(c_temp_v4[1].x, c_temp_v4[1].y, c_temp_v4[1].z);
-	glVertex3f(c_temp_v4[2].x, c_temp_v4[2].y, c_temp_v4[2].z);
-	glVertex3f(c_temp_v4[3].x, c_temp_v4[3].y, c_temp_v4[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v4[0].x, c_temp_v4[0].y, c_temp_v4[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v4[1].x, c_temp_v4[1].y, c_temp_v4[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v4[2].x, c_temp_v4[2].y, c_temp_v4[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v4[3].x, c_temp_v4[3].y, c_temp_v4[3].z);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[4].x, c_normais[4].y, c_normais[4].z);
-	glVertex3f(c_temp_v5[0].x, c_temp_v5[0].y, c_temp_v5[0].z);
-	glVertex3f(c_temp_v5[1].x, c_temp_v5[1].y, c_temp_v5[1].z);
-	glVertex3f(c_temp_v5[2].x, c_temp_v5[2].y, c_temp_v5[2].z);
-	glVertex3f(c_temp_v5[3].x, c_temp_v5[3].y, c_temp_v5[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v5[0].x, c_temp_v5[0].y, c_temp_v5[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v5[1].x, c_temp_v5[1].y, c_temp_v5[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v5[2].x, c_temp_v5[2].y, c_temp_v5[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v5[3].x, c_temp_v5[3].y, c_temp_v5[3].z);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[5].x, c_normais[5].y, c_normais[5].z);
-	glVertex3f(c_temp_v6[0].x, c_temp_v6[0].y, c_temp_v6[0].z);
-	glVertex3f(c_temp_v6[1].x, c_temp_v6[1].y, c_temp_v6[1].z);
-	glVertex3f(c_temp_v6[2].x, c_temp_v6[2].y, c_temp_v6[2].z);
-	glVertex3f(c_temp_v6[3].x, c_temp_v6[3].y, c_temp_v6[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v6[0].x, c_temp_v6[0].y, c_temp_v6[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v6[1].x, c_temp_v6[1].y, c_temp_v6[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v6[2].x, c_temp_v6[2].y, c_temp_v6[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v6[3].x, c_temp_v6[3].y, c_temp_v6[3].z);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[6].x, c_normais[6].y, c_normais[6].z);
-	glVertex3f(c_temp_v7[0].x, c_temp_v7[0].y, c_temp_v7[0].z);
-	glVertex3f(c_temp_v7[1].x, c_temp_v7[1].y, c_temp_v7[1].z);
-	glVertex3f(c_temp_v7[2].x, c_temp_v7[2].y, c_temp_v7[2].z);
-	glVertex3f(c_temp_v7[3].x, c_temp_v7[3].y, c_temp_v7[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v7[0].x, c_temp_v7[0].y, c_temp_v7[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v7[1].x, c_temp_v7[1].y, c_temp_v7[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v7[2].x, c_temp_v7[2].y, c_temp_v7[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v7[3].x, c_temp_v7[3].y, c_temp_v7[3].z);
 	glEnd();
 
 	glBegin(GL_QUADS);
 	glNormal3f(c_normais[7].x, c_normais[7].y, c_normais[7].z);
-	glVertex3f(c_temp_v8[0].x, c_temp_v8[0].y, c_temp_v8[0].z);
-	glVertex3f(c_temp_v8[1].x, c_temp_v8[1].y, c_temp_v8[1].z);
-	glVertex3f(c_temp_v8[2].x, c_temp_v8[2].y, c_temp_v8[2].z);
-	glVertex3f(c_temp_v8[3].x, c_temp_v8[3].y, c_temp_v8[3].z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(c_temp_v8[0].x, c_temp_v8[0].y, c_temp_v8[0].z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(c_temp_v8[1].x, c_temp_v8[1].y, c_temp_v8[1].z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(c_temp_v8[2].x, c_temp_v8[2].y, c_temp_v8[2].z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(c_temp_v8[3].x, c_temp_v8[3].y, c_temp_v8[3].z);
 	glEnd();
 
 	glPopMatrix();

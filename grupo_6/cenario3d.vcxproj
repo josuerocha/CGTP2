@@ -134,16 +134,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arvore.cpp" />
+    <ClCompile Include="Banco.cpp" />
+    <ClCompile Include="Barco.cpp" />
     <ClCompile Include="BolaLago.cpp" />
+    <ClCompile Include="caixadeareia.cpp" />
     <ClCompile Include="Caixao.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CarregadorTexturas.cpp" />
+    <ClCompile Include="Casa.cpp" />
     <ClCompile Include="EsferaMundo.cpp" />
     <ClCompile Include="Folha.cpp" />
     <ClCompile Include="FuncoesExtra.cpp" />
     <ClCompile Include="Galho.cpp" />
     <ClCompile Include="Lago.cpp" />
+    <ClCompile Include="Luz.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Mesa.cpp" />
     <ClCompile Include="Moinho.cpp" />
     <ClCompile Include="Neblina.cpp" />
     <ClCompile Include="Passaro.cpp" />
@@ -152,15 +158,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arvore.h" />
+    <ClInclude Include="Banco.h" />
+    <ClInclude Include="Barco.h" />
     <ClInclude Include="BolaLago.h" />
+    <ClInclude Include="caixadeareia.h" />
     <ClInclude Include="Caixao.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CarregadorTexturas.h" />
+    <ClInclude Include="Casa.h" />
     <ClInclude Include="EsferaMundo.h" />
+    <ClInclude Include="Estruturas.h" />
     <ClInclude Include="Folha.h" />
     <ClInclude Include="FuncoesExtra.h" />
     <ClInclude Include="Galho.h" />
     <ClInclude Include="Lago.h" />
+    <ClInclude Include="Luz.h" />
+    <ClInclude Include="Mesa.h" />
     <ClInclude Include="Moinho.h" />
     <ClInclude Include="Neblina.h" />
     <ClInclude Include="Passaro.h" />

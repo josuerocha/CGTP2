@@ -54,6 +54,33 @@
     <ClCompile Include="CarregadorTexturas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BolaLago.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Caixao.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lago.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Banco.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Luz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Barco.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="caixadeareia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Casa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -92,5 +119,38 @@
     <ClInclude Include="CarregadorTexturas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BolaLago.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Caixao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lago.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Banco.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Luz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Barco.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="caixadeareia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Estruturas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Casa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="caixao.txt" />
   </ItemGroup>
 </Project>

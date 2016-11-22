@@ -10,10 +10,17 @@ CarregadorTexturas::~CarregadorTexturas(){
 }
 
 void CarregadorTexturas::LoadAll(){
-	this->mesa = LoadTexture("files/mesa.jpg");
-	this->banco = LoadTexture("files/banco.jpg");
+	this->barco = LoadTexture("files/barco.jpg");
+	this->mesa = LoadTexture("files/madeira.jpg");
+	this->banco = LoadTexture("files/madeira.jpg");
+	this->caixao = LoadTexture("files/baseareia.jpg");
+
+	this->topoAreia = LoadTexture("files/topoareia.jpg");
+	this->baseAreia = LoadTexture("files/baseareia.jpg");
+
 	this->lampada = LoadTexture("files/luz.jpg");
 	this->poste = LoadTexture("files/poste.jpg");
+
 	this->ceuTextura = LoadTexture("files/ceu.jpg");
 	this->chaoTextura = LoadTexture("files/grass.jpg");
 	this->madeira = LoadTexture("files/madeira.jpg");
@@ -26,6 +33,7 @@ void CarregadorTexturas::LoadAll(){
 	this->colorfulBird = LoadTexture("files/birdcolorful.jpg");
 	this->eye = LoadTexture("files/eye.jpg");
 	this->water = LoadTexture("files/water.jpg");
+	
 }
 
 GLuint CarregadorTexturas::LoadTexture(const char* filename){

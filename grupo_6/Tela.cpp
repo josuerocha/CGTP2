@@ -45,6 +45,9 @@ void Tela::Initialize(){
 
 	banco = new Banco(&carregadorTexturas.banco);
 	mesa = new Mesa(&carregadorTexturas.mesa);
+	barco = new Barco(&carregadorTexturas.barco);
+	caixaAreia = new caixadeareia(&carregadorTexturas.topoAreia,&carregadorTexturas.baseAreia);
+	caixao = new Caixao(&carregadorTexturas.caixao);
 
 	//Setando limites da câmera
 	camera.setLimitRadius(esferaMundo->getRadius());
@@ -331,6 +334,8 @@ void Tela::Display() {
 	luz->Display();
 	mesa->Display();
 	banco->Display();
+	barco->Display();
+	caixaAreia->Display();
 	DisplayBirds();
 	DisplayTrees();
 
