@@ -27,7 +27,7 @@ Caixao::Caixao(GLuint* caixaoTextura)
 {
 
 	this->caixaoTextura = *caixaoTextura;
-
+	lerArquivo("modelos//caixao.txt");
 }
 
 Caixao::~Caixao()
@@ -98,7 +98,6 @@ void Caixao::lerArquivo(const char *path) {
 }
 
 void Caixao::Display() {
-	lerArquivo("modelos//caixao.txt");
 	
 	//glBindTexture(GL_TEXTURE_2D, caixaoTextura);
 	

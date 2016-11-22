@@ -22,19 +22,17 @@ vector<Coord3d> ba_temp_v10;
 vector<Coord3d> ba_temp_v11;
 
 
-Banco::Banco()
-{
+Banco::Banco(){
 }
 
-Banco::Banco(GLuint* bancoTextura)
-{
+Banco::Banco(GLuint* bancoTextura){
 
 	this->bancoTextura = *bancoTextura;
+	lerArquivo("modelos//banco.txt");
 
 }
 
-Banco::~Banco()
-{
+Banco::~Banco(){
 }
 
 void Banco::lerArquivo(const char *path) {
@@ -116,7 +114,6 @@ void Banco::lerArquivo(const char *path) {
 	fclose(file);
 }
 void Banco::Display() {
-	lerArquivo("modelos//banco.txt");
 
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, bancoTextura);

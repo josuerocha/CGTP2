@@ -39,7 +39,7 @@ Mesa::Mesa(GLuint* mesaTextura)
 {
 	
 	this->mesaTextura = *mesaTextura;
-
+	lerArquivo("modelos//mesa.txt");
 }
 
 Mesa::~Mesa()
@@ -141,7 +141,6 @@ void Mesa::lerArquivo(const char *path) {
 	fclose(file);
 }
 void Mesa::Display() {
-	lerArquivo("modelos//mesa.txt");
 	
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, mesaTextura);

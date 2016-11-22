@@ -27,8 +27,8 @@ CaixaAreia::CaixaAreia(GLuint* topoTextura, GLuint* baseTextura)
 
 	this->topoTextura = *topoTextura;
 	this->baseTextura = *baseTextura;
-	
 
+	lerArquivo("modelos//caixadeareia.txt");
 }
 
 CaixaAreia::~CaixaAreia()
@@ -157,7 +157,6 @@ void CaixaAreia::DisplayBase() {
 }
 
 void CaixaAreia::Display() {
-	lerArquivo("modelos//caixadeareia.txt");
 	DisplayBase();
 	DisplayTopo();
 }
