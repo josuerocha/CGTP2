@@ -32,7 +32,7 @@ void Tela::Initialize(){
 	//Criando objetos
 	planoChao = new PlanoChao(&carregadorTexturas.chaoTextura);
 	esferaMundo = new EsferaMundo(&carregadorTexturas.ceuTextura);
-	moinho = new Moinho(&carregadorTexturas.madeira, &carregadorTexturas.metal, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(10,0,10));
+	moinho = new Moinho(&carregadorTexturas.madeira, &carregadorTexturas.metal, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeiraVermelha, &carregadorTexturas.madeira, &carregadorTexturas.metal , Coord3d(90,0,30));
 	lago = new Lago(Coord3d(20,-0.5,20),&carregadorTexturas.water);
 
 	vetorPassaros.push_back(new Passaro(Coord3d(15,6,6),Coord2d(50,30),0.5,&carregadorTexturas.redBird,&carregadorTexturas.eye));

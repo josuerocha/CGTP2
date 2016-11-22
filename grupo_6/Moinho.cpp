@@ -17,11 +17,11 @@ Moinho::Moinho(GLuint* c1,
 	posiX= coord.x;
 	posiY= coord.y;
 	posiZ= coord.z;
-	dimX = 6;
-	dimY = 10;
-	dimZ = 4;
+	dimX = 36;
+	dimY = 60;
+	dimZ = 24;
 	angX = 0;
-	angY = 180;
+	angY = 90;
 	angZ = 0;
 	velocidade = 0;
 	velocAngParabola = 0.5;
@@ -41,6 +41,9 @@ void Moinho::Display() {
 	GLfloat reflexao[4] = {0.7, 0.2, 0.3, 1.0};
 	GLint brilho = 100;
 
+	glMaterialfv(GL_FRONT, GL_AMBIENT, reflexao);
+	glMateriali(GL_FRONT, GL_SHININESS, brilho);
+
 	glPushMatrix();
 	glTranslatef(posiX, posiY, posiZ);
 	glRotatef(angX, 1, 0, 0);
@@ -54,8 +57,7 @@ void Moinho::Display() {
 
 	GLUquadricObj *obj2 = gluNewQuadric();
 
-	glMaterialfv(GL_FRONT, GL_AMBIENT, reflexao);
-	glMateriali(GL_FRONT, GL_SHININESS, brilho);
+	
 
 	glBindTexture(GL_TEXTURE_2D, *corpo);
 	gluQuadricNormals(obj2, GLU_SMOOTH);
@@ -91,7 +93,6 @@ void Moinho::Display() {
 
 	desenhaHelice();
 	glPopMatrix();
-
 }
 void Moinho::desenhaHelice() {
 
