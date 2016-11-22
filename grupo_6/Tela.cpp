@@ -46,7 +46,7 @@ void Tela::Initialize(){
 	banco = new Banco(&carregadorTexturas.banco);
 	mesa = new Mesa(&carregadorTexturas.mesa);
 	barco = new Barco(&carregadorTexturas.barco);
-	caixaAreia = new caixadeareia(&carregadorTexturas.topoAreia,&carregadorTexturas.baseAreia);
+	caixaAreia = new CaixaAreia(&carregadorTexturas.topoAreia,&carregadorTexturas.baseAreia);
 	caixao = new Caixao(&carregadorTexturas.caixao);
 
 	//Setando limites da câmera

@@ -23,7 +23,7 @@
 #include "Banco.h"
 #include "Mesa.h"
 #include "Barco.h"
-#include "caixadeareia.h"
+#include "CaixaAreia.h"
 
 //Definicoes de teclas
 #define FORWARD 'w'
@@ -67,7 +67,7 @@ private:
 	Banco* banco;
 	Mesa* mesa;
 	Barco* barco;
-	caixadeareia *caixaAreia;
+	CaixaAreia *caixaAreia;
 
 	float rgbComponents;
 	//Vetores de objetos
