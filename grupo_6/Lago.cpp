@@ -43,7 +43,7 @@ Lago::~Lago(){
 
 void Lago::Display() {
 	
-	for (int i = 0;i < ondas.size();i++) {
+	for (unsigned int i = 0;i < ondas.size();i++) {
 		ondas[i]->desenha();
 	}
 
