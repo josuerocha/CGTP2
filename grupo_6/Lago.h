@@ -11,7 +11,7 @@
 #include <iostream>
 
 //Custom includes
-#include "BolaLago.h"
+#include "OndaLago.h"
 #include "Estruturas.h"
 
 using namespace std;
@@ -27,11 +27,11 @@ private:
 	float dimX;// a dimencao em relacao ao eixo X
 	float dimY;// a dimencao em relacao ao eixo Y
 	float dimZ;// a dimencao em relacao ao eixo Z
-	vector <BolaLago*> bolas;
-	float tamanhoBolas;
-	float qtdBolasZ;
-	float qtdBolasX;
-	float anguloDaOnda;
+	vector <OndaLago*> ondas;
+	float tamanhoOndas;
+	float qtdOndasZ;
+	float qtdOndasX;
+	float anguloOndas;
 
 public:
 

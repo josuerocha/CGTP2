@@ -17,22 +17,22 @@ Lago::Lago(Coord3d coord, GLuint* textura) {
 	dimX = 20;
 	dimY = 5;
 	dimZ = 15;
-	qtdBolasZ = 10;
-	qtdBolasX = 20;
-	tamanhoBolas = dimZ/(qtdBolasZ*0.75);
-	anguloDaOnda = 2;
+	qtdOndasZ = 10;
+	qtdOndasX = 20;
+	tamanhoOndas = dimZ/(qtdOndasZ*0.75);
+	anguloOndas = 2;
 
 	
 
 	int c = 0;
-	for (int a = 1;a <= qtdBolasX/2;a++) {
-		if (a <= 1)c += qtdBolasZ;
-		//Criação das bolas que compoem o lago de acordo com sua dimensao
+	for (int a = 1;a <= qtdOndasX/2;a++) {
+		if (a <= 1)c += qtdOndasZ;
+		//Criação das Ondas que compoem o lago de acordo com sua dimensao
 		for (int b = 1;b <= c/2;b++) {
-			bolas.push_back(new BolaLago(posiX + (((qtdBolasX/2)+1-a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*a-3*(ceil(b/anguloDaOnda)),textura));
-			bolas.push_back(new BolaLago(posiX + (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*a-3* (ceil(b / anguloDaOnda)),textura));
-			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ + (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*(qtdBolasX+1-a)-3* (ceil(b / anguloDaOnda)),textura));
-			bolas.push_back(new BolaLago(posiX - (((qtdBolasX / 2) + 1 - a)*(dimX / qtdBolasX) - 0.5*(dimX / qtdBolasX)),posiY, posiZ - (b*(dimZ / qtdBolasZ) - 0.5*(dimZ / qtdBolasZ)), tamanhoBolas, tamanhoBolas, tamanhoBolas,-3*(qtdBolasX+1-a)-3* (ceil(b / anguloDaOnda)),textura));
+			ondas.push_back(new OndaLago(posiX + (((qtdOndasX/2)+1-a)*(dimX / qtdOndasX) - 0.5*(dimX / qtdOndasX)),posiY, posiZ + (b*(dimZ / qtdOndasZ) - 0.5*(dimZ / qtdOndasZ)), tamanhoOndas, tamanhoOndas, tamanhoOndas,-3*a-3*(ceil(b/anguloOndas)),textura));
+			ondas.push_back(new OndaLago(posiX + (((qtdOndasX / 2) + 1 - a)*(dimX / qtdOndasX) - 0.5*(dimX / qtdOndasX)),posiY, posiZ - (b*(dimZ / qtdOndasZ) - 0.5*(dimZ / qtdOndasZ)), tamanhoOndas, tamanhoOndas, tamanhoOndas,-3*a-3* (ceil(b / anguloOndas)),textura));
+			ondas.push_back(new OndaLago(posiX - (((qtdOndasX / 2) + 1 - a)*(dimX / qtdOndasX) - 0.5*(dimX / qtdOndasX)),posiY, posiZ + (b*(dimZ / qtdOndasZ) - 0.5*(dimZ / qtdOndasZ)), tamanhoOndas, tamanhoOndas, tamanhoOndas,-3*(qtdOndasX+1-a)-3* (ceil(b / anguloOndas)),textura));
+			ondas.push_back(new OndaLago(posiX - (((qtdOndasX / 2) + 1 - a)*(dimX / qtdOndasX) - 0.5*(dimX / qtdOndasX)),posiY, posiZ - (b*(dimZ / qtdOndasZ) - 0.5*(dimZ / qtdOndasZ)), tamanhoOndas, tamanhoOndas, tamanhoOndas,-3*(qtdOndasX+1-a)-3* (ceil(b / anguloOndas)),textura));
 		}
 	}
 }
@@ -43,8 +43,8 @@ Lago::~Lago(){
 
 void Lago::Display() {
 	
-	for (int i = 0;i < bolas.size();i++) {
-		bolas[i]->desenha();
+	for (int i = 0;i < ondas.size();i++) {
+		ondas[i]->desenha();
 	}
 
 }

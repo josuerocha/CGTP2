@@ -1,12 +1,12 @@
 
-#include "BolaLago.h"
+#include "OndaLago.h"
 #include <iostream>
 #include <ctime>
 
 
 #define PI 3.14159265
 using namespace std;
-BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* textura) {
+OndaLago::OndaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* textura) {
 	posiX = x;
 	posiY = y;
 	posiZ = z;
@@ -28,7 +28,7 @@ BolaLago::BolaLago(float x, float y, float z, float dx, float dy, float dz,float
 }
 
 
-void BolaLago::desenha() {
+void OndaLago::desenha() {
 	bool enableTransparency = false;
 
 	glBindTexture(GL_TEXTURE_2D, *textura);
@@ -99,16 +99,16 @@ void BolaLago::desenha() {
 	}
 }
 
-float BolaLago::RandomFloat(float a, float b) {
+float OndaLago::RandomFloat(float a, float b) {
     float random = ((float) rand()) / (float) RAND_MAX;
     float diff = b - a;
     float r = random * diff;
     return a + r;
 }
 
-float BolaLago::getPosiX() { return posiX; }
-float BolaLago::getPosiY() { return posiY; }
-float BolaLago::getPosiZ() { return posiZ; }
-void BolaLago::setPosiX(float a) { posiX = a; }
-void BolaLago::setPosiY(float a) { posiY = a; }
-void BolaLago::setPosiZ(float a) { posiZ = a; }
+float OndaLago::getPosiX() { return posiX; }
+float OndaLago::getPosiY() { return posiY; }
+float OndaLago::getPosiZ() { return posiZ; }
+void OndaLago::setPosiX(float a) { posiX = a; }
+void OndaLago::setPosiY(float a) { posiY = a; }
+void OndaLago::setPosiZ(float a) { posiZ = a; }

@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-class BolaLago {
+class OndaLago {
 private:
 	float posiX;//a coordenada X do seu centro
 	float posiY;//a coordenada Y do seu centro
@@ -28,7 +28,7 @@ private:
 	GLint brilho;
 public:
 
-	BolaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* textura);//contrutor, inicializa variaveis gerais
+	OndaLago(float x, float y, float z, float dx, float dy, float dz,float tempo2, GLuint* textura);//contrutor, inicializa variaveis gerais
 
 
 	void desenha();//e' chamada pelo programa principal para desenhar o Obj.
