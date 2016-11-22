@@ -33,7 +33,8 @@ void BolaLago::desenha() {
 
 	glPushMatrix();
 
-	glEnable(GL_BLEND);
+	glEnable(GL_BLEND); 
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 	
 	GLfloat componenteReflexao[4] = {0.3*((posiY - posiYMin) / (posiYMax - posiYMin)),  0.3*((posiY - posiYMin) / (posiYMax - posiYMin)), 0.3+0.6*((posiY - posiYMin) / (posiYMax - posiYMin)), 1-((posiY - posiYMin) / (posiYMax - posiYMin))};
 
@@ -87,7 +88,7 @@ void BolaLago::desenha() {
 		}
 	}
 
-	//glDisable(GL_BLEND);
+	glDisable(GL_BLEND);
 
 }
 
