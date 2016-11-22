@@ -102,6 +102,11 @@ void Tela::KeyboardDown(unsigned char key, int x, int y) {
 		case CAM_COORDINATES:
 			cout<<"POSICAO DA CAMERA: "<<endl;
 			cout<<"X "<<camera.getCoord_ptr()->x<<" Y "<<camera.getCoord_ptr()->y<<" Z "<<camera.getCoord_ptr()->z<<endl;
+			cout<<"LOOK AT: "<<endl;
+			cout<<"X "<<camera.getLookAt_ptr()->x<<" Y "<<camera.getLookAt_ptr()->y<<" Z "<<camera.getLookAt_ptr()->z<<endl;
+			cout<<"NORMAL: "<<endl;
+			cout<<"X "<<camera.getNormalVector()->x<<" Y "<<camera.getNormalVector()->y<<" Z "<<camera.getNormalVector()->z<<endl;
+			cout<<"ANGLE "<<camera.getAngle()<<endl;
 		break;
 
 		case MOVING_LIGHT:

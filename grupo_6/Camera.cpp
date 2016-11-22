@@ -2,13 +2,12 @@
 #include <iostream>
 using namespace std;
 
-Camera::Camera()
-{	
-    coord = Coord3d(0.52,0.43,5.30);
-    normalVector = Coord3d(0,0,1);
-    lookAt = Coord3d(0,0.43,0);
+Camera::Camera(){	
+    coord = Coord3d(-61.6172, 12.03 , 2.41987);
+    normalVector = Coord3d(-0.999573, 0, -0.0291989);
+    lookAt = Coord3d(-60.6177, 12.03, 2.44907);
     setSpeed(0.05);
-    angle = 0;
+    angle = 1.6;
     Update();
 }
 
@@ -90,6 +89,14 @@ void Camera::AlterLookAtY(float delta){
 
 void Camera::AlterLookAtZ(float delta){
     this->lookAt.z += delta;
+}
+
+float Camera::getAngle(){
+    return angle;
+}
+
+Coord3d* Camera::getNormalVector(){
+    return &normalVector;
 }
 
 void Camera::MoveForward(){

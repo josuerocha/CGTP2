@@ -55,6 +55,10 @@ class Camera{
     void MoveUp();
     void MoveDown();
 
+    float getAngle();
+
+    Coord3d* getNormalVector();
+
     void setLimitRadius(GLdouble limitRadius);
 
     bool CheckBounds(Coord3d newCamCoordinate);
